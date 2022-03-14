@@ -169,7 +169,7 @@ Tool
 +name: String{NotBlank, Length(0, 101)}
 +code: String{Pattern(^[A-Z]{3}-[0-9]{3}-(-[A-Z])?$), Unique}
 +technology: String{NotBlank, Length(0,101)}
-+description: String{NotBlank, Length(0, 256)}
++description: String{NotBlank, Length(0, 255)}
 +retailPrice: Money{Min(0)}
 +info: String{URL}</panel_attributes>
     <additional_attributes/>
@@ -205,7 +205,7 @@ Patronage
 --
 +status: Status{}
 +code: String{Pattern(^[A-Z]{3}-[0-9]{3}-(-[A-Z])?$), Unique}
-+legalStuff: String{NotBlank, Length(0,256)}
++legalStuff: String{NotBlank, Length(0,255)}
 +budget: Money{Valid, Min{0}}
 +startDate: Date{Temporal(TIMESTAMP)}
 +endDate: Date{Temporal(TIMESTAMP)}
