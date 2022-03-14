@@ -383,13 +383,16 @@ Contained in</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>581</x>
+      <x>574</x>
       <y>252</y>
       <w>119</w>
       <h>91</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>150.0;110.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=1
+Is received by</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -399,7 +402,10 @@ Contained in</panel_attributes>
       <w>133</w>
       <h>91</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=1
+Provides a</panel_attributes>
     <additional_attributes>10.0;110.0;170.0;10.0</additional_attributes>
   </element>
   <element>
@@ -412,8 +418,68 @@ Contained in</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
-m2=1
+m2=n
 Regards a</panel_attributes>
     <additional_attributes>260.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>392</x>
+      <y>917</y>
+      <w>231</w>
+      <h>301</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+AdministratorDashboard
+--
++averagePriceOfComponents: double
++deviationPriceOfComponents: double
++minimumPriceOfComponents: double
++maximumPriceOfComponents: double
++totalNumberOfTools: double
++averagePriceOfTools: double
++deviationPriceOfTools: double
++minimumPriceOfTools: double
++maximumPriceOfTools: double
++totalNumberOfProposedPatronages: double
++totalNumberOfAcceptedPatronages: double
++totalNumberOfDeniedPatronages: double
++averageBudgetOfProposedPatronages: double
++deviationBudgetOfProposedPatronages: double
++minimumBudgetOfProposedPatronages: double
++maximumBudgetOfProposedPatronages: double
++averageBudgetOfAcceptedPatronages: double
++deviationBudgetOfAcceptedPatronages: double
++minimumBudgetOfAcceptedPatronages: double
++maximumBudgetOfAcceptedPatronages: double
++averageBudgetOfDeniedPatronages: double
++deviationBudgetOfDeniedPatronages: double
++minimumBudgetOfDeniedPatronages: double
++maximumBudgetOfDeniedPatronages: double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>476</x>
+      <y>840</y>
+      <w>70</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+Serializable</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>861</y>
+      <w>21</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
 </diagram>
