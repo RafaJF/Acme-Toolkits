@@ -1,3 +1,4 @@
+
 2022-03-11 13:16:39.765 INFO  [acme.Launcher@main] Starting Launcher using Java 1.8.0_281 on DESKTOP-2L7VUVO with PID 9652 (C:\Users\Rafa\Desktop\Workspace-22.0\Frameworks\Acme-Framework-22.1\target\classes started by Rafa in C:\Users\Rafa\git\Acme-Toolkits) 
 2022-03-11 13:16:39.768 DEBUG [acme.Launcher@main] Running with Spring Boot v2.4.2, Spring v5.3.3 
 2022-03-11 13:16:39.769 INFO  [acme.Launcher@main] The following profiles are active: development,default 
@@ -206,3 +207,4 @@
 2022-03-11 13:17:00.042 TRACE [org.hibernate.type.descriptor.sql.BasicBinder@http-nio-8080-exec-1] binding parameter [1] as [VARCHAR] - [anonymous] 
 2022-03-11 13:17:00.122 DEBUG [org.hibernate.SQL@http-nio-8080-exec-1] select roles0_.user_account_id as user_acc1_8_0_, roles0_.id as id1_8_0_, roles0_.id as id1_0_1_, roles0_.version as version2_0_1_, roles0_.user_account_id as user_acc1_8_1_, roles0_.company as company1_5_1_, roles0_.sector as sector2_5_1_, roles0_.company as company1_6_1_, roles0_.sector as sector2_6_1_, roles0_.clazz_ as clazz_1_ from ( select id, version, user_account_id, company, sector, 3 as clazz_ from consumer union all select id, version, user_account_id, company, sector, 4 as clazz_ from provider union all select id, version, user_account_id, null as company, null as sector, 6 as clazz_ from administrator union all select id, version, user_account_id, null as company, null as sector, 7 as clazz_ from anonymous union all select id, version, user_account_id, null as company, null as sector, 8 as clazz_ from authenticated ) roles0_ where roles0_.user_account_id=? 
 2022-03-11 13:17:00.124 TRACE [org.hibernate.type.descriptor.sql.BasicBinder@http-nio-8080-exec-1] binding parameter [1] as [INTEGER] - [1] 
+
