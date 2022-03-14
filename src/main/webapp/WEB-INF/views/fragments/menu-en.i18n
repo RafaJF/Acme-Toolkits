@@ -18,7 +18,12 @@ master.menu.sign-out = Sign out
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anonymous
-master.menu.anonymous.favourite-link = Favourite link
+master.menu.anonymous.favourite-link-educielan = 54179154D: Ciézar Lanza, Eduardo
+master.menu.anonymous.favourite-link-rafjimfer = 26827296G: Jiménez Fernández, Rafael Ángel
+master.menu.anonymous.favourite-link-jesrivgal = 53771290G: Rivero Gallardo, Jesús Antonio
+master.menu.anonymous.favourite-link-albsalcab = 76650547B : Salazar Caballero, Alberto
+master.menu.anonymous.favourite-link-dantorval = 47394660D: Toro Valle, Daniel
+master.menu.anonymous.favourite-link-fraviltor = 53348944F: Villazán Torres, Francisco
 
 # master.menu.administrator ###################################################
 
