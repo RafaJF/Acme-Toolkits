@@ -133,7 +133,8 @@ Announcement
 +title: String{NotBlank, Length(0, 100)}
 +body: String{NotBlank, Length(0, 255)}
 +criticalFlag: Boolean{NotNull}
-+info: String{URL}</panel_attributes>
++info: String{URL}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -141,18 +142,19 @@ Announcement
     <coordinates>
       <x>77</x>
       <y>469</y>
-      <w>287</w>
+      <w>315</w>
       <h>98</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Component
 --
 +name: String{NotBlank, Length(0, 100)}
-+code: String{Pattern(^[A-Z]{3}-[0-9]{3}-(-[A-Z])?$), Unique}
++code: String{Pattern("^[A-Z]{3}-[0-9]{3}-(-[A-Z])?$"), Unique, NotBlank}
 +technology: String{NotBlank, Length(0, 100)}
 +description: String{NotBlank, Length(0, 255)}
-+retailPrice: Money{Min(0)}
-+info: String{URL}</panel_attributes>
++retailPrice: Money{Valid}
++info: String{URL}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -160,36 +162,38 @@ Component
     <coordinates>
       <x>637</x>
       <y>469</y>
-      <w>287</w>
+      <w>315</w>
       <h>98</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Tool
 --
 +name: String{NotBlank, Length(0, 101)}
-+code: String{Pattern(^[A-Z]{3}-[0-9]{3}-(-[A-Z])?$), Unique}
++code: String{Pattern("^[A-Z]{3}-[0-9]{3}-(-[A-Z])?$"), Unique, NotBlank}
 +technology: String{NotBlank, Length(0,101)}
 +description: String{NotBlank, Length(0, 255)}
-+retailPrice: Money{Min(0)}
-+info: String{URL}</panel_attributes>
++retailPrice: Money{Valid}
++info: String{URL}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>357</x>
+      <x>343</x>
       <y>602</y>
-      <w>287</w>
+      <w>315</w>
       <h>91</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Toolkit
 --
-+code: String{Pattern(^[A-Z]{3}-[0-9]{3}-(-[A-Z])?$), Unique}
-+title: String{NotBlank, Length(0,101)}
-+description: String{NotBlank, Length(0, 256)}
-+assemblyNotes: String{NotBlank, Length(0, 256)}
-+info: String{URL}</panel_attributes>
++code: String{Pattern("^[A-Z]{3}-[0-9]{3}-(-[A-Z])?$"), Unique, NotBlank}
++title: String{NotBlank, Length(0,100)}
++description: String{NotBlank, Length(0, 255)}
++assemblyNotes: String{NotBlank, Length(0, 255)}
++info: String{URL}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -197,19 +201,20 @@ Toolkit
     <coordinates>
       <x>553</x>
       <y>329</y>
-      <w>287</w>
+      <w>315</w>
       <h>112</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Patronage
 --
 +status: Status{}
-+code: String{Pattern(^[A-Z]{3}-[0-9]{3}-(-[A-Z])?$), Unique}
++code: String{Pattern("^[A-Z]{3}-[0-9]{3}-(-[A-Z])?$"), Unique, NotBlank}
 +legalStuff: String{NotBlank, Length(0,255)}
-+budget: Money{Valid, Min{0}}
++budget: Money{Valid}
 +startDate: Date{Temporal(TIMESTAMP)}
 +endDate: Date{Temporal(TIMESTAMP)}
-+moreInfo: String{URL}</panel_attributes>
++moreInfo: String{URL}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -225,7 +230,8 @@ Status
 --
 +PROPOSED
 +ACCEPTED
-+DENIED</panel_attributes>
++DENIED
+bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -233,16 +239,17 @@ Status
     <coordinates>
       <x>0</x>
       <y>364</y>
-      <w>378</w>
+      <w>371</w>
       <h>77</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 PatronageReport
 --
-+sequenceNumber: String{NotBlank, Pattern(^[A-Z]{3}-[0-9]{3}(-[A-Z])[:]{1}[0-9]{4}?$)}
++sequenceNumber: String{NotBlank, Pattern("^[A-Z]{3}-[0-9]{3}(-[A-Z]):[0-9]{4}?$")}
 +creationMoment: Date{Temporal(TIMESTAMP), Past}
 +memorandum: String{NotBlank, Length(0, 255)}
-+moreInfo: String{URL}</panel_attributes>
++moreInfo: String{URL}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -260,7 +267,8 @@ Chirp
 +title: String{NotBlank, Length(0, 100)}
 +author: String{NotBlank, Length(0, 100)}
 +body: String{NotBlank, Length(0, 255)}
-+email: String{Email}</panel_attributes>
++email: String{Email}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -346,81 +354,53 @@ bg=green</panel_attributes>
     <coordinates>
       <x>203</x>
       <y>560</y>
-      <w>168</w>
+      <w>154</w>
       <h>119</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=n
 Contained in</panel_attributes>
-    <additional_attributes>220.0;140.0;10.0;140.0;10.0;10.0</additional_attributes>
+    <additional_attributes>200.0;140.0;10.0;140.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>637</x>
+      <x>651</x>
       <y>560</y>
-      <w>175</w>
+      <w>161</w>
       <h>119</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=1
 Contained in</panel_attributes>
-    <additional_attributes>10.0;140.0;220.0;140.0;220.0;10.0</additional_attributes>
+    <additional_attributes>10.0;140.0;200.0;140.0;200.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>833</x>
+      <x>861</x>
       <y>378</y>
-      <w>119</w>
+      <w>91</w>
       <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>574</x>
-      <y>252</y>
-      <w>119</w>
-      <h>91</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-m1=1
-m2=1
-Is received by</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;110.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>700</x>
-      <y>252</y>
-      <w>133</w>
-      <h>91</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-m1=1
-m2=1
-Provides a</panel_attributes>
-    <additional_attributes>10.0;110.0;170.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>371</x>
+      <x>364</x>
       <y>392</y>
-      <w>196</w>
+      <w>203</w>
       <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=n
 Regards a</panel_attributes>
-    <additional_attributes>260.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
