@@ -2,6 +2,7 @@ package acme.entities.components;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -41,8 +42,9 @@ public class Component extends AbstractEntity{
 	@Length(min = 0, max = 255)
 	protected String description;
 	
-	// TODO: custom validator. retailPrice should be positive
+	
 	@NotNull
+	@Valid
 	protected Money retailPrice;
 	
 	@URL
@@ -50,9 +52,6 @@ public class Component extends AbstractEntity{
 	
 	// Relationships ----------------------------------------------------------
 
-	/** Descomentar cuando Toolkit esté implementado**/ /*
-	@ManyToOne(optional = false)
-	protected Toolkit toolkit;
-	*/
+	//TODO
 	
 }
