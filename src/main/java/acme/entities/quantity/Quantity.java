@@ -6,7 +6,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import acme.entities.ToolKit;
+import acme.entities.Toolkit;
 import acme.entities.item.Item;
 import acme.framework.entities.AbstractEntity;
 import lombok.Getter;
@@ -36,6 +36,6 @@ public class Quantity extends AbstractEntity{
 	@NotNull
 	@Valid
 	@ManyToOne
-	protected ToolKit toolkit;
+	protected Toolkit toolkit;
 	
 }
