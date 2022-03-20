@@ -1,4 +1,4 @@
-package acme.entities;
+package acme.entities.chirp;
 
 import java.util.Date;
 
@@ -26,7 +26,7 @@ public class Chirp extends AbstractEntity {
 	@NotNull
 	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
-	protected Date CreationMoment;
+	protected Date creationMoment;
 	
 	@NotBlank
 	@Length(max = 100)
