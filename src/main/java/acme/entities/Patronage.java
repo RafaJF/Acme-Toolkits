@@ -4,14 +4,15 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -37,6 +38,7 @@ public class Patronage extends AbstractEntity {
 	@NotNull
 	protected Status			status;
 
+	@NotBlank
 	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
 	@Column(unique = true)
 	protected String			code;
@@ -45,14 +47,22 @@ public class Patronage extends AbstractEntity {
 	@Length(max = 255)
 	protected String 			legalStuff;
 
-	@Min(0)
+	@NotNull
+	@Positive
 	@Valid
 	protected Money				budget;
+	
+	@NotNull
+	@Past
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date				creationMoment;
 
-	@Temporal(TemporalType.DATE)
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				startDate;
 
-	@Temporal(TemporalType.DATE)
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date				endDate;
 
 	@URL
@@ -63,9 +73,14 @@ public class Patronage extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 	
-	@JoinColumn(name = "patronId", referencedColumnName = "id")
-	protected Patron			patron;
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	protected Inventor inventor;
 
-	@JoinColumn(name = "inventorId", referencedColumnName = "id")
-	protected Inventor			inventor;
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	protected Patron patron;
+	
 }
