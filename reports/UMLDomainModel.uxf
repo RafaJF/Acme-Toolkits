@@ -132,7 +132,7 @@ Announcement
 +creationMoment: Date{NotNull, Temporal(TIMESTAMP), Past}
 +title: String{NotBlank, Length(0, 100)}
 +body: String{NotBlank, Length(0, 255)}
-+criticalFlag: Boolean{NotNull}
++criticalFlag: boolean
 +info: String{URL}
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -419,14 +419,14 @@ Is received by</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>693</x>
-      <y>763</y>
+      <y>812</y>
       <w>322</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Item
 --
-+itemType: ItemTpye
++itemType: ItemType
 +name: String{NotBlank, Length(0, 100)}
 +code: String{Pattern("^[A-Z]{3}-[0-9]{3}-(-[A-Z])?$"), Unique, NotBlank}
 +technology: String{NotBlank, Length(0, 100)}
@@ -457,14 +457,14 @@ bg=yellow</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>791</x>
-      <y>644</y>
+      <y>672</y>
       <w>126</w>
       <h>49</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Quantity
 --
-+amount: int {Min(0)}
++amount: int {Min(1)}
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
@@ -472,14 +472,14 @@ bg=green</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>847</x>
-      <y>686</y>
+      <y>714</y>
       <w>42</w>
-      <h>91</h>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=  1
 m2=  0..*</panel_attributes>
-    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -487,12 +487,12 @@ m2=  0..*</panel_attributes>
       <x>847</x>
       <y>581</y>
       <w>42</w>
-      <h>77</h>
+      <h>105</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=  1
 m2=  0..*</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -548,14 +548,15 @@ Serializable</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1099</x>
-      <y>763</y>
+      <x>1113</x>
+      <y>812</y>
       <w>154</w>
       <h>63</h>
     </coordinates>
-    <panel_attributes>El atributo retailPrice debe ser 0 
-o positivo para una Tool y positivo 
-para un Component.
+    <panel_attributes>The retailPrice must have a value 
+equal to or greater than 0 for a 
+Tool and greater than 0 for a 
+Component.
 bg=orange</panel_attributes>
     <additional_attributes/>
   </element>
@@ -563,12 +564,12 @@ bg=orange</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1008</x>
-      <y>791</y>
-      <w>105</w>
+      <y>840</y>
+      <w>119</w>
       <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -576,24 +577,24 @@ bg=orange</panel_attributes>
       <x>588</x>
       <y>252</y>
       <w>119</w>
-      <h>609</h>
+      <h>658</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=  1
 m2= 0..*
 Is created by</panel_attributes>
-    <additional_attributes>60.0;10.0;60.0;80.0;30.0;80.0;30.0;840.0;150.0;840.0</additional_attributes>
+    <additional_attributes>60.0;10.0;60.0;80.0;30.0;80.0;30.0;910.0;150.0;910.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
       <x>1071</x>
-      <y>343</y>
-      <w>182</w>
-      <h>63</h>
+      <y>357</y>
+      <w>196</w>
+      <h>42</h>
     </coordinates>
-    <panel_attributes>Debe de haber un mes de de diferencia
-entre creationMoment y startDate.
+    <panel_attributes>There must be a month difference between
+the creationMoment and the startDate.
 bg=orange</panel_attributes>
     <additional_attributes/>
   </element>
@@ -601,12 +602,12 @@ bg=orange</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>1071</x>
-      <y>413</y>
-      <w>182</w>
-      <h>63</h>
+      <y>427</y>
+      <w>196</w>
+      <h>42</h>
     </coordinates>
-    <panel_attributes>Debe de haber un mes de de diferencia
-entre startDate y endDate.
+    <panel_attributes>There must be a month difference between
+the startDate and the endDate.
 bg=orange</panel_attributes>
     <additional_attributes/>
   </element>
@@ -631,5 +632,63 @@ bg=orange</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>693</x>
+      <y>973</y>
+      <w>175</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Configuration
+--
++systemCurrency: String
++acceptedCurrencies: List&lt;String&gt;
++strongSpamTerms_en: List&lt;String&gt;
++strongSpamTerms_es: List&lt;String&gt;
++strongSpamThreshold: double
++weakSpamTerms_en: List&lt;String&gt;
++weakSpamTerms_es: List&lt;String&gt;
++weakSpamThreshold: double
+bg=green
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>966</x>
+      <y>973</y>
+      <w>175</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>DEFAULT VALUES
+--
+systemCurrency = "EUR"
+acceptedCurrencies = ["EUR, USD", "GBP"]
+strongSpamTerms_en = ["sex", "hard core", "viagra", "cialis"]
+strongSpamTerms_es = ["sex0", "hard core", "viagra", "cialis"]
+strongSpamThreshold = 0.1
+weakSpamTerms_en = ["sexy", "nigeria", "you've won", "one million"]
+weakSpamTerms_es = ["sexy", "nigeria", "has ganado", "un millón"]
+weakSpamThreshold = 0.25
+bg=orange
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>861</x>
+      <y>1022</y>
+      <w>119</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
   </element>
 </diagram>
