@@ -24,7 +24,7 @@ public class Quantity extends AbstractEntity{
 	// Attributes -------------------------------------------------------------
 	
 	@Min(1)
-	protected int quantity;
+	protected int amount;
 	
 	// Relationships ----------------------------------------------------------
 
