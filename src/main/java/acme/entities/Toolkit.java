@@ -22,22 +22,22 @@ public class Toolkit extends AbstractEntity {
 	//(patrón “^[AZ]{3}-[0-9]{3}(-[AZ])?$”, único)
 	@Column(unique = true)
 	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
-	protected String			codigo;
+	protected String			code;
 	
 	@NotBlank
 	@Length(min = 0, max = 100)
-	protected String			titulo;
+	protected String			title;
 	
 	@NotBlank
 	@Length(min = 0, max = 255)
-	protected String			descripcion;
+	protected String			description;
 	
 	@NotBlank
 	@Length(min = 0, max = 255)
-	protected String			notasDeMontaje;
+	protected String			assamblyNotes;
 	
 	@URL
-	protected String			enlace;
+	protected String			url;
 	
 	//No me queda muy clara la descripcion de la tarea, pero supongo que al ser
 	// un kit de herramientas deberia llevar una relacion ManyToOne de herramientas?
