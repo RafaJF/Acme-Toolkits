@@ -23,8 +23,8 @@ public class Quantity extends AbstractEntity{
 	
 	// Attributes -------------------------------------------------------------
 	
-	@Min(0)
-	protected Integer quantity;
+	@Min(1)
+	protected int quantity;
 	
 	// Relationships ----------------------------------------------------------
 
