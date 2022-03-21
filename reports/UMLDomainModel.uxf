@@ -337,6 +337,7 @@ Regards a</panel_attributes>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 AdministratorDashboard
 --
+
 +totalNumberOfComponents: int
 +totalNumberOfTools: int
 +totalNumberOfPatronagesByStatus: int
@@ -352,6 +353,7 @@ AdministratorDashboard
 +deviationBudgetPatronagesByStatus: Map&lt;String, Double&gt;
 +minimumBudgetPatronagesByStatus: Map&lt;String, Double&gt;
 +maximumBudgetPatronagesByStatus: Map&lt;String, Double&gt;
+
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
