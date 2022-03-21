@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.toolkit;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,9 +19,10 @@ import lombok.Setter;
 public class Toolkit extends AbstractEntity {
 
 	protected static final long	serialVersionUID	= 1L;
-	//(patrón “^[AZ]{3}-[0-9]{3}(-[AZ])?$”, único)
+	
 	@Column(unique = true)
 	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
+	@NotBlank
 	protected String			code;
 	
 	@NotBlank
@@ -39,10 +40,5 @@ public class Toolkit extends AbstractEntity {
 	@URL
 	protected String			url;
 	
-	//No me queda muy clara la descripcion de la tarea, pero supongo que al ser
-	// un kit de herramientas deberia llevar una relacion ManyToOne de herramientas?
-	//@NotNull
-	//@Valid
-	//@ManyToOne(optional = false)
-	//protected Tool tool;	
+	
 }
