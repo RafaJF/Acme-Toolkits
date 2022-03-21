@@ -360,7 +360,8 @@ AdministratorDashboard
 +averageBudgetOfDeniedPatronages: double
 +deviationBudgetOfDeniedPatronages: double
 +minimumBudgetOfDeniedPatronages: double
-+maximumBudgetOfDeniedPatronages: double</panel_attributes>
++maximumBudgetOfDeniedPatronages: double
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -372,7 +373,8 @@ AdministratorDashboard
       <h>28</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
-Serializable</panel_attributes>
+Serializable
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -519,7 +521,8 @@ PatronDashboard
 +averageBugetOfDeniedPatronages: double
 +deviationBugetOfDeniedPatronages: double 
 +minimumBugetOfDeniedPatronages: double
-+maximumBugetOfDeniedPatronages: double</panel_attributes>
++maximumBugetOfDeniedPatronages: double
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -531,7 +534,8 @@ PatronDashboard
       <h>28</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
-Serializable</panel_attributes>
+Serializable
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

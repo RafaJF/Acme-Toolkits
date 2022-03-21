@@ -1,9 +1,10 @@
+
 package acme.entities;
 
-import java.util.Arrays;
-import java.util.List;
-
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Range;
 
 import acme.framework.entities.AbstractEntity;
 import lombok.Getter;
@@ -13,23 +14,33 @@ import lombok.Setter;
 @Getter
 @Entity
 public class SystemConfiguration extends AbstractEntity {
+
+	protected static final long	serialVersionUID	= 1L;
+
+	@NotNull
+	protected String			systemCurrency;
+
+	@NotNull
+	protected String			acceptedCurrencies;
+
+	@NotNull
+	protected String			strongSpamTermsEn;
+
+	@NotNull
+	protected String			strongSpamTermsEs;
+
 	
-	protected static final long serialVersionUID = 1L;
+	@Range(min = 0, max = 100)
+	protected double			strongThreshold;
+
+	@NotNull
+	protected String			weakSpamTermsEn;
+
+	@NotNull
+	protected String			weakSpamTermsEs;
+
 	
-	protected static final String systemCurrency = "EUR";
-	
-	protected static final List<String> acceptedCurrencies = Arrays.asList("EUR","USD","GBP");
-	
-	protected static final List<String> strongSpamTerms_en = Arrays.asList("sex","hard core","viagra","cialis");
-	
-	protected static final List<String> strongSpamTerms_es = Arrays.asList("sexo","hard core","viagra","cialis");
-	
-	protected static final Double strongSpamThreshold = 0.1;
-	
-	protected static final List<String> weakSpamTerms_en = Arrays.asList("sexy","nigeria","you've won","one million"); 
-	
-	protected static final List<String> weakSpamTerms_es = Arrays.asList("sexy","nigeria","has ganado","un millón");
-	
-	protected static final Double weakSpamThreshold = 0.25; 
-	
+	@Range(min = 0, max = 100)
+	protected double			weakThreshold;
+
 }
