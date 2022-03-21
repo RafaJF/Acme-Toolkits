@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.springframework.data.util.Pair;
 
-import acme.entities.Status;
+import acme.entities.patronage.Status;
 import lombok.Getter;
 import lombok.Setter;
 
