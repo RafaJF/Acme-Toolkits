@@ -33,6 +33,7 @@ public class Item extends AbstractEntity{
 	protected String name;
 	
 	@Column(unique=true)
+	@NotBlank
 	@Pattern(regexp="^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
 	protected String code;
 	
