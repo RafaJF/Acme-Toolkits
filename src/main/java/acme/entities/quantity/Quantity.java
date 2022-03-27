@@ -6,8 +6,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import acme.entities.Toolkit;
 import acme.entities.item.Item;
+import acme.entities.toolkit.Toolkit;
 import acme.framework.entities.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,8 +23,8 @@ public class Quantity extends AbstractEntity{
 	
 	// Attributes -------------------------------------------------------------
 	
-	@Min(0)
-	protected Integer quantity;
+	@Min(1)
+	protected int amount;
 	
 	// Relationships ----------------------------------------------------------
 

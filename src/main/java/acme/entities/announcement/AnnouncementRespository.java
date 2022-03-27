@@ -1,4 +1,4 @@
-package acme.entities;
+package acme.entities.announcement;
 
 import org.springframework.data.repository.CrudRepository;
 

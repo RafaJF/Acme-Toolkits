@@ -1,4 +1,4 @@
-package acme.entities;
+package acme.entities.patronageReport;
 
 import java.util.Date;
 
@@ -15,6 +15,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import acme.entities.patronage.Patronage;
 import acme.framework.entities.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,7 +31,7 @@ public class PatronageReport extends AbstractEntity{
 	// Attributes -------------------------------------------------------------
 	
 	@NotBlank       
-	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z]):[0-9]{4}$")
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?:[0-9]{4}$")
 	protected String sequenceNumber;
 	
 	@NotNull
