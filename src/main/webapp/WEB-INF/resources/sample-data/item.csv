@@ -1,18 +1,18 @@
-key,name,code,technology,description,retail-price,info,item-type
-item-01,texto con 100 caracteres: rellenoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,ABC-123,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL
-item-02,a,ABC-123-B,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL
-item-03,valor intermedio,ABC-123-C,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL
-item-11,codigo unico,ABC-124,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL
-item-12,test regexp codigo,ABC-124-D,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL
-item-31,test technology,ABC-125-D,texto con 100 caracteres: rellenoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,descripcion,"EUR 10.0",https://regexr.com/,TOOL
-item-32,test technology,ABC-124-F,a,descripcion,"EUR 10.0",https://regexr.com/,TOOL
-item-33,test technology,ABC-124-G,valor intermedio,descripcion,"EUR 10.0",https://regexr.com/,TOOL
-item-41,test description,ABC-124-H,tecnologia,texto con 255 caracteres: rellenooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,"EUR 10.0",https://regexr.com/,TOOL
-item-42,test description,ABC-124-I,tecnologia,a,"EUR 10.0",https://regexr.com/,TOOL
-item-43,test description,ABC-124-J,tecnologia,valor intermedio,"EUR 10.0",https://regexr.com/,TOOL
-item-51,test retail price,ABC-124-K,tecnologia,descripcion,"EUR 1",https://regexr.com/,TOOL
-item-52,test retail price,ABC-124-L,tecnologia,descripcion,"EUR 100,456.95",https://regexr.com/,TOOL
-item-61,test link,ABC-124-M,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL
-item-62,test link,ABC-124-N,tecnologia,descripcion,"EUR 10.0",null,TOOL
-item-71,test item-type,ABC-124-O,tecnologia,descripcion,"EUR 10.0",null,COMPONENT
-item-72,test item-type,ABC-124-P,tecnologia,descripcion,"EUR 10.0",null,TOOL
+key,name,code,technology,description,retail-price,info,item-type,published
+item-01,texto con 100 caracteres: rellenoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,ABC-123,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL,true
+item-02,a,ABC-123-B,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL,true
+item-03,valor intermedio,ABC-123-C,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL,false
+item-11,codigo unico,ABC-124,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL,false
+item-12,test regexp codigo,ABC-124-D,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL,false
+item-31,test technology,ABC-125-D,texto con 100 caracteres: rellenoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,descripcion,"EUR 10.0",https://regexr.com/,TOOL,false
+item-32,test technology,ABC-124-F,a,descripcion,"EUR 10.0",https://regexr.com/,TOOL,false
+item-33,test technology,ABC-124-G,valor intermedio,descripcion,"EUR 10.0",https://regexr.com/,TOOL,false
+item-41,test description,ABC-124-H,tecnologia,texto con 255 caracteres: rellenooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,"EUR 10.0",https://regexr.com/,TOOL,false
+item-42,test description,ABC-124-I,tecnologia,a,"EUR 10.0",https://regexr.com/,TOOL,false
+item-43,test description,ABC-124-J,tecnologia,valor intermedio,"EUR 10.0",https://regexr.com/,TOOL,false
+item-51,test retail price,ABC-124-K,tecnologia,descripcion,"EUR 1",https://regexr.com/,TOOL,false
+item-52,test retail price,ABC-124-L,tecnologia,descripcion,"EUR 100,456.95",https://regexr.com/,TOOL,false
+item-61,test link,ABC-124-M,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL,false
+item-62,test link,ABC-124-N,tecnologia,descripcion,"EUR 10.0",null,TOOL,false
+item-71,test item-type,ABC-124-O,tecnologia,descripcion,"EUR 10.0",null,COMPONENT,false
+item-72,test item-type,ABC-124-P,tecnologia,descripcion,"EUR 10.0",null,TOOL,false
