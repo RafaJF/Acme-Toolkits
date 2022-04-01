@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import acme.entities.item.Item;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.entities.AbstractEntity;
+import acme.roles.Inventor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,5 +38,10 @@ public class Quantity extends AbstractEntity{
 	@Valid
 	@ManyToOne
 	protected Toolkit toolkit;
+	
+	@NotNull
+	@ManyToOne(optional = false)
+	@Valid
+	protected Inventor inventor;
 	
 }

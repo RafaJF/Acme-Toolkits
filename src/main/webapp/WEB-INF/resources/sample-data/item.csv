@@ -1,6 +1,6 @@
 key,name,code,technology,description,retail-price,info,item-type
 item-01,texto con 100 caracteres: rellenoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,ABC-123,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL
-item-02,a,ABC-123-B,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL
+item-02,a,ABC-123-B,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,COMPONENT
 item-03,valor intermedio,ABC-123-C,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL
 item-11,codigo unico,ABC-124,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL
 item-12,test regexp codigo,ABC-124-D,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL
