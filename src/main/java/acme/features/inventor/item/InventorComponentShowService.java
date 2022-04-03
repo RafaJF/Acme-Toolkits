@@ -25,9 +25,9 @@ public class InventorComponentShowService implements AbstractShowService<Invento
 
 		final int inventorId = request.getPrincipal().getActiveRoleId();
 		final int itemId = request.getModel().getInteger("id");
-		final int quantityInventorId = this.repository.findOneQuantityByComponentId(itemId).getInventor().getId();
+		final int componentInventorId = this.repository.findOneComponentById(itemId).getInventor().getId();
 
-		return  inventorId == quantityInventorId; 
+		return  inventorId == componentInventorId; 
 	}
 
 	@Override
