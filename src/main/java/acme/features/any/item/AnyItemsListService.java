@@ -1,30 +1,34 @@
-package acme.entities.item;
+package acme.features.any.item;
+
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.item.Item;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
-import acme.framework.roles.Administrator;
-import acme.framework.services.AbstractShowService;
+import acme.framework.roles.Any;
+import acme.framework.services.AbstractListService;
 
 @Service
-public class ItemsShowService implements AbstractShowService<Administrator, Item> {
-	
+public class AnyItemsListService implements AbstractListService<Any, Item>{
+
 	@Autowired
-	protected AdministratorItemRepository repository;
+	protected AnyItemRepository repository;
 
 	@Override
 	public boolean authorise(final Request<Item> request) {
-		assert request !=null;
+		assert request != null;
 		return true;
 	}
 
 	@Override
-	public Item findOne(final Request<Item> request) {
+	public Collection<Item> findMany(final Request<Item> request) {
 		assert request != null;
-		Item res;
-		res = (Item) this.repository.findAllItemPublished();
+		
+		Collection<Item> res;
+		res = this.repository.findAllItemPublished();
 		return res;
 	}
 
@@ -35,9 +39,9 @@ public class ItemsShowService implements AbstractShowService<Administrator, Item
 		assert model != null;
 		
 		request.unbind(entity, model,"name", "code","technology","description","retailPrice","info","itemType");
-		model.setAttribute("confirmation", false);
-		model.setAttribute("readonly", true);
 		
 	}
-
+	
+	
+	
 }

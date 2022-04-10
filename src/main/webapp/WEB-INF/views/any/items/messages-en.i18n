@@ -1,0 +1,11 @@
+any.item.list.label.name = Name:
+any.item.list.label.code = Code:
+any.item.list.label.technology = Technology:
+any.item.list.label.description = Description:
+any.item.list.label.retailPrice = Retail Price:
+any.item.list.label.info = Info:
+any.item.list.label.itemType = Item Type:
+TOOL = Tool
+COMPONENT= Component
+administrator.announcement.form.label.confirmation = Confirmation
+any.item.form.button.create = Create
