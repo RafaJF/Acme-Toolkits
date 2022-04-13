@@ -53,6 +53,8 @@ public class Item extends AbstractEntity{
 	@URL
 	protected String info;
 	
+	protected Boolean published;
+	
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	protected ItemType itemType;
