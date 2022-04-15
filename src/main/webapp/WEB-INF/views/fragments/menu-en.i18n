@@ -25,6 +25,11 @@ master.menu.anonymous.favourite-link-albsalcab = 76650547B : Salazar Caballero, 
 master.menu.anonymous.favourite-link-dantorval = 47394660D: Toro Valle, Daniel
 master.menu.anonymous.favourite-link-fraviltor = 53348944F: Villazán Torres, Francisco
 
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.system-configuration = System configuration
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
