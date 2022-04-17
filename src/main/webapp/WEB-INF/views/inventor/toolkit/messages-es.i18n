@@ -1,0 +1,11 @@
+inventor.toolkit.list.label.code = Código
+inventor.toolkit.list.label.title = Título
+inventor.toolkit.list.label.description = Descripción
+inventor.toolkit.list.label.assambly-notes = Notas del montaje
+inventor.toolkit.list.label.url = URL
+
+inventor.toolkit.form.label.code = Código
+inventor.toolkit.form.label.title = Título
+inventor.toolkit.form.label.description = Descripción
+inventor.toolkit.form.label.assambly-notes = Notas del montaje
+inventor.toolkit.form.label.url = URL
