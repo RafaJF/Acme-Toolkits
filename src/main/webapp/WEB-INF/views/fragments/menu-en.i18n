@@ -36,7 +36,7 @@ master.menu.authenticated.system-configuration = System configuration
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
-master.menu.administrator.dashboard = Dashboard
+master.menu.administrator.administrator-dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
@@ -51,6 +51,12 @@ master.menu.provider.favourite-link = Favourite link
 
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
+
+# master.menu.inventor ##########################################################
+
+master.menu.inventor = Inventor
+master.menu.inventor.patronage.list = List my patronages
+master.menu.inventor.item.list = List my components
 
 # master.menu.user-account ####################################################
 
