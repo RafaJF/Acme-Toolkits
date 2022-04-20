@@ -21,7 +21,7 @@ public class AdministratorDashboard implements Serializable{
 
     int totalNumberOfComponents;
     int totalNumberOfTools;
-    Map<Status, Integer> totalNumberOfPatronagesByStatus;
+    int totalNumberOfPatronagesByStatus;
     
     Map<Pair<String, String>, Double> averageRetailPriceOfComponentsByTechnologyAndCurrency;
     Map<Pair<String, String>, Double> deviationRetailPriceOfComponentsByTechnologyAndCurrency;
