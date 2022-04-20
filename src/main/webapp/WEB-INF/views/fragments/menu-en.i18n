@@ -25,11 +25,19 @@ master.menu.anonymous.favourite-link-albsalcab = 76650547B : Salazar Caballero, 
 master.menu.anonymous.favourite-link-dantorval = 47394660D: Toro Valle, Daniel
 master.menu.anonymous.favourite-link-fraviltor = 53348944F: Villazán Torres, Francisco
 master.menu.any.item.list = List all components
+master.menu.anonymous.all-tools-published=Published Tools
+master.menu.anonymous.all-components-published = Published Components
+
+
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.system-configuration = System configuration
 
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
-master.menu.administrator.dashboard = Dashboard
+master.menu.administrator.administrator-dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
@@ -44,6 +52,12 @@ master.menu.provider.favourite-link = Favourite link
 
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
+
+# master.menu.inventor ##########################################################
+
+master.menu.inventor = Inventor
+master.menu.inventor.patronage.list = List my patronages
+master.menu.inventor.item.list = List my components
 
 # master.menu.user-account ####################################################
 
