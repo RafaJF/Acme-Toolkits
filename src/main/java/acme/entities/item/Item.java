@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,6 +15,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.framework.datatypes.Money;
 import acme.framework.entities.AbstractEntity;
+import acme.roles.Inventor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -57,6 +59,12 @@ public class Item extends AbstractEntity{
 	@Enumerated(EnumType.STRING)
 	protected ItemType itemType;
 
+	// Relations ---------------------------------------------------------
+	
+	@Valid
+	@NotNull
+	@ManyToOne(optional = false)
+	protected Inventor inventor;
 }
 
 	
