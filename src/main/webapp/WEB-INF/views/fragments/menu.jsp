@@ -28,6 +28,7 @@
 			<acme:menu-separator/>
 			
 			<acme:menu-suboption code="master.menu.anonymous.all-tools-published" action="/any/item/list-published-tools"/>
+			<acme:menu-suboption code="master.menu.anonymous.all-components-published" action="/any/item/list-published-components"/>
 			
 		</acme:menu-option>
 
@@ -39,6 +40,7 @@
 
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
+			<acme:menu-suboption code="master.menu.administrator.administrator-dashboard" action="/administrator/administrator-dashboard/show"/>
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/populate-initial"/>
@@ -53,6 +55,11 @@
 
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.inventor" access="hasRole('Inventor')">
+			<acme:menu-suboption code="master.menu.inventor.patronage.list" action="/inventor/patronage/list-mine"/>
+			<acme:menu-suboption code="master.menu.inventor.item.list" action="/inventor/item/list-my-components"/>
 		</acme:menu-option>
 	</acme:menu-left>
 
