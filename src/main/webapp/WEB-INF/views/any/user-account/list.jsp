@@ -5,5 +5,7 @@
 
 <acme:list>
     <acme:list-column code="any.user-account.list.label.username" path="username"/>
-    <acme:list-column code="any.user-account.form.label.roles" path="roleList"/>
+    <acme:list-column code="any.user-account.list.label.name" path="identity.name"/>
+    <acme:list-column code="any.user-account.list.label.surname" path="identity.surname"/>
+    <acme:list-column code="any.user-account.list.label.roles" path="roleList"/>
 </acme:list>

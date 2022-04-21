@@ -1,8 +1,8 @@
-administrator.configuration.form.label.system-currency = Divisa del sistema
-administrator.configuration.form.label.accepted-currencies = Divisas aceptadas
-administrator.configuration.form.label.strong-spam-terms-en = Términos de spam fuertes (Inglés)
-administrator.configuration.form.label.strong-spam-terms-es = Términos de spam fuertes (Español)
-administrator.configuration.form.label.strong-threshhold = Umbral fuerte
-administrator.configuration.form.label.weak-spam-terms-en = Términos de spam débiles (Inglés)
-administrator.configuration.form.label.weak-spam-terms-es = Términos de spam débiles (Español)
-administrator.configuration.form.label.weak-threshhold = Umbral débil
+administrator.configuration.form.label.system-currency = Divisa del sistema:
+administrator.configuration.form.label.accepted-currencies = Divisas aceptadas:
+administrator.configuration.form.label.strong-spam-terms-en = Términos de spam fuertes (Inglés):
+administrator.configuration.form.label.strong-spam-terms-es = Términos de spam fuertes (Español):
+administrator.configuration.form.label.strong-threshhold = Umbral fuerte:
+administrator.configuration.form.label.weak-spam-terms-en = Términos de spam débiles (Inglés):
+administrator.configuration.form.label.weak-spam-terms-es = Términos de spam débiles (Español):
+administrator.configuration.form.label.weak-threshhold = Umbral débil:
