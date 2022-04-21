@@ -5,7 +5,6 @@
 
 <acme:form readonly="${readonly}">
 
-
 	<acme:input-textbox code="any.item.form.label.name" path="name"/>	
 	<acme:input-textbox code="any.item.form.label.code" path="code"/>
 	<acme:input-textbox code="any.item.form.label.technology" path="technology"/>
