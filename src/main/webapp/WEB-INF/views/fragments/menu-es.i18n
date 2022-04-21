@@ -24,11 +24,21 @@ master.menu.anonymous.favourite-link-jesrivgal = 53771290G: Rivero Gallardo, Jes
 master.menu.anonymous.favourite-link-albsalcab = 76650547B : Salazar Caballero, Alberto
 master.menu.anonymous.favourite-link-dantorval = 47394660D: Toro Valle, Daniel
 master.menu.anonymous.favourite-link-fraviltor = 53348944F: Villazán Torres, Francisco
+master.menu.any.item.list = Lista componentes
+master.menu.anonymous.all-tools-published=Herramientas Publicadas
+master.menu.anonymous.all-components-published=Componentes Publicadas
+
+
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Autentificado
+master.menu.authenticated.system-configuration = Configuración del sistema
+
 
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
-master.menu.administrator.dashboard = Panel de indicadores
+master.menu.administrator.administrator-dashboard = Panel de indicadores
 master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
@@ -43,6 +53,12 @@ master.menu.provider.favourite-link = Enlace favorito
 
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
+
+# master.menu.inventor ##########################################################
+
+master.menu.inventor = Inventor
+master.menu.inventor.patronage.list = Ver mis patrocinios
+master.menu.inventor.item.list = Ver mis componentes
 
 # master.menu.user-account ####################################################
 
