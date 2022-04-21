@@ -1,7 +1,7 @@
 patron.patron-dashboard.form.title.application-statuses= Estados de solicitud 
-patron.patron-dashboard.form.label.max-budget-by-currency-and-status = Presupuesto máximo por moneda y estado
-patron.patron-dashboard.form.label.min-budget-by-currency-and-status= Presupuesto mínimo por moneda y estado
-patron.patron-dashboard.form.label.deviation-of-budgets-by-currency-and-status= Desviación de presupuestos por moneda y estado
-patron.patron-dashboard.form.label.average-number-of-budgets-by-currency-and-status= Cantidad promedio de presupuesto por moneda y estado
+patron.patron-dashboard.form.label.max-budget-by-currency-and-status = Presupuesto máximo 
+patron.patron-dashboard.form.label.min-budget-by-currency-and-status= Presupuesto mínimo 
+patron.patron-dashboard.form.label.deviation-of-budgets-by-currency-and-status= Desviación de presupuestos 
+patron.patron-dashboard.form.label.average-number-of-budgets-by-currency-and-status= Media de presupuestos 
 patron.patron-dashboard.form.label.number-of-patronages-by-status= Número de patrocinios
 patron.patron-dashboard.form.title.general-indicators = Indicadores generales
