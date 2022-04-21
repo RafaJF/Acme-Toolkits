@@ -31,6 +31,7 @@ public class AnyItemController extends AbstractController<Any, Item>{
 		super.addCommand("show", this.itemsShowService);
 		super.addCommand("list-published-tools","list", this.anyToolItemsListService);
 		super.addCommand("list-published-components","list", this.anyComponentItemListService);
+
 	}
 }
 
