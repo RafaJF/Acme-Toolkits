@@ -21,16 +21,18 @@ master.menu.anonymous = Anonymous
 master.menu.anonymous.favourite-link-educielan = 54179154D: Ciézar Lanza, Eduardo
 master.menu.anonymous.favourite-link-rafjimfer = 26827296G: Jiménez Fernández, Rafael Ángel
 master.menu.anonymous.favourite-link-jesrivgal = 53771290G: Rivero Gallardo, Jesús Antonio
-master.menu.anonymous.favourite-link-albsalcab = 76650547B : Salazar Caballero, Alberto
+master.menu.anonymous.favourite-link-albsalcab = 76650547B: Salazar Caballero, Alberto
 master.menu.anonymous.favourite-link-dantorval = 47394660D: Toro Valle, Daniel
 master.menu.anonymous.favourite-link-fraviltor = 53348944F: Villazán Torres, Francisco
-master.menu.anonymous.all-tools-published=Published Tools
-master.menu.anonymous.all-components-published = Published Components
+master.menu.anonymous.list-user-accounts = User accounts
+master.menu.anonymous.all-tools-published=Published tools
+master.menu.anonymous.all-components-published = Published components
 
 
 # master.menu.authenticated #######################################################
 
 master.menu.authenticated = Authenticated
+master.menu.authenticated.list-user-accounts = User accounts
 master.menu.authenticated.system-configuration = System configuration
 
 # master.menu.administrator ###################################################
@@ -38,6 +40,7 @@ master.menu.authenticated.system-configuration = System configuration
 master.menu.administrator = Administrator
 master.menu.administrator.administrator-dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
+master.menu.administrator.system-configuration = System configuration
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
@@ -63,6 +66,7 @@ master.menu.inventor.patronage-report = Patronage reports List
 
 master.menu.patron = Patron
 master.menu.patron.patronages = Patronage list
+master.menu.patron.patronage-reports = Patronage report list
 
 
 # master.menu.user-account ####################################################
