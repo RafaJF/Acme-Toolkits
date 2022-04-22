@@ -62,7 +62,7 @@ public class Item extends AbstractEntity{
 	
 	protected boolean published;
 	
-}
+
 
 
 	
