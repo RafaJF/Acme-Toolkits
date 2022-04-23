@@ -27,6 +27,8 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-fraviltor" action="https://www.netflix.com/es/"/>
 			<acme:menu-suboption code="master.menu.anonymous.list-chirp" action="/any/chirp/list"/>
 			
+		<acme:menu-option code="master.menu.authenticated" access="hasRole('Authenticated')">
+			<acme:menu-suboption code="master.menu.anonymous.list-chirp" action="/any/chirp/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
