@@ -1,0 +1,79 @@
+# menu-es.i18n
+#
+# Copyright (C) 2012-2022 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+﻿# master.menu #################################################################
+
+master.menu.home = Inicio
+master.menu.sign-up = Registrarse
+master.menu.sign-in = Entrar
+master.menu.sign-out = Salir
+
+# master.menu.anonymous #######################################################
+
+master.menu.anonymous = Anónimo
+master.menu.anonymous.favourite-link-educielan = 54179154D: Ciézar Lanza, Eduardo
+master.menu.anonymous.favourite-link-rafjimfer = 26827296G: Jiménez Fernández, Rafael Ángel
+master.menu.anonymous.favourite-link-jesrivgal = 53771290G: Rivero Gallardo, Jesús Antonio
+master.menu.anonymous.favourite-link-albsalcab = 76650547B: Salazar Caballero, Alberto
+master.menu.anonymous.favourite-link-dantorval = 47394660D: Toro Valle, Daniel
+master.menu.anonymous.favourite-link-fraviltor = 53348944F: Villazán Torres, Francisco
+master.menu.anonymous.list-user-accounts = Cuentas de usuario
+master.menu.anonymous.all-tools-published=Herramientas publicadas
+master.menu.anonymous.all-components-published=Componentes publicadas
+
+
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Autentificado
+master.menu.authenticated.list-user-accounts = Cuentas de usuario
+master.menu.authenticated.system-configuration = Configuración del sistema
+
+
+# master.menu.administrator ###################################################
+
+master.menu.administrator = Administrador
+master.menu.administrator.administrator-dashboard = Panel de indicadores
+master.menu.administrator.user-accounts = Cuentas de usuario
+master.menu.administrator.system-configuration = Configuración del sistema
+master.menu.administrator.populate-initial = Poblar BD (inicial)
+master.menu.administrator.populate-sample = Poblar BD (ejemplos)
+master.menu.administrator.shut-down = Parar el sistema
+
+# master.menu.provider ########################################################
+
+master.menu.provider = Proveedor
+master.menu.provider.favourite-link = Enlace favorito
+
+# master.menu.consumer ##########################################################
+
+master.menu.consumer = Consumidor
+master.menu.consumer.favourite-link = Enlace favorito
+
+# master.menu.inventor ##########################################################
+
+master.menu.inventor = Inventor
+master.menu.inventor.patronage.list = Ver mis patrocinios
+master.menu.inventor.item.list = Ver mis componentes
+master.menu.inventor.patronage-report = Ver mis informes de patrocinios
+
+# master.menu.patron ####################################################
+
+master.menu.patron = Patrocinador
+master.menu.patron.patronages = Lista de patrocinios
+master.menu.patron.patronage-reports = Lista de informes de patrocinio
+
+# master.menu.user-account ####################################################
+
+master.menu.user-account = Cuenta
+master.menu.user-account.general-data = Datos generales
+master.menu.user-account.provider = Datos de proveedor
+master.menu.user-account.become-provider = Hazte proveedor
+master.menu.user-account.consumer = Datos de consumidor
+master.menu.user-account.become-consumer = Hazte consumidor

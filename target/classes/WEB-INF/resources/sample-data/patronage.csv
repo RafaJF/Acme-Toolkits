@@ -1,0 +1,11 @@
+key,key:inventor,key:patron,status,code,legal-stuff,budget,creation-moment,start-date,end-date,more-info
+patronage-01,inventor-01,patron-01,ACCEPTED,ABC-123,Example,"EUR 100.0",2021/10/10 10:00,2021/11/15 10:00,2021/12/21 10:00,"https://moreinfo.com"
+patronage-02,inventor-02,patron-01,DENIED,DEF-456,texto con 100 caracteres: rellenoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,"EUR 100.0",2021/10/15 10:00,2021/11/20 10:00,2021/12/25 10:00,"https://moreinfo.com"
+patronage-03,inventor-01,patron-02,PROPOSED,GHI-789,Example,"EUR 100.0",2021/10/20 10:00,2021/11/22 10:00,2021/12/26 10:00,null
+patronage-04,inventor-02,patron-02,ACCEPTED,JKL-101,E,"EUR 100.0",2021/11/10 10:00,2021/12/15 10:00,2022/01/21 10:00,"https://moreinfo.com"
+patronage-05,inventor-01,patron-01,ACCEPTED,MNO-222,Example,"EUR 100.0",2021/11/15 10:00,2021/12/20 10:00,2021/01/22 10:00,"https://moreinfo.com"
+patronage-06,inventor-02,patron-01,DENIED,PQR-230,texto con 255 caracteres: rellenooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,"EUR 100.0",2021/11/20 10:00,2021/12/22 10:00,2021/01/25 10:00,"https://moreinfo.com"
+patronage-07,inventor-01,patron-02,DENIED,STU-134,Example,"EUR 100.0",2021/12/10 10:00,2021/01/15 10:00,2021/02/21 10:00,null
+patronage-08,inventor-02,patron-02,PROPOSED,FFF-163,Example,"EUR 100.0",2021/12/15 10:00,2021/01/20 10:00,2021/02/25 10:00,"https://moreinfo.com"
+patronage-09,inventor-01,patron-01,ACCEPTED,POU-173,Example,"EUR 100.0",2022/01/10 10:00,2021/02/15 10:00,2021/03/21 10:00,"https://moreinfo.com"
+patronage-10,inventor-02,patron-01,PROPOSED,XYZ-192,Example,"EUR 100.0",2022/01/15 10:00,2021/02/20 10:00,2021/03/25 10:00,null
