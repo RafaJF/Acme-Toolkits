@@ -1,4 +1,4 @@
-package acme.features.inventor.item;
+package acme.features.inventor.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

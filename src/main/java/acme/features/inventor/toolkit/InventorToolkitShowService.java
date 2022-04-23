@@ -1,12 +1,15 @@
-package acme.entities.toolkit;
+package acme.features.inventor.toolkit;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.quantity.Quantity;
+import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractShowService;
 import acme.roles.Inventor;
 
@@ -19,8 +22,6 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 	@Override
 	public boolean authorise(final Request<Toolkit> request) {
 		assert request != null;
-
-		// Check that the inventor trying to see the toolkit is the one linked to it
 
 		final int inventorId = request.getPrincipal().getActiveRoleId();
 
@@ -36,7 +37,12 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 		assert request != null;
 
 		final int id = request.getModel().getInteger("id");
-		return this.repository.findToolkitById(id);
+		
+		final Toolkit toolkit = this.repository.findToolkitById(id);
+		
+		toolkit.setTotalPrice(this.getTotalPrice(toolkit));
+		
+		return toolkit;
 	}
 
 	@Override
@@ -45,6 +51,20 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "title", "description", "assamblyNotes", "url");
+		request.unbind(entity, model, "code", "title", "description", "assamblyNotes", "url", "totalPrice");
 	}
+	
+	private Money getTotalPrice(final Toolkit t) {
+        final Collection<Quantity> quantities = this.repository.findAllQuantityOfToolkit(t);
+        final Money result = new Money();
+        result.setCurrency("EUR");
+        result.setAmount(0.);
+        for(final Quantity q:quantities) {
+
+                final Money itemPrice = q.getItem().getRetailPrice();
+                result.setAmount(result.getAmount()+ itemPrice.getAmount()*q.getAmount());
+
+        }
+        return result;
+    }
 }

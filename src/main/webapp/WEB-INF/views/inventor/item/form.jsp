@@ -10,4 +10,5 @@
 	<acme:input-moment code="inventor.item.form.label.description" path="description"/>
 	<acme:input-moment code="inventor.item.form.label.retail-price" path="retailPrice"/>
 	<acme:input-url code="inventor.item.form.label.info" path="info"/>
+	<acme:input-textarea code="inventor.item.form.label.item-type" path="itemType"/>
 </acme:form>

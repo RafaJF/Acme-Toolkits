@@ -1,4 +1,4 @@
-package acme.features.inventor.item;
+package acme.features.inventor.component;
 
 import java.util.Collection;
 

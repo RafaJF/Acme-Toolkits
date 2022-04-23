@@ -6,7 +6,5 @@
 <acme:list>
 	<acme:list-column code="inventor.toolkit.list.label.code" path="code"/>
 	<acme:list-column code="inventor.toolkit.list.label.title" path="title"/>
-	<acme:list-column code="inventor.toolkit.list.label.description" path="description"/>
-	<acme:list-column code="inventor.toolkit.list.label.assambly-notes" path="assamblyNotes"/>
-	<acme:list-column code="inventor.toolkit.list.label.link" path="url"/>
+	<acme:list-column code="inventor.item.list.label.total-price" path="totalPrice" width="25%"/>
 </acme:list> 
