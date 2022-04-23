@@ -1,0 +1,6 @@
+key,creation-moment,title,body,critical-flag,info
+announcement-01,"2021/01/01 19:00",Primer anuncio de prueba,Este es un anuncio de prueba con una longitud bastante reducida,true,https://moreinfo.com/
+announcement-02,"2021/06/02 20:00",Segundo anuncio de prueba,Este es un anuncio de prueba con una longitud un poco menos reducida que el anterior,false,null
+announcement-03,"2021/07/03 21:00",Tercer anuncio de prueba,Este es un anuncio de prueba con una longitud ínfima,false,null
+announcement-04,"2021/08/04 22:00",Cuarto anuncio de prueba,Este es un anuncio de prueba,true,null
+announcement-05,"2021/09/05 23:00",Quinto anuncio de prueba,Este es un anuncio de prueba igual que el anterior,true,https://moreinfo.com/

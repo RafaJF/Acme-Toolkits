@@ -1,0 +1,11 @@
+patron.patron-dashboard.form.title.application-statuses= Application statuses 
+patron.patron-dashboard.form.label.max-budget-by-currency-and-status = Max budget 
+patron.patron-dashboard.form.label.min-budget-by-currency-and-status= Min budget 
+patron.patron-dashboard.form.label.deviation-of-budgets-by-currency-and-status= Deviation of budgets 
+patron.patron-dashboard.form.label.average-number-of-budgets-by-currency-and-status= Average number of budget 
+patron.patron-dashboard.form.label.number-of-patronages-by-status= Number of patronages
+patron.patron-dashboard.form.title.general-indicators = General indicators
+
+patron.dashboard.form.status.PROPOSED = Proposed
+patron.dashboard.form.status.ACCEPTED= Accepted
+patron.dashboard.form.status.DENIED= Denied

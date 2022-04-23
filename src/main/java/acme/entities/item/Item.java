@@ -59,12 +59,16 @@ public class Item extends AbstractEntity{
 	@Enumerated(EnumType.STRING)
 	protected ItemType itemType;
 
-	// Relations ---------------------------------------------------------
-	
-	@Valid
-	@NotNull
-	@ManyToOne(optional = false)
-	protected Inventor inventor;
-}
 
 	
+	protected boolean published;
+	
+
+	// Relationships ----------------------------------------------------------
+	
+	@NotNull
+	@ManyToOne(optional = false)
+	@Valid
+	protected Inventor inventor;
+
+}

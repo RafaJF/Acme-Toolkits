@@ -6,6 +6,7 @@
 <acme:form readonly="${readonly}">
 	<acme:input-textarea code="inventor.item.form.label.name" path="name"/>
 	<acme:input-textbox code="inventor.item.form.label.code" path="code"/>
+
 	<acme:input-textbox code="inventor.item.form.label.technology" path="technology"/>
 	<acme:input-textarea code="inventor.item.form.label.description" path="description"/>
 	<acme:input-money code="inventor.item.form.label.retail-price" path="retailPrice"/>
@@ -15,4 +16,5 @@
 		<acme:input-option code="TOOL" value="TOOL" selected="${itemType == 'TOOL'}"/>
 	</acme:input-select>
 	<acme:input-checkbox code="inventor.item.form.label.published" path="published"/>
+
 </acme:form>
