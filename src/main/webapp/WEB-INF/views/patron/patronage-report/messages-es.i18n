@@ -1,0 +1,10 @@
+patron.patronage-report.list.label.sequence-number = Nº. Secuencia
+patron.patronage-report.list.label.creation-moment = Creación
+patron.patronage-report.list.label.memorandum = Memorandum
+patron.patronage-report.list.label.patronage-code = Código del patrocinio
+
+patron.patronage-report.form.label.sequence-number = Nº. Secuencia:
+patron.patronage-report.form.label.creation-moment = Creación:
+patron.patronage-report.form.label.memorandum = Memorandum:
+patron.patronage-report.form.label.more-info = Más información:
+patron.patronage-report.form.label.patronage-code = Código del patrocinio:
