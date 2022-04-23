@@ -7,17 +7,17 @@ import org.springframework.stereotype.Repository;
 
 import acme.entities.item.Item;
 import acme.framework.repositories.AbstractRepository;
-import acme.roles.Inventor;
 
 @Repository
-public interface InventorItemRepository extends AbstractRepository{
+public interface InventorItemRepository extends AbstractRepository {
+	
+	@Query("SELECT i from Item i where i.id = :id")
+	Item findOneById(int id);
+	
+	@Query("SELECT i from Item i where i.itemType = acme.entities.item.ItemType.COMPONENT and i.inventor.id = :inventorId")
+	Collection<Item> findComponentsByInventor(int inventorId);
 
-	@Query("select i from Item i where i.itemType ='TOOL' and i.inventor.id = :id")
-	Collection<Item> findAllToolsByInventorId(int id);
-	 
-	@Query("select i from Inventor i where i.userAccount.id = :id")
-	Inventor findInventorByUserAccountId(int id);
-
-	@Query("select i from Item i where i.id = :id")
-	Item findItemlById(int id);
+	@Query("SELECT i from Item i where i.itemType = acme.entities.item.ItemType.TOOL and i.inventor.id = :inventorId")
+	Collection<Item> findToolsByInventor(int inventorId);
+	
 }

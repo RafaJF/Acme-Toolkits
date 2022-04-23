@@ -4,7 +4,7 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:form readonly="${readonly}">
-	<acme:input-textbox code="inventor.item.form.label.name" path="name"/>
+	<acme:input-textarea code="inventor.item.form.label.name" path="name"/>
 	<acme:input-textbox code="inventor.item.form.label.code" path="code"/>
 	<acme:input-textbox code="inventor.item.form.label.technology" path="technology"/>
 	<acme:input-textarea code="inventor.item.form.label.description" path="description"/>
@@ -14,5 +14,5 @@
 		<acme:input-option code="COMPONENT" value="COMPONENT" selected="${itemType == 'COMPONENT'}"/>
 		<acme:input-option code="TOOL" value="TOOL" selected="${itemType == 'TOOL'}"/>
 	</acme:input-select>
-	<acme:input-textbox code="inventor.item.form.label.inventor" path="inventor.userAccount.username"/>	
+	<acme:input-checkbox code="inventor.item.form.label.published" path="published"/>
 </acme:form>
