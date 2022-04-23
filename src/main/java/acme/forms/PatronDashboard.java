@@ -25,4 +25,6 @@ public class PatronDashboard implements Serializable {
 	Map<Pair<Status, String>, Double> minBudgetByCurrencyAndStatus;
 	Map<Pair<Status, String>, Double> maxBudgetByCurrencyAndStatus;
 	
+	
+	
 }

@@ -4,43 +4,181 @@
 
 <style>
 .column {
-  float: left;
-  width: 50%;
+	float: left;
+	width: 25%;
+}
+
+.column-50 {
+	float: right;
+	width: 50%;
 }
 
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
 </style>
 <acme:form readonly="true">
-   <div>
-   	  <acme:message code="patron.patron-dashboard.form.label.number-of-patronages-by-status"/>
-      <canvas id="total-canvas"></canvas>
-   </div>
-   <br>
-   <div class="row">
-	   <div class="column">
-	      <acme:message code="patron.patron-dashboard.form.label.average-number-of-budgets-by-currency-and-status"/>
-	      <canvas id="average-canvas"></canvas>
-	   </div>
-	   <div class="column">
-	      <acme:message code="patron.patron-dashboard.form.label.deviation-of-budgets-by-currency-and-status"/>
-	      <canvas id="dev-canvas"></canvas>
-	   </div>
-   </div>
-   <br>
-   <div class="row">
-	   <div class="column">
-	      <acme:message code="patron.patron-dashboard.form.label.min-budget-by-currency-and-status"/>
-	      <canvas id="min-canvas"></canvas>
-	   </div>
-	   <div class="column">
-	      <acme:message code="patron.patron-dashboard.form.label.max-budget-by-currency-and-status"/>
-	      <canvas id="max-canvas"></canvas>
-	   </div>
-   </div>
+	<div class="row">
+
+		<div class="column-50">
+			<h3>
+				<acme:message
+					code="patron.patron-dashboard.form.label.number-of-patronages-by-status" />
+			</h3>
+			<table class="table table-sm">
+				<jstl:forEach items="${ numberOfPatronagesByStatus.keySet() }"
+					var="key">
+					<tr>
+						<jstl:set value="${ numberOfPatronagesByStatus.get(key) }"
+							var="amount" />
+						<jstl:if test="${ amount>0 }">
+							<th scope="row" style="width: 15%"><acme:message
+									code="patron.dashboard.form.status.${ key }" /></th>
+							<td><acme:print value="${ amount }" /></td>
+						</jstl:if>
+
+					</tr>
+				</jstl:forEach>
+			</table>
+			<h3>
+				<acme:message
+					code="patron.patron-dashboard.form.label.average-number-of-budgets-by-currency-and-status" />
+			</h3>
+
+			<table class="table table-sm">
+				<jstl:forEach
+					items="${ averageNumberOfBudgetsByCurrencyAndStatus.keySet() }"
+					var="key">
+					<tr>
+						<jstl:set
+							value="${ averageNumberOfBudgetsByCurrencyAndStatus.get(key) }"
+							var="amount" />
+						<jstl:if test="${ amount>0 }">
+							<th scope="row" style="width: 15%"><acme:message
+									code="patron.dashboard.form.status.${ key.getFirst() }" /></th>
+							<td><acme:print value="${ amount }" /></td>
+						</jstl:if>
+
+					</tr>
+				</jstl:forEach>
+			</table>
+			<h3>
+				<acme:message
+					code="patron.patron-dashboard.form.label.deviation-of-budgets-by-currency-and-status" />
+			</h3>
+
+			<table class="table table-sm">
+
+				<jstl:forEach
+					items="${ deviationOfBudgetsByCurrencyAndStatus.keySet() }"
+					var="key">
+					<tr>
+						<jstl:set
+							value="${ deviationOfBudgetsByCurrencyAndStatus.get(key) }"
+							var="amount" />
+						<jstl:if test="${ amount>0 }">
+							<th scope="row" style="width: 15%"><acme:message
+									code="patron.dashboard.form.status.${ key.getFirst() }" /></th>
+							<td><acme:print value="${ amount }" /></td>
+						</jstl:if>
+
+					</tr>
+				</jstl:forEach>
+			</table>
+
+			<h3>
+				<acme:message
+					code="patron.patron-dashboard.form.label.min-budget-by-currency-and-status" />
+			</h3>
+
+			<table class="table table-sm">
+				<jstl:forEach items="${ minBudgetByCurrencyAndStatus.keySet() }"
+					var="key">
+					<tr>
+						<jstl:set value="${ minBudgetByCurrencyAndStatus.get(key) }"
+							var="amount" />
+						<jstl:if test="${ amount>0 }">
+							<th scope="row" style="width: 15%"><acme:message
+									code="patron.dashboard.form.status.${ key.getFirst() }" /></th>
+							<td><acme:print value="${ amount }" /></td>
+						</jstl:if>
+
+					</tr>
+				</jstl:forEach>
+			</table>
+
+			<h3>
+				<acme:message
+					code="patron.patron-dashboard.form.label.max-budget-by-currency-and-status" />
+			</h3>
+			<table class="table table-sm">
+				<jstl:forEach items="${ maxBudgetByCurrencyAndStatus.keySet() }"
+					var="key">
+					<tr>
+						<jstl:set value="${ maxBudgetByCurrencyAndStatus.get(key) }"
+							var="amount" />
+						<jstl:if test="${ amount>0 }">
+							<th scope="row" style="width: 15%"><acme:message
+									code="patron.dashboard.form.status.${ key.getFirst() }" /></th>
+							<td><acme:print value="${ amount }" /></td>
+						</jstl:if>
+
+					</tr>
+				</jstl:forEach>
+
+			</table>
+			<br> <br>
+		</div>
+
+		<div class="column-50">
+			<h3>
+				<acme:message
+					code="patron.patron-dashboard.form.label.number-of-patronages-by-status" />
+			</h3>
+			<br>
+			<canvas id="total-canvas"></canvas>
+		</div>
+
+
+	</div>
+	<br>
+	<div class="row">
+		<div class="column">
+			<h3>
+				<acme:message
+					code="patron.patron-dashboard.form.label.average-number-of-budgets-by-currency-and-status" />
+			</h3>
+			<br>
+			<canvas id="average-canvas"></canvas>
+		</div>
+		<div class="column">
+			<h3>
+				<acme:message
+					code="patron.patron-dashboard.form.label.deviation-of-budgets-by-currency-and-status" />
+			</h3>
+			<br>
+			<canvas id="dev-canvas"></canvas>
+		</div>
+		<div class="column">
+			<h3>
+				<acme:message
+					code="patron.patron-dashboard.form.label.min-budget-by-currency-and-status" />
+			</h3>
+			<br>
+			<canvas id="min-canvas"></canvas>
+		</div>
+		<div class="column">
+			<h3>
+				<acme:message
+					code="patron.patron-dashboard.form.label.max-budget-by-currency-and-status" />
+			</h3>
+			<br>
+			<canvas id="max-canvas"></canvas>
+		</div>
+	</div>
+	<br>
 </acme:form>
 
 <script type="text/javascript">
@@ -55,14 +193,14 @@
      datasets: [{
        data: Object.values(numberOfPatronagesByStatus),
        backgroundColor: [
-         'rgba(255, 99, 132, 0.2)',
-         'rgba(255, 159, 64, 0.2)',
-         'rgba(255, 205, 86, 0.2)'
+    	   'rgb(254, 136, 127)',
+     	  'rgb(136, 255, 114)',
+     	  'rgb(71, 130, 255)'
        ],
        borderColor: [
-         'rgb(255, 99, 132)',
-         'rgb(255, 159, 64)',
-         'rgb(255, 205, 86)'
+    	   'rgb(193, 136, 127)',
+     	  'rgb(136, 176, 114)',
+     	  'rgb(71, 130, 159)'
        ],
        borderWidth: 1
      }]
@@ -99,13 +237,10 @@
     datasets: [{
       data: Object.values(averageNumberOfBudgetsByCurrencyAndStatus),
       backgroundColor: [
-    	  'rgb(255, 99, 132)',
-          'rgb(255, 159, 64)',
-          'rgb(255, 205, 86)',
-          'rgb(75, 192, 192)',
-          'rgb(54, 162, 235)',
-          'rgb(153, 102, 255)',
-          'rgb(201, 203, 207)'
+    	  'rgb(254, 136, 127)',
+    	  'rgb(136, 255, 114)',
+    	  'rgb(71, 130, 255)'
+          
         ]
     }]
    };
@@ -132,13 +267,9 @@
     datasets: [{
       data: Object.values(deviationOfBudgetsByCurrencyAndStatus),
       backgroundColor: [
-    	  'rgb(255, 99, 132)',
-          'rgb(255, 159, 64)',
-          'rgb(255, 205, 86)',
-          'rgb(75, 192, 192)',
-          'rgb(54, 162, 235)',
-          'rgb(153, 102, 255)',
-          'rgb(201, 203, 207)'
+    	  'rgb(254, 136, 127)',
+    	  'rgb(136, 255, 114)',
+    	  'rgb(71, 130, 255)'
         ]
     }]
    };
@@ -164,13 +295,9 @@
     datasets: [{
       data: Object.values(minBudgetByCurrencyAndStatus),
       backgroundColor: [
-    	  'rgb(255, 99, 132)',
-          'rgb(255, 159, 64)',
-          'rgb(255, 205, 86)',
-          'rgb(75, 192, 192)',
-          'rgb(54, 162, 235)',
-          'rgb(153, 102, 255)',
-          'rgb(201, 203, 207)'
+    	  'rgb(254, 136, 127)',
+    	  'rgb(136, 255, 114)',
+    	  'rgb(71, 130, 255)'
         ]
     }]
    };
@@ -196,13 +323,9 @@
     datasets: [{
       data: Object.values(maxBudgetByCurrencyAndStatus),
       backgroundColor: [
-    	  'rgb(255, 99, 132)',
-          'rgb(255, 159, 64)',
-          'rgb(255, 205, 86)',
-          'rgb(75, 192, 192)',
-          'rgb(54, 162, 235)',
-          'rgb(153, 102, 255)',
-          'rgb(201, 203, 207)'
+    	  'rgb(254, 136, 127)',
+    	  'rgb(136, 255, 114)',
+    	  'rgb(71, 130, 255)'
         ]
     }]
    };
