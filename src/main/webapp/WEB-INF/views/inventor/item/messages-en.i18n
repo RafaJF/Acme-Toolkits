@@ -15,5 +15,5 @@ inventor.item.form.label.description = Description
 inventor.item.form.label.retail-price = Retail Price
 inventor.item.form.label.info = Info
 inventor.item.form.label.item-type = Item type
-
+inventor.item.form.label.published = Published
 
