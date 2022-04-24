@@ -29,6 +29,7 @@ master.menu.anonymous.list-user-accounts = Cuentas de usuario
 master.menu.anonymous.all-tools-published=Herramientas publicadas
 master.menu.anonymous.all-components-published=Componentes publicadas
 master.menu.anonymous.list-chirp = Listado de chirridos
+master.menu.anonymous.toolkit.list = Listado de kits de herramientas
 
 # master.menu.authenticated #######################################################
 

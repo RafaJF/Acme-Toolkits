@@ -31,7 +31,8 @@
 			<acme:menu-suboption code="master.menu.anonymous.list-user-accounts" action="/any/user-account/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.all-tools-published" action="/any/item/list-published-tools"/>
 			<acme:menu-suboption code="master.menu.anonymous.all-components-published" action="/any/item/list-published-components"/>
-      <acme:menu-suboption code="master.menu.anonymous.list-chirp" action="/any/chirp/list"/>
+      		<acme:menu-suboption code="master.menu.anonymous.list-chirp" action="/any/chirp/list"/>
+      		<acme:menu-suboption code="master.menu.anonymous.toolkit.list" action="/any/toolkit/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.authenticated" access="hasRole('Authenticated')">

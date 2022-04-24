@@ -30,6 +30,7 @@ master.menu.anonymous.list-user-accounts = User accounts
 master.menu.anonymous.all-tools-published=Tools Published
 master.menu.anonymous.all-components-published = Components Published 
 master.menu.anonymous.list-chirp = Chirp list
+master.menu.anonymous.toolkit.list = Toolkit list
 
 
 # master.menu.authenticated #######################################################
