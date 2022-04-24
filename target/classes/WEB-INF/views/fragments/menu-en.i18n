@@ -24,9 +24,12 @@ master.menu.anonymous.favourite-link-jesrivgal = 53771290G: Rivero Gallardo, Jes
 master.menu.anonymous.favourite-link-albsalcab = 76650547B: Salazar Caballero, Alberto
 master.menu.anonymous.favourite-link-dantorval = 47394660D: Toro Valle, Daniel
 master.menu.anonymous.favourite-link-fraviltor = 53348944F: Villazán Torres, Francisco
+
 master.menu.anonymous.list-user-accounts = User accounts
+
 master.menu.anonymous.all-tools-published=Tools Published
 master.menu.anonymous.all-components-published = Components Published 
+master.menu.anonymous.list-chirp = Chirp list
 
 
 # master.menu.authenticated #######################################################
@@ -34,6 +37,8 @@ master.menu.anonymous.all-components-published = Components Published
 master.menu.authenticated = Authenticated
 master.menu.authenticated.list-user-accounts = User accounts
 master.menu.authenticated.system-configuration = System configuration
+master.menu.authenticated.list-chirp = Chirp list
+master.menu.authenticated.announcement = Announcement list
 
 # master.menu.administrator ###################################################
 
@@ -56,12 +61,14 @@ master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
 
+
 # master.menu.inventor ##########################################################
 
 master.menu.inventor = Inventor
 master.menu.inventor.patronage.list = List my patronages
 master.menu.inventor.item.list = List my components
 master.menu.inventor.patronage-report = Patronage reports List
+master.menu.inventor.item.list-my-tools = List my tools
 
 # master.menu.patron ####################################################
 
@@ -69,6 +76,7 @@ master.menu.patron = Patron
 master.menu.patron.patronages = Patronage list
 master.menu.patron.patronage-reports = Patronage report list
 master.menu.patron.patron-dashboard = Patron Dashboard
+
 
 
 # master.menu.user-account ####################################################
