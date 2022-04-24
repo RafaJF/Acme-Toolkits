@@ -25,6 +25,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-albsalcab" action="https://play.hbomax.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-dantorval" action="https://ev.us.es/webapps/blackboard/execute/modulepage/view?course_id=_52178_1&cmp_tab_id=_189480_1&mode=view"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-fraviltor" action="https://www.netflix.com/es/"/>
+
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.anonymous.list-user-accounts" action="/any/user-account/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.all-tools-published" action="/any/item/list-published-tools"/>
@@ -34,6 +35,7 @@
 		<acme:menu-option code="master.menu.authenticated" access="hasRole('Authenticated')">
 			<acme:menu-suboption code="master.menu.authenticated.list-user-accounts" action="/any/user-account/list"/>			
 			<acme:menu-suboption code="master.menu.authenticated.system-configuration" action="/authenticated/system-configuration/show"/>
+
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -55,6 +57,7 @@
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
 		
+
 		<acme:menu-option code="master.menu.inventor" access="hasRole('Inventor')">
 		<acme:menu-suboption code="master.menu.inventor.patronage-report" action="/inventor/patronage-report/list"/>
 			<acme:menu-suboption code="master.menu.inventor.patronage.list" action="/inventor/patronage/list-mine"/>
@@ -64,6 +67,8 @@
 		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">
 			<acme:menu-suboption code="master.menu.patron.patronages" action="/patron/patronage/list"/>
 			<acme:menu-suboption code="master.menu.patron.patronage-reports" action="/patron/patronage-report/list"/>
+      <acme:menu-suboption code="master.menu.patron.patron-dashboard" action="/patron/patron-dashboard/show"/>
+
 		</acme:menu-option>
 	</acme:menu-left>
 

@@ -1,18 +1,23 @@
 key,name,code,technology,description,retail-price,info,item-type,published,key:inventor
-item-01,texto con 100 caracteres: rellenoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,ABC-123,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL,true,inventor-01
-item-02,a,ABC-123-B,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,COMPONENT,true,inventor-01
-item-03,valor intermedio,ABC-123-C,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL,true,inventor-01
-item-11,codigo unico,ABC-124,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL,true,inventor-02
-item-12,test regexp codigo,ABC-124-D,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL,true,inventor-01
-item-31,test technology,ABC-125-D,texto con 100 caracteres: rellenoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,descripcion,"EUR 10.0",https://regexr.com/,TOOL,true,inventor-01
-item-32,test technology,ABC-124-F,a,descripcion,"EUR 10.0",https://regexr.com/,TOOL,true,inventor-02
-item-33,test technology,ABC-124-G,valor intermedio,descripcion,"EUR 10.0",https://regexr.com/,TOOL,true,inventor-01
-item-41,test description,ABC-124-H,tecnologia,texto con 255 caracteres: rellenooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,"EUR 10.0",https://regexr.com/,TOOL,true,inventor-02
-item-42,test description,ABC-124-I,tecnologia,a,"EUR 10.0",https://regexr.com/,TOOL,true,inventor-02
-item-43,test description,ABC-124-J,tecnologia,valor intermedio,"EUR 10.0",https://regexr.com/,TOOL,true,inventor-01
-item-51,test retail price,ABC-124-K,tecnologia,descripcion,"EUR 1",https://regexr.com/,TOOL,true,inventor-02
-item-52,test retail price,ABC-124-L,tecnologia,descripcion,"EUR 100,456.95",https://regexr.com/,TOOL,true,inventor-02
-item-61,test link,ABC-124-M,tecnologia,descripcion,"EUR 10.0",https://regexr.com/,TOOL,true,inventor-01
-item-62,test link,ABC-124-N,tecnologia,descripcion,"EUR 10.0",null,TOOL,true,inventor-02
-item-71,test item-type,ABC-124-O,tecnologia,descripcion,"EUR 10.0",null,COMPONENT,true,inventor-01
-item-72,test item-type,ABC-124-P,tecnologia,descripcion,"EUR 10.0",null,TOOL,true,inventor-02
+item-01,mouse,ABC-123,super,it's a item,EUR 155.0,https://regexr.com/,TOOL,true,inventor-01
+item-02,keyboard,ABC-124-C,super,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has s.",EUR 1025.0,https://regexr.com/,COMPONENT,true,inventor-03
+item-03,screw,FRC-125,super,it's a item,EUR 130.0,https://regexr.com/,TOOL,true,inventor-01
+item-11,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,ABC-125,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has s.",EUR 168.75,https://regexr.com/,TOOL,true,inventor-02
+item-12,hammer,BCD-124,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,it's a item,EUR 10.0,https://regexr.com/,TOOL,true,inventor-01
+item-31,screwdriver,BCD-125,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,it's a item,USD 103.60,https://regexr.com/,TOOL,true,inventor-01
+item-32,a,BCD-126,limited,it's a item,USD 265.58,https://regexr.com/,TOOL,true,inventor-02
+item-33,axe,HLS-124,limited,it's a item,USD 845.32,https://regexr.com/,TOOL,true,inventor-01
+item-41,pen,XOX-123,limited,it's a item,EUR 1056.0,https://regexr.com/,TOOL,true,inventor-02
+item-42,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,ABC-124-I,Lorem Ipsum is simply dummy text of the printing,it's a item,EUR 7266.06,https://regexr.com/,TOOL,true,inventor-02
+item-43,mouse,ABC-124-J,limited,a,USD 562.12,https://regexr.com/,TOOL,true,inventor-01
+item-51,b,ABC-124-K,limited,b,GBP 568.0,https://regexr.com/,TOOL,true,inventor-02
+item-52,mouse,ABC-124-L,limited,c,GBP 984.2,https://regexr.com/,TOOL,true,inventor-02
+item-61,mouse,ABC-124-M,limited,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has s.",GBP 621.5,https://regexr.com/,TOOL,true,inventor-01
+item-62,mouse,ABC-124-N,c,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has s.",GBP 22.22,null,TOOL,true,inventor-03
+item-71,mouse,ABC-124-O,b,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has s.",EUR 89.21,null,COMPONENT,true,inventor-03
+item-72,Lorem Ipsum is simply dummy text of the printing,ABC-124-P,a,descripcion,EUR 265.14,null,TOOL,true,inventor-02
+item-53,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,COM-100,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has s.",EUR 168.75,https://regexr.com/,COMPONENT,true,inventor-02
+item-54,hammer,COM-101,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,it's a item,EUR 10.0,https://regexr.com/,COMPONENT,true,inventor-01
+item-55,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,COM-102,Lorem Ipsum is simply dummy text of the printing,it's a item,USD 7266.06,https://regexr.com/,COMPONENT,true,inventor-02
+item-56,z,COM-105,limited,z,GBP 568.0,https://regexr.com/,COMPONENT,true,inventor-02
+item-57,mouse,CMM-202,c,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has s.",GBP 22.22,null,COMPONENT,false,inventor-03
