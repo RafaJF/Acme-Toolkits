@@ -36,7 +36,7 @@ master.menu.authenticated = Authenticated
 master.menu.authenticated.list-user-accounts = User accounts
 master.menu.authenticated.system-configuration = System configuration
 master.menu.authenticated.list-chirp = Chirp list
-
+master.menu.authenticated.announcement = Announcement list
 
 # master.menu.administrator ###################################################
 
