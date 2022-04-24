@@ -16,14 +16,11 @@ public class PatronPatronageShowService implements AbstractShowService<Patron,Pa
 	@Override
 	public boolean authorise(final Request<Patronage> request) {
 		assert request != null;
-		
-		boolean result;
-		
 		final int id = request.getModel().getInteger("id");
 		final Patronage patronage = this.repository.findOnePatronageById(id);
 		final int patronId = request.getPrincipal().getActiveRoleId();
 		
-		result = (patronage.getPatron().getId() == patronId || patronage.getInventor().getId() == patronId);
+		final boolean result = patronage.getPatron().getId() == patronId;
 		
 		return result;
 	}
@@ -31,10 +28,8 @@ public class PatronPatronageShowService implements AbstractShowService<Patron,Pa
 	@Override
 	public Patronage findOne(final Request<Patronage> request) {
 		assert request != null;
-		Patronage result;
-		int id;
-		id = request.getModel().getInteger("id");
-		result = this.repository.findOnePatronageById(id);
+		final int id = request.getModel().getInteger("id");
+		final Patronage result = this.repository.findOnePatronageById(id);
 		return result;
 	}
 
@@ -44,13 +39,18 @@ public class PatronPatronageShowService implements AbstractShowService<Patron,Pa
 		assert entity != null;
 		assert model != null;
 		
-		int inventorId;
 		
-		request.unbind(entity, model, "status", "code", "legalStuff", "budget", "creationMoment","startDate","endDate","moreInfo");
-		model.setAttribute("readonly", true);
 		
-		inventorId = entity.getInventor().getUserAccount().getId();
-		model.setAttribute("inventorId", inventorId);
+		request.unbind(entity, model, "status", "code", "legalStuff", "budget", "creationMoment","startDate","endDate","moreInfo","patron.company");
+		model.setAttribute("patronId", entity.getPatron().getId());
+		model.setAttribute("inventorId", entity.getInventor().getId());
+		model.setAttribute("inventorCompany", entity.getInventor().getCompany());
+		model.setAttribute("inventorStatement", entity.getInventor().getStatement());
+		model.setAttribute("inventorFullName", entity.getInventor().getIdentity().getFullName());
+		model.setAttribute("inventorEmail", entity.getInventor().getIdentity().getEmail());
+		model.setAttribute("inventorInfo", entity.getInventor().getInfo());
+		
+
 		
 	}
 
