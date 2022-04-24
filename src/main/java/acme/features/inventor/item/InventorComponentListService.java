@@ -17,7 +17,6 @@ public class InventorComponentListService implements AbstractListService<Invento
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-
 	protected InventorItemRepository repository;
 
 
