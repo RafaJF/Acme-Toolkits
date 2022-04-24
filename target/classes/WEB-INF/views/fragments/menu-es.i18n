@@ -24,16 +24,20 @@ master.menu.anonymous.favourite-link-jesrivgal = 53771290G: Rivero Gallardo, Jes
 master.menu.anonymous.favourite-link-albsalcab = 76650547B: Salazar Caballero, Alberto
 master.menu.anonymous.favourite-link-dantorval = 47394660D: Toro Valle, Daniel
 master.menu.anonymous.favourite-link-fraviltor = 53348944F: Villazán Torres, Francisco
+
 master.menu.anonymous.list-user-accounts = Cuentas de usuario
 master.menu.anonymous.all-tools-published=Herramientas publicadas
 master.menu.anonymous.all-components-published=Componentes publicadas
-
+master.menu.anonymous.list-chirp = Listado de chirridos
+master.menu.anonymous.toolkit.list = Listado de kits de herramientas
 
 # master.menu.authenticated #######################################################
 
 master.menu.authenticated = Autentificado
 master.menu.authenticated.list-user-accounts = Cuentas de usuario
 master.menu.authenticated.system-configuration = Configuración del sistema
+master.menu.authenticated.list-chirp = Lista de chirridos
+master.menu.authenticated.announcement = Lista de anuncios
 
 
 # master.menu.administrator ###################################################
@@ -56,18 +60,23 @@ master.menu.provider.favourite-link = Enlace favorito
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
 
+
+
 # master.menu.inventor ##########################################################
 
 master.menu.inventor = Inventor
 master.menu.inventor.patronage.list = Ver mis patrocinios
 master.menu.inventor.item.list = Ver mis componentes
 master.menu.inventor.patronage-report = Ver mis informes de patrocinios
+master.menu.inventor.item.list-my-tools = Ver mis herramientas
 
 # master.menu.patron ####################################################
 
 master.menu.patron = Patrocinador
 master.menu.patron.patronages = Lista de patrocinios
 master.menu.patron.patronage-reports = Lista de informes de patrocinio
+master.menu.patron.patron-dashboard = Panel de Patrocinador
+
 
 # master.menu.user-account ####################################################
 
