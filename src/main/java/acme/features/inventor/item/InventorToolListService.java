@@ -46,7 +46,7 @@ public class InventorToolListService implements AbstractListService<Inventor,Ite
 		
 		
  
-		request.unbind(entity, model, "name","code", "technology", "description", "retailPrice", "info","published"); 
+		request.unbind(entity, model, "name","code","retailPrice"); 
 		 
 		 
 	} 
