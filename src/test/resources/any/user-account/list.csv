@@ -1,0 +1,6 @@
+recordIndex,name,surname,email,username,roles
+0,Inventor,One,inventor1@acme.com,inventor1,Inventor
+1,Inventor,Two,inventor2@acme.com,inventor2,Inventor
+2,Inventor,Three,inventor3@acme.com,inventor3,Inventor
+3,Patron,One,patron1@acme.com,patron1,Patron
+4,Patron,Two,patron2@acme.com,patron2,Patron

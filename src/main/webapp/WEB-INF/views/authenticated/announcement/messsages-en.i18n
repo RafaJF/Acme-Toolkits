@@ -1,0 +1,8 @@
+authenticated.announcement.list.label.creationMoment = Creation moment
+authenticated.announcement.list.label.title = Title
+
+authenticated.announcement.form.label.creationMoment = Creation moment
+authenticated.announcement.form.label.title = Title
+authenticated.announcement.form.label.body = Body
+authenticated.announcement.form.label.criticalFlag = Critical flag
+authenticated.announcement.form.label.info = Information 

@@ -1,0 +1,28 @@
+administrator.administrator-dashboard.form.label.total-number-of-components =  Total number of components 
+administrator.administrator-dashboard.form.label.total-number-of-tools =  Total number of tools 
+administrator.administrator-dashboard.form.label.total-number-of-patronages-by-status = Total number of patronages by status
+
+administrator.administrator-dashboard.form.label.average-retail-price-of-components-by-technology-and-currency = Average retail price of components by technology and currency
+administrator.administrator-dashboard.form.label.deviation-retail-price-of-components-by-technology-and-currency = Deviation retail price of components by technology and currency
+administrator.administrator-dashboard.form.label.minimum-retail-price-of-components-by-technology-and-currency = Minimum retail price of components by technology and currency
+administrator.administrator-dashboard.form.label.maximum-retail-price-of-components-by-technology-and-currency = Maximum retail price of components by technology and currency
+
+administrator.administrator-dashboard.form.label.average-retail-price-of-tools-by-currency = Average retail price of tools by currency
+administrator.administrator-dashboard.form.label.deviation-retail-price-of-tools-by-currency = Deviation retail price of tools by currency
+administrator.administrator-dashboard.form.label.minimum-retail-price-of-tools-by-currency = Minimum retail price of tools by currency
+administrator.administrator-dashboard.form.label.maximum-retail-price-of-tools-by-currency = Maximum retail price of tools by currency
+
+administrator.administrator-dashboard.form.label.average-budget-patronages-by-status = Average budget of patronages by status (and currency)
+administrator.administrator-dashboard.form.label.deviation-budget-patronages-by-status = Deviation budget of patronages by status (and currency)
+administrator.administrator-dashboard.form.label.minimum-budget-patronages-by-status = Minimum budget of patronages by status (and currency)
+administrator.administrator-dashboard.form.label.maximum-budget-patronages-by-status = Maximum budget of patronages by status (and currency)
+
+
+
+administrator.dashboard.form.status.ACCEPTED = Accepted
+administrator.dashboard.form.status.DENIED = Denied
+administrator.dashboard.form.status.PROPOSED = Proposed
+
+administrator.dashboard.form.status.USD = USD
+administrator.dashboard.form.status.EUR = EUR
+administrator.dashboard.form.status.GBP = GBP

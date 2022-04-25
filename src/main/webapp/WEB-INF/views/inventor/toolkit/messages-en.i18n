@@ -1,0 +1,14 @@
+inventor.toolkit.list.label.code = Code
+inventor.toolkit.list.label.title = Title
+inventor.toolkit.list.label.description = Description
+inventor.toolkit.list.label.assambly-notes = Assambly notes
+inventor.toolkit.list.label.url = URL
+inventor.item.list.label.total-price = Total price
+
+inventor.toolkit.form.label.code = Code
+inventor.toolkit.form.label.title = Title
+inventor.toolkit.form.label.description = Description
+inventor.toolkit.form.label.assambly-notes = Assambly notes
+inventor.toolkit.form.label.url = URL
+inventor.toolkit.form.button.items = Items
+inventor.item.form.label.total-price = Total price
