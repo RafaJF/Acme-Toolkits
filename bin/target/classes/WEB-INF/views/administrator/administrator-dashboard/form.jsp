@@ -8,6 +8,7 @@
 </h2>
 
 <table class="table table-sm">
+	<caption></caption>
 	<tr>
 		<th scope="row">
 			<acme:message code="administrator.administrator-dashboard.form.label.total-number-of-components"/>

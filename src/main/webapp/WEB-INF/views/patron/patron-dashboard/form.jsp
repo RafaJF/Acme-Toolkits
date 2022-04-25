@@ -28,6 +28,7 @@
 					code="patron.patron-dashboard.form.label.number-of-patronages-by-status" />
 			</h3>
 			<table class="table table-sm">
+			<caption></caption>
 				<jstl:forEach items="${ numberOfPatronagesByStatus.keySet() }"
 					var="key">
 					<tr>
@@ -48,6 +49,7 @@
 			</h3>
 
 			<table class="table table-sm">
+			<caption></caption>
 				<jstl:forEach
 					items="${ averageNumberOfBudgetsByCurrencyAndStatus.keySet() }"
 					var="key">
@@ -70,7 +72,7 @@
 			</h3>
 
 			<table class="table table-sm">
-
+			<caption></caption>
 				<jstl:forEach
 					items="${ deviationOfBudgetsByCurrencyAndStatus.keySet() }"
 					var="key">
@@ -94,6 +96,7 @@
 			</h3>
 
 			<table class="table table-sm">
+			<caption></caption>
 				<jstl:forEach items="${ minBudgetByCurrencyAndStatus.keySet() }"
 					var="key">
 					<tr>
@@ -114,6 +117,7 @@
 					code="patron.patron-dashboard.form.label.max-budget-by-currency-and-status" />
 			</h3>
 			<table class="table table-sm">
+			<caption></caption>
 				<jstl:forEach items="${ maxBudgetByCurrencyAndStatus.keySet() }"
 					var="key">
 					<tr>

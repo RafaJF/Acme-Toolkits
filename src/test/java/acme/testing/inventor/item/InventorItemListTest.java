@@ -11,8 +11,7 @@ public class InventorItemListTest extends TestHarness{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/item/list-mine-components.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positiveListComponentTest(final int recordIndex,final String name, final String code,final String technology,
-		final String description, final String retailPrice, final String info) {
+	public void positiveListComponentTest(final int recordIndex,final String name, final String code,final String retailPrice) {
 		
 		super.signIn("inventor1", "inventor1");
 		super.clickOnMenu("Inventor", "List my components");
@@ -21,10 +20,8 @@ public class InventorItemListTest extends TestHarness{
 		
 		super.checkColumnHasValue(recordIndex, 0, name);
 		super.checkColumnHasValue(recordIndex, 1, code);
-		super.checkColumnHasValue(recordIndex, 2, technology);
-		super.checkColumnHasValue(recordIndex, 3, description);
-		super.checkColumnHasValue(recordIndex, 4, retailPrice);
-		super.checkColumnHasValue(recordIndex, 5, info);
+		super.checkColumnHasValue(recordIndex, 2, retailPrice);
+		
 		
 		super.signOut();
 	}
@@ -32,8 +29,7 @@ public class InventorItemListTest extends TestHarness{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/item/list-mine-tools.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positiveListToolTest(final int recordIndex,final String name, final String code,final String technology,
-		final String description, final String retailPrice, final String info) {
+	public void positiveListToolTest(final int recordIndex,final String name, final String code, final String retailPrice) {
 		
 		super.signIn("inventor1", "inventor1");
 		super.clickOnMenu("Inventor", "List my tools");
@@ -42,10 +38,7 @@ public class InventorItemListTest extends TestHarness{
 		
 		super.checkColumnHasValue(recordIndex, 0, name);
 		super.checkColumnHasValue(recordIndex, 1, code);
-		super.checkColumnHasValue(recordIndex, 2, technology);
-		super.checkColumnHasValue(recordIndex, 3, description);
-		super.checkColumnHasValue(recordIndex, 4, retailPrice);
-		super.checkColumnHasValue(recordIndex, 5, info);
+		super.checkColumnHasValue(recordIndex, 2, retailPrice);
 		
 		super.signOut();
 	}

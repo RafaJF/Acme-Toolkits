@@ -23,16 +23,22 @@
 				<acme:message code="administrator.administrator-dashboard.form.label.total-number-of-components"/>
 			</h3>
 			<table>
+			<caption></caption>
 				<tr>
+				<th id="totalNumberOfComponentsId">
 					<acme:print value="${totalNumberOfComponents}"/>
+				</th>
 				</tr>
 			</table>
 			<h3>
 				<acme:message code="administrator.administrator-dashboard.form.label.total-number-of-tools"/>
 			</h3>
 			<table>
+				<caption></caption>
 				<tr>
+				<th id="totalNumberOfToolsId">
 					<acme:print value="${totalNumberOfTools}"/>
+				</th>
 				</tr>
 			</table>
 			
@@ -41,6 +47,7 @@
 					code="administrator.administrator-dashboard.form.label.total-number-of-patronages-by-status" />
 			</h3>
 			<table class="table table-sm">
+			<caption></caption>
 			<div class="column">
 				<jstl:forEach items="${ totalNumberOfPatronagesByStatus.keySet() }"
 					var="key">
@@ -66,6 +73,7 @@
 			</h3>
 
 			<table class="table table-sm">
+			<caption></caption>
 			<div class="column">
 				<jstl:forEach
 					items="${ averageRetailPriceOfComponentsByTechnologyAndCurrency.keySet() }"
@@ -93,6 +101,7 @@
 			</h3>
 
 			<table class="table table-sm">
+			<caption></caption>
 			<div class="column">
 				<jstl:forEach
 					items="${ deviationRetailPriceOfComponentsByTechnologyAndCurrency.keySet() }"
@@ -121,6 +130,7 @@
 			</h3>
 
 			<table class="table table-sm">
+			<caption></caption>
 			<div class="column">
 				<jstl:forEach items="${ minimumRetailPriceOfComponentsByTechnologyAndCurrency.keySet() }"
 					var="key">
@@ -146,6 +156,7 @@
 					code="administrator.administrator-dashboard.form.label.maximum-retail-price-of-components-by-technology-and-currency" />
 			</h3>
 			<table class="table table-sm">
+			<caption></caption>
 			<div class="column">
 				<jstl:forEach items="${ maximumRetailPriceOfComponentsByTechnologyAndCurrency.keySet() }"
 					var="key">
@@ -171,6 +182,7 @@
 					code="administrator.administrator-dashboard.form.label.average-retail-price-of-tools-by-currency" />
 			</h3>
 			<table class="table table-sm">
+			<caption></caption>
 			<div class="column">
 				<jstl:forEach items="${ averageRetailPriceOfToolsByCurrency.keySet() }"
 					var="key">
@@ -196,6 +208,7 @@
 					code="administrator.administrator-dashboard.form.label.deviation-retail-price-of-tools-by-currency" />
 			</h3>
 			<table class="table table-sm">
+			<caption></caption>
 				<div class="column">
 				<jstl:forEach items="${ deviationRetailPriceOfToolsByCurrency.keySet() }"
 					var="key">
@@ -221,6 +234,7 @@
 					code="administrator.administrator-dashboard.form.label.minimum-retail-price-of-tools-by-currency" />
 			</h3>
 			<table class="table table-sm">
+			<caption></caption>
 			<div class="column">
 				<jstl:forEach items="${ minimumRetailPriceOfToolsByCurrency.keySet() }"
 					var="key">
@@ -246,6 +260,7 @@
 					code="administrator.administrator-dashboard.form.label.maximum-retail-price-of-tools-by-currency" />
 			</h3>
 			<table class="table table-sm">
+			<caption></caption>
 			<div class="column">
 				<jstl:forEach items="${ maximumRetailPriceOfToolsByCurrency.keySet() }"
 					var="key">
@@ -272,6 +287,7 @@
 			</h3>
 
 			<table class="table table-sm">
+			<caption></caption>
 			<div class="column">
 				<jstl:forEach
 					items="${ averageBudgetPatronagesByStatus.keySet() }"
@@ -302,6 +318,7 @@
 			</h3>
 
 			<table class="table table-sm">
+			<caption></caption>
 			<div class="column">
 				<jstl:forEach
 					items="${ deviationBudgetPatronagesByStatus.keySet() }"
@@ -332,6 +349,7 @@
 			</h3>
 
 			<table class="table table-sm">
+			<caption></caption>
 			<div class="column">
 				<jstl:forEach items="${ minimumBudgetPatronagesByStatus.keySet() }"
 					var="key">
@@ -359,6 +377,7 @@
 					code="administrator.administrator-dashboard.form.label.maximum-budget-patronages-by-status" />
 			</h3>
 			<table class="table table-sm">
+			<caption></caption>
 			<div class="column">
 				<jstl:forEach items="${ maximumBudgetPatronagesByStatus.keySet() }"
 					var="key">
