@@ -37,6 +37,8 @@ public class InventorPatronageListTest extends TestHarness {
 		super.checkInputBoxHasValue("moreInfo", moreInfo);
 		super.checkInputBoxHasValue("company", patron);
 		
+		super.signOut();
+		
 	}
 
 }

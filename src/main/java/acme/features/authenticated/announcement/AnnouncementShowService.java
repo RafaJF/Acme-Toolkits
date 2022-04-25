@@ -41,8 +41,7 @@ public class AnnouncementShowService implements AbstractShowService<Authenticate
 	public Announcement findOne(final Request<Announcement> request) {
 		assert request != null;
 		final int announcementId = request.getModel().getInteger("id");
-		final Announcement result = this.announcementRespository.findAnnouncementById(announcementId);
-		return result;
+		return this.announcementRespository.findAnnouncementById(announcementId);
 	}
 
 	@Override
