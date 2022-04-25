@@ -43,7 +43,9 @@ public class InventorToolkitItemListService implements AbstractListService<Inven
 		for(final Quantity q: quantities) {
 			final int quantityId = q.getId();
 			final Item i = this.inventorToolkitRepository.findItemByQuantityId(quantityId);
-			result.add(i);
+			if(i.isPublished()) {
+				result.add(i);
+			}
 		}
 		return result;
 	}

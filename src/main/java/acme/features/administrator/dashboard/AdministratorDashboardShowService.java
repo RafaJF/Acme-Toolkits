@@ -1,6 +1,8 @@
 package acme.features.administrator.dashboard;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
 import acme.entities.patronage.Status;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
 import acme.forms.AdministratorDashboard;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
@@ -21,6 +24,9 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 
 	@Autowired
 	protected AdministratorDashboardRepository repository;
+	
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository systemConfigRepository;
 
 	// AbstractShowService<Administrator, AdministratorDashboard> interface ----------------
 
@@ -35,7 +41,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 	public AdministratorDashboard findOne(final Request<AdministratorDashboard> request) {
 		assert request != null;
 
-		AdministratorDashboard result;
+		final AdministratorDashboard result;
 		
 		Integer totalNumberOfComponents;
 		final Map<Pair<String, String>, Double> averageRetailPriceOfComponentsByTechnologyAndCurrency = new HashMap<Pair<String, String>, Double>();
@@ -50,10 +56,6 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		final Map<String, Double> maximumRetailPriceOfToolsByCurrency =new HashMap<String, Double>();
 
 		final Map<Status, Integer> totalNumberOfPatronagesByStatus = new HashMap<Status, Integer>();
-//		final Map<Status, Double> averageBudgetPatronagesByStatus = new HashMap<Status, Double>();
-//		final Map<Status, Double> deviationBudgetPatronagesByStatus = new HashMap<Status, Double>();
-//		final Map<Status, Double> minimumBudgetPatronagesByStatus = new HashMap<Status, Double>();
-//		final Map<Status, Double> maximumBudgetPatronagesByStatus = new HashMap<Status, Double>();
 		final Map<Pair<Status, String>, Double> averageBudgetPatronagesByStatus = new HashMap<Pair<Status, String>, Double>();
 		final Map<Pair<Status, String>, Double> deviationBudgetPatronagesByStatus = new HashMap<Pair<Status, String>, Double>();
 		final Map<Pair<Status, String>, Double> minimumBudgetPatronagesByStatus = new HashMap<Pair<Status, String>, Double>();
@@ -62,99 +64,69 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		totalNumberOfComponents = this.repository.totalNumberOfComponents();
 		totalNumberOfTools = this.repository.totalNumberOfTools();
 		
+		final List<String> currencies = new ArrayList<>();
+		final String acceptedCurrencies = this.systemConfigRepository.findSystemConfiguration().getAcceptedCurrencies();
+		final String[] field = acceptedCurrencies.split(",");
+		currencies.add(field[0]);
+		currencies.add(field[1]);
+		currencies.add(field[2]);
+		
 		//averageRetailPriceOfComponentsByTechnologyAndCurrency
-		this.repository.averageRetailPriceOfComponentsByTechnologyAndCurrency("USD").stream()
-		.forEach(x-> averageRetailPriceOfComponentsByTechnologyAndCurrency.put(
-				Pair.of("USD", x.get(0).toString()),
-				Double.parseDouble(x.get(1).toString())));
-		this.repository.averageRetailPriceOfComponentsByTechnologyAndCurrency("EUR").stream()
-		.forEach(x-> averageRetailPriceOfComponentsByTechnologyAndCurrency.put(
-				Pair.of("EUR", x.get(0).toString()),
-				Double.parseDouble(x.get(1).toString())));
-		this.repository.averageRetailPriceOfComponentsByTechnologyAndCurrency("GBP").stream()
-		.forEach(x-> averageRetailPriceOfComponentsByTechnologyAndCurrency.put(
-				Pair.of("GBP", x.get(0).toString()),
-				Double.parseDouble(x.get(1).toString())));
+		for(final String currency: currencies) {
+			this.repository.averageRetailPriceOfComponentsByTechnologyAndCurrency(currency).stream()
+			.forEach(x-> averageRetailPriceOfComponentsByTechnologyAndCurrency.put(
+					Pair.of(currency, x.get(0).toString()),
+					Double.parseDouble(x.get(1).toString())));
+		}
 		
 		//deviationRetailPriceOfComponentsByTechnologyAndCurrency
-		this.repository.deviationRetailPriceOfComponentsByTechnologyAndCurrency("USD").stream()
-		.forEach(x-> deviationRetailPriceOfComponentsByTechnologyAndCurrency.put(
-				Pair.of("USD", x.get(0).toString()),
-				Double.parseDouble(x.get(1).toString())));
-		this.repository.deviationRetailPriceOfComponentsByTechnologyAndCurrency("EUR").stream()
-		.forEach(x-> deviationRetailPriceOfComponentsByTechnologyAndCurrency.put(
-				Pair.of("EUR", x.get(0).toString()),
-				Double.parseDouble(x.get(1).toString())));
-		this.repository.deviationRetailPriceOfComponentsByTechnologyAndCurrency("GBP").stream()
-		.forEach(x-> deviationRetailPriceOfComponentsByTechnologyAndCurrency.put(
-				Pair.of("GBP", x.get(0).toString()),
-				Double.parseDouble(x.get(1).toString())));
+		for(final String currency: currencies) {
+			this.repository.deviationRetailPriceOfComponentsByTechnologyAndCurrency(currency).stream()
+			.forEach(x-> deviationRetailPriceOfComponentsByTechnologyAndCurrency.put(
+					Pair.of(currency, x.get(0).toString()),
+					Double.parseDouble(x.get(1).toString())));
+		}
 		
 		//minimumRetailPriceOfComponentsByTechnologyAndCurrency
-		this.repository.minimumRetailPriceOfComponentsByTechnologyAndCurrency("USD").stream()
-		.forEach(x-> minimumRetailPriceOfComponentsByTechnologyAndCurrency.put(
-				Pair.of("USD", x.get(0).toString()),
-				Double.parseDouble(x.get(1).toString())));
-		this.repository.minimumRetailPriceOfComponentsByTechnologyAndCurrency("EUR").stream()
-		.forEach(x-> minimumRetailPriceOfComponentsByTechnologyAndCurrency.put(
-				Pair.of("EUR", x.get(0).toString()),
-				Double.parseDouble(x.get(1).toString())));
-		this.repository.minimumRetailPriceOfComponentsByTechnologyAndCurrency("GBP").stream()
-		.forEach(x-> minimumRetailPriceOfComponentsByTechnologyAndCurrency.put(
-				Pair.of("GBP", x.get(0).toString()),
-				Double.parseDouble(x.get(1).toString())));
+		for(final String currency: currencies) {
+			this.repository.minimumRetailPriceOfComponentsByTechnologyAndCurrency(currency).stream()
+			.forEach(x-> minimumRetailPriceOfComponentsByTechnologyAndCurrency.put(
+					Pair.of(currency, x.get(0).toString()),
+					Double.parseDouble(x.get(1).toString())));
+		}
 		
 		//maximumRetailPriceOfComponentsByTechnologyAndCurrency
-		this.repository.maximumRetailPriceOfComponentsByTechnologyAndCurrency("USD").stream()
-		.forEach(x->
-		maximumRetailPriceOfComponentsByTechnologyAndCurrency.put(
-				Pair.of("USD", x.get(0).toString()),
-				Double.parseDouble(x.get(1).toString()))
-			);
-		this.repository.maximumRetailPriceOfComponentsByTechnologyAndCurrency("EUR").stream()
-		.forEach(x->
-		maximumRetailPriceOfComponentsByTechnologyAndCurrency.put(
-					Pair.of("EUR", x.get(0).toString()),
-					Double.parseDouble(x.get(1).toString()))
-			);
-		this.repository.maximumRetailPriceOfComponentsByTechnologyAndCurrency("GBP").stream()
-		.forEach(x->
-		maximumRetailPriceOfComponentsByTechnologyAndCurrency.put(
-					Pair.of("GBP", x.get(0).toString()),
-					Double.parseDouble(x.get(1).toString()))
-			);
+		for(final String currency: currencies) {
+			this.repository.maximumRetailPriceOfComponentsByTechnologyAndCurrency(currency).stream()
+			.forEach(x->
+			maximumRetailPriceOfComponentsByTechnologyAndCurrency.put(
+					Pair.of(currency, x.get(0).toString()),
+					Double.parseDouble(x.get(1).toString())));
+		}
 	
 		//averageRetailPriceOfToolsByCurrency
-		final Double averageRetailPriceOfToolsByUSD =  this.repository.averageRetailPriceOfToolsByCurrency("USD");
-		final Double averageRetailPriceOfToolsByEUR = this.repository.averageRetailPriceOfToolsByCurrency("EUR");
-		final Double averagRetailPriceOfToolsByGBP = this.repository.averageRetailPriceOfToolsByCurrency("GBP");
-		averageRetailPriceOfToolsByCurrency.put("USD", averageRetailPriceOfToolsByUSD);
-		averageRetailPriceOfToolsByCurrency.put("EUR", averageRetailPriceOfToolsByEUR);
-		averageRetailPriceOfToolsByCurrency.put("GBP", averagRetailPriceOfToolsByGBP);
-
+		for(final String currency: currencies) {
+			final Double averageRetailPriceOfToolsByX =  this.repository.averageRetailPriceOfToolsByCurrency(currency);
+			averageRetailPriceOfToolsByCurrency.put(currency, averageRetailPriceOfToolsByX);
+		}
+		
 		//deviationRetailPriceOfToolsByCurrency
-		final Double deviationRetailPriceOfToolsByUSD = this.repository.deviationRetailPriceOfToolsByCurrency("USD");
-		final Double deviationRetailPriceOfToolsByEUR = this.repository.deviationRetailPriceOfToolsByCurrency("EUR");
-		final Double deviationRetailPriceOfToolsByGBP = this.repository.deviationRetailPriceOfToolsByCurrency("GBP");
-		deviationRetailPriceOfToolsByCurrency.put("USD", deviationRetailPriceOfToolsByUSD);
-		deviationRetailPriceOfToolsByCurrency.put("EUR", deviationRetailPriceOfToolsByEUR);
-		deviationRetailPriceOfToolsByCurrency.put("GBP", deviationRetailPriceOfToolsByGBP);
+		for(final String currency: currencies) {
+			final Double deviationRetailPriceOfToolsByX = this.repository.deviationRetailPriceOfToolsByCurrency(currency);
+			deviationRetailPriceOfToolsByCurrency.put(currency, deviationRetailPriceOfToolsByX);
+		}
 		
 		//minimumRetailPriceOfToolsByCurrency
-		final Double minimumRetailPriceOfToolsByUSD = this.repository.minimumRetailPriceOfToolsByCurrency("USD");
-		final Double minimunRetailPriceOfToolsByEUR = this.repository.minimumRetailPriceOfToolsByCurrency("EUR");
-		final Double minimumRetailPriceOfToolsByGBP = this.repository.minimumRetailPriceOfToolsByCurrency("GBP");
-		minimumRetailPriceOfToolsByCurrency.put("USD", minimumRetailPriceOfToolsByUSD);
-		minimumRetailPriceOfToolsByCurrency.put("EUR", minimunRetailPriceOfToolsByEUR);
-		minimumRetailPriceOfToolsByCurrency.put("GBP", minimumRetailPriceOfToolsByGBP);
+		for(final String currency: currencies) {
+			final Double minimumRetailPriceOfToolsByX = this.repository.minimumRetailPriceOfToolsByCurrency(currency);
+			minimumRetailPriceOfToolsByCurrency.put(currency, minimumRetailPriceOfToolsByX);
+		}
 		
 		//maximumRetailPriceOfToolsByCurrency
-		final Double maximumRetailPriceOfToolsByUSD = this.repository.maximumRetailPriceOfToolsByCurrency("USD");
-		final Double maximumRetailPriceOfToolsByEUR = this.repository.maximumRetailPriceOfToolsByCurrency("EUR");
-		final Double maximumRetailPriceOfToolsByGBP = this.repository.maximumRetailPriceOfToolsByCurrency("GBP");
-		maximumRetailPriceOfToolsByCurrency.put("USD", maximumRetailPriceOfToolsByUSD);
-		maximumRetailPriceOfToolsByCurrency.put("EUR", maximumRetailPriceOfToolsByEUR);
-		maximumRetailPriceOfToolsByCurrency.put("GBP", maximumRetailPriceOfToolsByGBP);
+		for(final String currency: currencies) {
+			final Double maximumRetailPriceOfToolsByX = this.repository.maximumRetailPriceOfToolsByCurrency(currency);
+			maximumRetailPriceOfToolsByCurrency.put(currency, maximumRetailPriceOfToolsByX);
+		}
 		
 		//totalNumberOfPatronagesByStatus
 		final Integer numPatronagesProposed = this.repository.totalNumberOfPatronagesByStatus(Status.PROPOSED);
@@ -177,12 +149,6 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		.forEach(x-> averageBudgetPatronagesByStatus.put(
 				Pair.of(Status.DENIED, x.get(0).toString()),
 				Double.parseDouble(x.get(1).toString())));
-//		final Double averageBudgetPatronagesProposed = this.repository.averageBudgetPatronagesByStatus(Status.PROPOSED);
-//		final Double averageBudgetPatronagesAccepted = this.repository.averageBudgetPatronagesByStatus(Status.ACCEPTED);
-//		final Double averageBudgetPatronagesDenied = this.repository.averageBudgetPatronagesByStatus(Status.DENIED);
-//		averageBudgetPatronagesByStatus.put(Status.PROPOSED, averageBudgetPatronagesProposed);
-//		averageBudgetPatronagesByStatus.put(Status.ACCEPTED, averageBudgetPatronagesAccepted);
-//		averageBudgetPatronagesByStatus.put(Status.DENIED, averageBudgetPatronagesDenied);
 		
 		//deviationBudgetPatronagesByStatus
 		this.repository.deviationBudgetPatronagesByStatus(Status.PROPOSED).stream()
@@ -197,12 +163,6 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		.forEach(x-> deviationBudgetPatronagesByStatus.put(
 				Pair.of(Status.DENIED, x.get(0).toString()),
 				Double.parseDouble(x.get(1).toString())));
-//		final Double deviationBudgetPatronagesProposed = this.repository.deviationBudgetPatronagesByStatus(Status.PROPOSED);
-//		final Double deviationBudgetPatronagesAccepted = this.repository.deviationBudgetPatronagesByStatus(Status.ACCEPTED);
-//		final Double deviationBudgetPatronagesDenied = this.repository.deviationBudgetPatronagesByStatus(Status.DENIED);
-//		deviationBudgetPatronagesByStatus.put(Status.PROPOSED, deviationBudgetPatronagesProposed);
-//		deviationBudgetPatronagesByStatus.put(Status.ACCEPTED, deviationBudgetPatronagesAccepted);
-//		deviationBudgetPatronagesByStatus.put(Status.DENIED, deviationBudgetPatronagesDenied);
 	
 		//minimumBudgetPatronagesByStatus
 		this.repository.minimumBudgetPatronagesByStatus(Status.PROPOSED).stream()
@@ -217,12 +177,6 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		.forEach(x-> minimumBudgetPatronagesByStatus.put(
 				Pair.of(Status.DENIED, x.get(0).toString()),
 				Double.parseDouble(x.get(1).toString())));
-//		final Double minimumBudgetPatronagesProposed = this.repository.minimumBudgetPatronagesByStatus(Status.PROPOSED);
-//		final Double minimumBudgetPatronagesAccepted = this.repository.minimumBudgetPatronagesByStatus(Status.ACCEPTED);
-//		final Double minimumBudgetPatronagesDenied = this.repository.minimumBudgetPatronagesByStatus(Status.DENIED);
-//		minimumBudgetPatronagesByStatus.put(Status.PROPOSED, minimumBudgetPatronagesProposed);
-//		minimumBudgetPatronagesByStatus.put(Status.ACCEPTED, minimumBudgetPatronagesAccepted);
-//		minimumBudgetPatronagesByStatus.put(Status.DENIED, minimumBudgetPatronagesDenied);
 		
 		//maximumBudgetPatronagesByStatus
 		this.repository.maximumBudgetPatronagesByStatus(Status.PROPOSED).stream()
@@ -237,12 +191,6 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		.forEach(x-> maximumBudgetPatronagesByStatus.put(
 				Pair.of(Status.DENIED, x.get(0).toString()),
 				Double.parseDouble(x.get(1).toString())));
-//		final Double maximumBudgetPatronagesProposed = this.repository.maximumBudgetPatronagesByStatus(Status.PROPOSED);
-//		final Double maximumBudgetPatronagesAccepted = this.repository.maximumBudgetPatronagesByStatus(Status.ACCEPTED);
-//		final Double maximumBudgetPatronagesDenied = this.repository.maximumBudgetPatronagesByStatus(Status.DENIED);
-//		maximumBudgetPatronagesByStatus.put(Status.PROPOSED, maximumBudgetPatronagesProposed);
-//		maximumBudgetPatronagesByStatus.put(Status.ACCEPTED, maximumBudgetPatronagesAccepted);
-//		maximumBudgetPatronagesByStatus.put(Status.DENIED, maximumBudgetPatronagesDenied);
 		
 		result = new AdministratorDashboard();
 		

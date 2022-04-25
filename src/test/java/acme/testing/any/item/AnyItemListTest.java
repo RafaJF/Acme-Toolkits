@@ -20,8 +20,7 @@ public class AnyItemListTest extends TestHarness {
 		
 		super.checkColumnHasValue(recordIndex, 0, name);
 		super.checkColumnHasValue(recordIndex, 1, code);
-		super.checkColumnHasValue(recordIndex, 2, technology);
-		super.checkColumnHasValue(recordIndex, 3, retailPrice);
+		super.checkColumnHasValue(recordIndex, 2, retailPrice);
 		
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
@@ -49,8 +48,7 @@ public class AnyItemListTest extends TestHarness {
 		
 		super.checkColumnHasValue(recordIndex, 0, name);
 		super.checkColumnHasValue(recordIndex, 1, code);
-		super.checkColumnHasValue(recordIndex, 2, technology);
-		super.checkColumnHasValue(recordIndex, 3, retailPrice);
+		super.checkColumnHasValue(recordIndex, 2, retailPrice);
 		
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();

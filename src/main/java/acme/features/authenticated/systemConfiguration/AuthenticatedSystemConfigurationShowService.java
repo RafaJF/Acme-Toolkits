@@ -29,7 +29,7 @@ public class AuthenticatedSystemConfigurationShowService implements AbstractShow
 		assert request != null;
 		
 		SystemConfiguration res;
-		res = this.authenticatedSystemConfigurationRepository.findSystemConfiguration().stream().findFirst().get();
+		res = this.authenticatedSystemConfigurationRepository.findSystemConfiguration();
 		
 		return res;
 	}
