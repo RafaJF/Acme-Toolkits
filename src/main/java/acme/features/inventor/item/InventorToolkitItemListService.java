@@ -39,12 +39,11 @@ public class InventorToolkitItemListService implements AbstractListService<Inven
 		final Collection<Item> result = new HashSet<>();
 		int toolkitId;
 		toolkitId= request.getModel().getInteger("id");
-		final int inventorId = request.getPrincipal().getActiveRoleId();
 		final Collection<Quantity> quantities = this.inventorToolkitRepository.findQuantitiesByToolkitId(toolkitId);
 		for(final Quantity q: quantities) {
 			final int quantityId = q.getId();
 			final Item i = this.inventorToolkitRepository.findItemByQuantityId(quantityId);
-			if(i.getInventor().getId()==inventorId) {
+			if(i.isPublished()) {
 				result.add(i);
 			}
 		}

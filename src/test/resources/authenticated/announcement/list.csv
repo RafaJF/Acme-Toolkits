@@ -1,0 +1,4 @@
+recordIndex,creation-moment,title,body,critical-flag,info
+0,"2022/04/02 20:00",Duodécimo anuncio de prueba,Este es un anuncio de prueba con una longitud un poco menos reducida que el anterior,false,
+1,"2022/04/03 23:00",A,Este es un anuncio de prueba igual que el anterior,true,https://moreinfo.com/
+2,"2022/04/08 22:00",Prueba14,Este es un anuncio de prueba,true,

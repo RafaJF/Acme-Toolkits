@@ -1,0 +1,6 @@
+key,key:inventor,key:patron,status,code,legal-stuff,budget,creation-moment,start-date,end-date,more-info
+0,inventor-01,"Macarena, Inc.",ACCEPTED,ABC-123,Example,EUR 150.00,2021/10/10 10:00,2021/11/15 10:00,2021/12/21 10:00,https://moreinfo.com
+1,inventor-01,"Triana, Inc.",PROPOSED,GHI-789,Example,EUR 125.00,2021/10/20 10:00,2021/11/22 10:00,2021/12/26 10:00,""
+2,inventor-01,"Macarena, Inc.",ACCEPTED,MNO-222,Example,EUR 300.00,2021/11/15 10:00,2021/12/20 10:00,2021/01/22 10:00,https://moreinfo.com
+3,inventor-01,"Macarena, Inc.",ACCEPTED,POU-173,Example,"EUR 4,500.00",2022/01/10 10:00,2021/02/15 10:00,2021/03/21 10:00,https://moreinfo.com
+4,inventor-01,"Triana, Inc.",DENIED,STU-134,Example,"EUR 5,000.00",2021/12/10 10:00,2021/01/15 10:00,2021/02/21 10:00,""

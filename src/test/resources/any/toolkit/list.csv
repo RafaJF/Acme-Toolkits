@@ -1,6 +1,7 @@
-recordIndex,code,title,description,assambly-notes,url,totalPrice
-1,AAA-112,title2,description2,assambly-notes2,https://regexr2.com/,EUR 610.00
-2,AAA-113,title3,description3,assambly-notes3,https://regexr3.com/,EUR 550.00
-3,AAA-114,title4,description4,assambly-notes4,https://regexr4.com/,EUR 550.00
-4,AAA-115,title5,description5,assambly-notes5,https://regexr5.com/,EUR 0.00
-5,AAA-116,title6,description6,assambly-notes6,https://regexr6.com/,EUR 0.00
+recordIndexToolkit,recordIndexItem,code,title,description,assambly-notes,url,totalPrice,name,retailPrice,technology,info,itemType
+0,0,AAA-111,title1,description1,assambly-notes1,https://regexr1.com/,"EUR 52,309.50",a,"EUR 265.58",limited,https://regexr.com/,TOOL
+0,1,AAA-111,title1,description1,assambly-notes1,https://regexr1.com/,"EUR 52,309.50",axe,"USD 845.32",limited,https://regexr.com/,TOOL
+0,2,AAA-111,title1,description1,assambly-notes1,https://regexr1.com/,"EUR 52,309.50",hammer,"USD 10.00",Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,https://regexr.com/,TOOL
+1,0,AAA-121,title11,description11,assambly-notes11,https://regexr11.com/,"EUR 55,232.52",b,"USD 568.00",limited,https://regexr.com/,TOOL
+1,1,AAA-121,title11,description11,assambly-notes11,https://regexr11.com/,"EUR 55,232.52",Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,"GBP 7,266.06",Lorem Ipsum is simply dummy text of the printing,https://regexr.com/,TOOL
+1,2,AAA-121,title11,description11,assambly-notes11,https://regexr11.com/,"EUR 55,232.52",mouse,"GBP 621.50",limited,https://regexr.com/,TOOL

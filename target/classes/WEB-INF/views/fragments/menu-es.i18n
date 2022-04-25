@@ -36,8 +36,9 @@ master.menu.anonymous.toolkit.list = Listado de kits de herramientas
 master.menu.authenticated = Autentificado
 master.menu.authenticated.list-user-accounts = Cuentas de usuario
 master.menu.authenticated.system-configuration = Configuración del sistema
-master.menu.authenticated.list-chirp = Lista de chirridos
-master.menu.authenticated.announcement = Lista de anuncios
+master.menu.authenticated.list-chirp = Listado de chirridos
+master.menu.authenticated.announcement = Listado de anuncios
+master.menu.authenticated.toolkit.list = Listado de kits de herramientas
 
 
 # master.menu.administrator ###################################################
@@ -74,8 +75,8 @@ master.menu.inventor.item.list-mine = Ver mis kits de herramientas
 # master.menu.patron ####################################################
 
 master.menu.patron = Patrocinador
-master.menu.patron.patronages = Lista de patrocinios
-master.menu.patron.patronage-reports = Lista de informes de patrocinio
+master.menu.patron.patronages = Listado de patrocinios
+master.menu.patron.patronage-reports = Listado de informes de patrocinio
 master.menu.patron.patron-dashboard = Panel de Patrocinador
 
 

@@ -1,6 +1,7 @@
 package acme.features.inventor.toolkit;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,11 +46,15 @@ public class InventorToolkitListService implements AbstractListService<Inventor,
 
 		final Collection<Toolkit> toolkits = this.repository.findToolkitsByInventorId(inventorId);
 		
+		final Collection<Toolkit> result = new HashSet<>();
 		for(final Toolkit t : toolkits) {
 			t.setTotalPrice(this.getTotalPrice(t));
+			if(t.isPublished()) {
+				result.add(t);
+			}
 		}
 		
-		return toolkits;
+		return result;
 	}
 	
 	private Money getTotalPrice(final Toolkit t) {

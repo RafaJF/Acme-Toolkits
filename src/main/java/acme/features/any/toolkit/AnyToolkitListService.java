@@ -33,7 +33,6 @@ public class AnyToolkitListService implements AbstractListService<Any, Toolkit> 
 		Collection<Toolkit> result;
 		result = this.repository.findAllToolkit();
 		for(final Toolkit t: result) {
-			
 			t.setTotalPrice(this.getTotalPrice(t));
 		}
 			

@@ -10,16 +10,17 @@ public class AnyToolkitListTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/any/toolkit/list.csv", encoding ="utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positiveTest(final int recordIndex, final String code, final String title, final String description, final String assamblyNotes, final String url, final String totalPrice) {
+	public void positiveTest(final int recordIndexToolkit, final int recordIndexItem, final String code, final String title, final String description, final String assamblyNotes, final String url, final String totalPrice,
+		final String name, final String retailPrice, final String technology, final String info, final String itemType) {
 		
-		super.clickOnMenu("Anonymous", "List of toolkits");
+		super.clickOnMenu("Anonymous", "Toolkit list");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
-		super.checkColumnHasValue(recordIndex, 0, title);
-		super.checkColumnHasValue(recordIndex, 1, code);
-		super.checkColumnHasValue(recordIndex, 2, totalPrice);
+		super.checkColumnHasValue(recordIndexToolkit, 0, title);
+		super.checkColumnHasValue(recordIndexToolkit, 1, code);
+		super.checkColumnHasValue(recordIndexToolkit, 2, totalPrice);
 		
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(recordIndexToolkit);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("code", code);
 		super.checkInputBoxHasValue("title", title);
@@ -29,6 +30,22 @@ public class AnyToolkitListTest extends TestHarness {
 		super.checkInputBoxHasValue("totalPrice", totalPrice);
 		super.clickOnButton("Items");
 		super.checkListingExists();
+		super.sortListing(0, "asc");
+		super.checkColumnHasValue(recordIndexItem, 0, name);
+		super.checkColumnHasValue(recordIndexItem, 2, retailPrice);
+		
+		super.clickOnListingRecord(recordIndexItem);
+		super.checkFormExists();
+		super.checkInputBoxHasValue("name", name);
+		super.checkInputBoxHasValue("technology", technology);
+		super.checkInputBoxHasValue("retailPrice", retailPrice);
+		super.checkInputBoxHasValue("info", info);
+		super.checkInputBoxHasValue("itemType", itemType);
+		
+		super.clickOnButton("Return");
+		
+		
+		
 		
 	}
 }

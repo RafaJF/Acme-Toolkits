@@ -42,6 +42,7 @@
       		<acme:menu-suboption code="master.menu.anonymous.all-tools-published" action="/any/item/list-published-tools"/>
 			<acme:menu-suboption code="master.menu.anonymous.all-components-published" action="/any/item/list-published-components"/>
 			<acme:menu-suboption code="master.menu.authenticated.announcement" action="/authenticated/announcement/list"/>
+      		<acme:menu-suboption code="master.menu.authenticated.toolkit.list" action="/any/toolkit/list"/>
 
 		</acme:menu-option>
 

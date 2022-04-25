@@ -14,12 +14,9 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AnyToolkitRepository extends AbstractRepository {
 	
-	@Query("SELECT t FROM Toolkit t")
+	@Query("SELECT t FROM Toolkit t WHERE t.published = true")
 	Collection<Toolkit> findAllToolkit();
 	
-	
-//	@Query("SELECT r FROM RateExchange r WHERE r.currencyExchange.base = :sourceCurrency and r.currency = :targetCurrency")
-//	RateExchange findRateExchangeBySourceCurrency(String sourceCurrency, String targetCurrency);
 	@Query("SELECT q FROM Quantity q")
 	Collection<Quantity> findAllQuantity();
 	

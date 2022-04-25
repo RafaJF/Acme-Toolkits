@@ -19,18 +19,14 @@ public class PatronPatronageShowService implements AbstractShowService<Patron,Pa
 		final int id = request.getModel().getInteger("id");
 		final Patronage patronage = this.repository.findOnePatronageById(id);
 		final int patronId = request.getPrincipal().getActiveRoleId();
-		
-		final boolean result = patronage.getPatron().getId() == patronId;
-		
-		return result;
+		return patronage.getPatron().getId() == patronId;
 	}
 
 	@Override
 	public Patronage findOne(final Request<Patronage> request) {
 		assert request != null;
 		final int id = request.getModel().getInteger("id");
-		final Patronage result = this.repository.findOnePatronageById(id);
-		return result;
+		return this.repository.findOnePatronageById(id);
 	}
 
 	@Override
