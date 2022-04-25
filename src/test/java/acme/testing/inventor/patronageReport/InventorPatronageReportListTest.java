@@ -8,11 +8,11 @@ import acme.testing.TestHarness;
 
 public class InventorPatronageReportListTest extends TestHarness {
 	@ParameterizedTest
-	@CsvFileSource(resources = "/inventor/patronage-report/list.csv", encoding ="utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/inventor/patronageReport/list.csv", encoding ="utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void positiveTest(final int recordIndex, final String sequenceNumber, final String creationMoment, final String memorandum, final String moreInfo) {
 		super.signIn("inventor1", "inventor1");
-		super.clickOnMenu("Inventor", "Patronage reports List");
+		super.clickOnMenu("Inventor", "List my patronage reports");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 		super.checkColumnHasValue(recordIndex, 0, sequenceNumber);
