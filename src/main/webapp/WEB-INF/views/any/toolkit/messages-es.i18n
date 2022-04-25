@@ -1,0 +1,13 @@
+
+any.toolkit.form.label.code = Código
+any.toolkit.form.label.title = Título
+any.toolkit.form.label.description = Descripción
+any.toolkit.form.label.assambly-notes = Notas de montaje
+any.toolkit.form.label.url = Enlace
+any.toolkit.form.label.total-price = Precio total
+any.toolkit.form.button.items = Objetos
+
+
+any.toolkit.list.label.code = Código
+any.toolkit.list.label.title = Título
+any.toolkit.list.label.total-price = Precio total

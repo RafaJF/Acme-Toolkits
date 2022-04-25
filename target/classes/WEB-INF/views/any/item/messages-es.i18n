@@ -5,8 +5,8 @@ any.item.list.label.description = Descripción:
 any.item.list.label.retailPrice = Precio al por menor:
 any.item.list.label.info = Información:
 any.item.list.label.itemType = Tipo de item:
-TOOL = Herramienta
-COMPONENT= Componente
+TOOL = TOOL 
+COMPONENT= COMPONENT
 administrator.announcement.form.label.confirmation = Confirmación
 any.item.form.button.create = Crear
 

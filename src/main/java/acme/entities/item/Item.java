@@ -59,13 +59,11 @@ public class Item extends AbstractEntity{
 	@Enumerated(EnumType.STRING)
 	protected ItemType itemType;
 
+
 	
 	protected boolean published;
 	
 
-
-
-	
 	// Relationships ----------------------------------------------------------
 	
 	@NotNull

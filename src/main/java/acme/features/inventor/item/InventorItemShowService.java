@@ -10,12 +10,12 @@ import acme.framework.services.AbstractShowService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorComponentShowService implements AbstractShowService<Inventor, Item> {
+public class InventorItemShowService implements AbstractShowService<Inventor, Item> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected InventorComponentRepository repository;
+	protected InventorItemRepository repository;
 
 	// AbstractUpdateService<Authenticated, Consumer> interface -----------------
 
@@ -25,9 +25,9 @@ public class InventorComponentShowService implements AbstractShowService<Invento
 
 		final int inventorId = request.getPrincipal().getActiveRoleId();
 		final int itemId = request.getModel().getInteger("id");
-		final int componentInventorId = this.repository.findOneComponentById(itemId).getInventor().getId();
+		final int itemInventorId = this.repository.findOneById(itemId).getInventor().getId();
 
-		return  inventorId == componentInventorId; 
+		return  inventorId == itemInventorId; 
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class InventorComponentShowService implements AbstractShowService<Invento
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "info");
+		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "info", "itemType", "published");
 	}
 	
 	@Override
@@ -44,7 +44,7 @@ public class InventorComponentShowService implements AbstractShowService<Invento
 		assert request != null;
 
 		final int id = request.getModel().getInteger("id");
-		return this.repository.findOneComponentById(id);
+		return this.repository.findOneById(id);
 	}
 
 }

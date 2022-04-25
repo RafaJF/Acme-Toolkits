@@ -1,0 +1,5 @@
+key,name,code,technology,description,retail-price,info,item-type,published,key:inventor
+0,mouse,ABC-123,super,it's a item,EUR 155.00,https://regexr.com/,TOOL,true,inventor-01
+1,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,ABC-124-I,Lorem Ipsum is simply dummy text of the printing,it's a item,"EUR 7,266.06",https://regexr.com/,TOOL,true,inventor-02
+2,mouse,ABC-124-J,limited,a,USD 562.12,https://regexr.com/,TOOL,true,inventor-01
+3,b,ABC-124-K,limited,b,GBP 568.00,https://regexr.com/,TOOL,true,inventor-02

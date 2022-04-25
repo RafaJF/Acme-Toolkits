@@ -1,31 +1,26 @@
-package acme.features.inventor.item;
+package acme.features.any.chirp;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import acme.entities.item.Item;
+import acme.entities.chirp.Chirp;
 import acme.framework.controllers.AbstractController;
-import acme.roles.Inventor;
+import acme.framework.roles.Any;
 
 @Controller
-public class InventorComponentController extends AbstractController<Inventor, Item> {
+public class AnyChirpController extends AbstractController<Any, Chirp>{
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected InventorComponentListService	listService;
-
-	@Autowired
-	protected InventorComponentShowService	showService;
+	protected AnyChirpListService listService;
 
 	// Constructors -----------------------------------------------------------
 
 	@PostConstruct
 	protected void initialise() {
-		super.addCommand("show", this.showService);
-		super.addCommand("list-my-components", "list", this.listService);
+		super.addCommand("list", this.listService);
 	}
-
 }

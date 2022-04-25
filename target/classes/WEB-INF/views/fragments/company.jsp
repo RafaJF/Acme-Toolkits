@@ -12,7 +12,7 @@
 
 <%@page language="java"%>
 
-<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <h1><acme:message code="master.company.title"/></h1>

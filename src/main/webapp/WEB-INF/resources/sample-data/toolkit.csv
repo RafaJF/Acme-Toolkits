@@ -1,5 +1,9 @@
-key,code,title,description,assambly-notes,url
-toolkit-01,AAA-111,title1,description1,assambly-notes1,https://regexr.com/
-toolkit-02,AAA-112,title2,description2,assambly-notes2,https://regexr2.com/
-toolkit-03,AAA-113,title3,description3,assambly-notes3,https://regexr3.com/
-toolkit-04,AAA-114,title4,description4,assambly-notes4,https://regexr4.com/
+key,code,title,description,assambly-notes,url,published
+toolkit-01,AAA-111,title1,description1,assambly-notes1,https://regexr.com/,true
+toolkit-02,AAA-112,title2,description2,assambly-notes2,https://regexr2.com/,true
+toolkit-03,AAA-113,title3,description3,assambly-notes3,https://regexr3.com/,true
+toolkit-04,AAA-114,title4,description4,assambly-notes4,https://regexr4.com/,true
+toolkit-05,AAA-115,title5,description5,assambly-notes5,https://regexr5.com/,true
+toolkit-06,AAA-116,title6,description6,assambly-notes6,https://regexr6.com/,true
+toolkit-07,AAA-117,title7,description7,assambly-notes7,https://regexr7.com/,false
+toolkit-08,AAA-118,title8,description8,assambly-notes8,https://regexr8.com/,false
