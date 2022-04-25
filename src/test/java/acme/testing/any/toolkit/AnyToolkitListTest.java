@@ -18,7 +18,6 @@ public class AnyToolkitListTest extends TestHarness {
 		super.sortListing(0, "asc");
 		super.checkColumnHasValue(recordIndexToolkit, 0, title);
 		super.checkColumnHasValue(recordIndexToolkit, 1, code);
-		super.checkColumnHasValue(recordIndexToolkit, 2, totalPrice);
 		
 		super.clickOnListingRecord(recordIndexToolkit);
 		super.checkFormExists();
@@ -31,7 +30,6 @@ public class AnyToolkitListTest extends TestHarness {
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 		super.checkColumnHasValue(recordIndexItem, 0, name);
-		super.checkColumnHasValue(recordIndexItem, 2, retailPrice);
 		
 		super.clickOnListingRecord(recordIndexItem);
 		super.checkFormExists();
