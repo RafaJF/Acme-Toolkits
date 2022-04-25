@@ -50,10 +50,14 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		final Map<String, Double> maximumRetailPriceOfToolsByCurrency =new HashMap<String, Double>();
 
 		final Map<Status, Integer> totalNumberOfPatronagesByStatus = new HashMap<Status, Integer>();
-		final Map<Status, Double> averageBudgetPatronagesByStatus = new HashMap<Status, Double>();
-		final Map<Status, Double> deviationBudgetPatronagesByStatus = new HashMap<Status, Double>();
-		final Map<Status, Double> minimumBudgetPatronagesByStatus = new HashMap<Status, Double>();
-		final Map<Status, Double> maximumBudgetPatronagesByStatus = new HashMap<Status, Double>();
+//		final Map<Status, Double> averageBudgetPatronagesByStatus = new HashMap<Status, Double>();
+//		final Map<Status, Double> deviationBudgetPatronagesByStatus = new HashMap<Status, Double>();
+//		final Map<Status, Double> minimumBudgetPatronagesByStatus = new HashMap<Status, Double>();
+//		final Map<Status, Double> maximumBudgetPatronagesByStatus = new HashMap<Status, Double>();
+		final Map<Pair<Status, String>, Double> averageBudgetPatronagesByStatus = new HashMap<Pair<Status, String>, Double>();
+		final Map<Pair<Status, String>, Double> deviationBudgetPatronagesByStatus = new HashMap<Pair<Status, String>, Double>();
+		final Map<Pair<Status, String>, Double> minimumBudgetPatronagesByStatus = new HashMap<Pair<Status, String>, Double>();
+		final Map<Pair<Status, String>, Double> maximumBudgetPatronagesByStatus = new HashMap<Pair<Status, String>, Double>();
 
 		totalNumberOfComponents = this.repository.totalNumberOfComponents();
 		totalNumberOfTools = this.repository.totalNumberOfTools();
@@ -161,36 +165,84 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		totalNumberOfPatronagesByStatus.put(Status.DENIED, numPatronagesDenied);
 		
 		//averageBudgetPatronagesByStatus
-		final Double averageBudgetPatronagesProposed = this.repository.averageBudgetPatronagesByStatus(Status.PROPOSED);
-		final Double averageBudgetPatronagesAccepted = this.repository.averageBudgetPatronagesByStatus(Status.ACCEPTED);
-		final Double averageBudgetPatronagesDenied = this.repository.averageBudgetPatronagesByStatus(Status.DENIED);
-		averageBudgetPatronagesByStatus.put(Status.PROPOSED, averageBudgetPatronagesProposed);
-		averageBudgetPatronagesByStatus.put(Status.ACCEPTED, averageBudgetPatronagesAccepted);
-		averageBudgetPatronagesByStatus.put(Status.DENIED, averageBudgetPatronagesDenied);
+		this.repository.averageBudgetPatronagesByStatus(Status.PROPOSED).stream()
+		.forEach(x-> averageBudgetPatronagesByStatus.put(
+				Pair.of(Status.PROPOSED, x.get(0).toString()),
+				Double.parseDouble(x.get(1).toString())));
+		this.repository.averageBudgetPatronagesByStatus(Status.ACCEPTED).stream()
+		.forEach(x-> averageBudgetPatronagesByStatus.put(
+				Pair.of(Status.ACCEPTED, x.get(0).toString()),
+				Double.parseDouble(x.get(1).toString())));
+		this.repository.averageBudgetPatronagesByStatus(Status.DENIED).stream()
+		.forEach(x-> averageBudgetPatronagesByStatus.put(
+				Pair.of(Status.DENIED, x.get(0).toString()),
+				Double.parseDouble(x.get(1).toString())));
+//		final Double averageBudgetPatronagesProposed = this.repository.averageBudgetPatronagesByStatus(Status.PROPOSED);
+//		final Double averageBudgetPatronagesAccepted = this.repository.averageBudgetPatronagesByStatus(Status.ACCEPTED);
+//		final Double averageBudgetPatronagesDenied = this.repository.averageBudgetPatronagesByStatus(Status.DENIED);
+//		averageBudgetPatronagesByStatus.put(Status.PROPOSED, averageBudgetPatronagesProposed);
+//		averageBudgetPatronagesByStatus.put(Status.ACCEPTED, averageBudgetPatronagesAccepted);
+//		averageBudgetPatronagesByStatus.put(Status.DENIED, averageBudgetPatronagesDenied);
 		
 		//deviationBudgetPatronagesByStatus
-		final Double deviationBudgetPatronagesProposed = this.repository.deviationBudgetPatronagesByStatus(Status.PROPOSED);
-		final Double deviationBudgetPatronagesAccepted = this.repository.deviationBudgetPatronagesByStatus(Status.ACCEPTED);
-		final Double deviationBudgetPatronagesDenied = this.repository.deviationBudgetPatronagesByStatus(Status.DENIED);
-		deviationBudgetPatronagesByStatus.put(Status.PROPOSED, deviationBudgetPatronagesProposed);
-		deviationBudgetPatronagesByStatus.put(Status.ACCEPTED, deviationBudgetPatronagesAccepted);
-		deviationBudgetPatronagesByStatus.put(Status.DENIED, deviationBudgetPatronagesDenied);
+		this.repository.deviationBudgetPatronagesByStatus(Status.PROPOSED).stream()
+		.forEach(x-> deviationBudgetPatronagesByStatus.put(
+				Pair.of(Status.PROPOSED, x.get(0).toString()),
+				Double.parseDouble(x.get(1).toString())));
+		this.repository.deviationBudgetPatronagesByStatus(Status.ACCEPTED).stream()
+		.forEach(x-> deviationBudgetPatronagesByStatus.put(
+				Pair.of(Status.ACCEPTED, x.get(0).toString()),
+				Double.parseDouble(x.get(1).toString())));
+		this.repository.deviationBudgetPatronagesByStatus(Status.DENIED).stream()
+		.forEach(x-> deviationBudgetPatronagesByStatus.put(
+				Pair.of(Status.DENIED, x.get(0).toString()),
+				Double.parseDouble(x.get(1).toString())));
+//		final Double deviationBudgetPatronagesProposed = this.repository.deviationBudgetPatronagesByStatus(Status.PROPOSED);
+//		final Double deviationBudgetPatronagesAccepted = this.repository.deviationBudgetPatronagesByStatus(Status.ACCEPTED);
+//		final Double deviationBudgetPatronagesDenied = this.repository.deviationBudgetPatronagesByStatus(Status.DENIED);
+//		deviationBudgetPatronagesByStatus.put(Status.PROPOSED, deviationBudgetPatronagesProposed);
+//		deviationBudgetPatronagesByStatus.put(Status.ACCEPTED, deviationBudgetPatronagesAccepted);
+//		deviationBudgetPatronagesByStatus.put(Status.DENIED, deviationBudgetPatronagesDenied);
 	
 		//minimumBudgetPatronagesByStatus
-		final Double minimumBudgetPatronagesProposed = this.repository.minimumBudgetPatronagesByStatus(Status.PROPOSED);
-		final Double minimumBudgetPatronagesAccepted = this.repository.minimumBudgetPatronagesByStatus(Status.ACCEPTED);
-		final Double minimumBudgetPatronagesDenied = this.repository.minimumBudgetPatronagesByStatus(Status.DENIED);
-		minimumBudgetPatronagesByStatus.put(Status.PROPOSED, minimumBudgetPatronagesProposed);
-		minimumBudgetPatronagesByStatus.put(Status.ACCEPTED, minimumBudgetPatronagesAccepted);
-		minimumBudgetPatronagesByStatus.put(Status.DENIED, minimumBudgetPatronagesDenied);
+		this.repository.minimumBudgetPatronagesByStatus(Status.PROPOSED).stream()
+		.forEach(x-> minimumBudgetPatronagesByStatus.put(
+				Pair.of(Status.PROPOSED, x.get(0).toString()),
+				Double.parseDouble(x.get(1).toString())));
+		this.repository.minimumBudgetPatronagesByStatus(Status.ACCEPTED).stream()
+		.forEach(x-> minimumBudgetPatronagesByStatus.put(
+				Pair.of(Status.ACCEPTED, x.get(0).toString()),
+				Double.parseDouble(x.get(1).toString())));
+		this.repository.minimumBudgetPatronagesByStatus(Status.DENIED).stream()
+		.forEach(x-> minimumBudgetPatronagesByStatus.put(
+				Pair.of(Status.DENIED, x.get(0).toString()),
+				Double.parseDouble(x.get(1).toString())));
+//		final Double minimumBudgetPatronagesProposed = this.repository.minimumBudgetPatronagesByStatus(Status.PROPOSED);
+//		final Double minimumBudgetPatronagesAccepted = this.repository.minimumBudgetPatronagesByStatus(Status.ACCEPTED);
+//		final Double minimumBudgetPatronagesDenied = this.repository.minimumBudgetPatronagesByStatus(Status.DENIED);
+//		minimumBudgetPatronagesByStatus.put(Status.PROPOSED, minimumBudgetPatronagesProposed);
+//		minimumBudgetPatronagesByStatus.put(Status.ACCEPTED, minimumBudgetPatronagesAccepted);
+//		minimumBudgetPatronagesByStatus.put(Status.DENIED, minimumBudgetPatronagesDenied);
 		
 		//maximumBudgetPatronagesByStatus
-		final Double maximumBudgetPatronagesProposed = this.repository.maximumBudgetPatronagesByStatus(Status.PROPOSED);
-		final Double maximumBudgetPatronagesAccepted = this.repository.maximumBudgetPatronagesByStatus(Status.ACCEPTED);
-		final Double maximumBudgetPatronagesDenied = this.repository.maximumBudgetPatronagesByStatus(Status.DENIED);
-		maximumBudgetPatronagesByStatus.put(Status.PROPOSED, maximumBudgetPatronagesProposed);
-		maximumBudgetPatronagesByStatus.put(Status.ACCEPTED, maximumBudgetPatronagesAccepted);
-		maximumBudgetPatronagesByStatus.put(Status.DENIED, maximumBudgetPatronagesDenied);
+		this.repository.maximumBudgetPatronagesByStatus(Status.PROPOSED).stream()
+		.forEach(x-> minimumBudgetPatronagesByStatus.put(
+				Pair.of(Status.PROPOSED, x.get(0).toString()),
+				Double.parseDouble(x.get(1).toString())));
+		this.repository.maximumBudgetPatronagesByStatus(Status.ACCEPTED).stream()
+		.forEach(x-> maximumBudgetPatronagesByStatus.put(
+				Pair.of(Status.ACCEPTED, x.get(0).toString()),
+				Double.parseDouble(x.get(1).toString())));
+		this.repository.maximumBudgetPatronagesByStatus(Status.DENIED).stream()
+		.forEach(x-> maximumBudgetPatronagesByStatus.put(
+				Pair.of(Status.DENIED, x.get(0).toString()),
+				Double.parseDouble(x.get(1).toString())));
+//		final Double maximumBudgetPatronagesProposed = this.repository.maximumBudgetPatronagesByStatus(Status.PROPOSED);
+//		final Double maximumBudgetPatronagesAccepted = this.repository.maximumBudgetPatronagesByStatus(Status.ACCEPTED);
+//		final Double maximumBudgetPatronagesDenied = this.repository.maximumBudgetPatronagesByStatus(Status.DENIED);
+//		maximumBudgetPatronagesByStatus.put(Status.PROPOSED, maximumBudgetPatronagesProposed);
+//		maximumBudgetPatronagesByStatus.put(Status.ACCEPTED, maximumBudgetPatronagesAccepted);
+//		maximumBudgetPatronagesByStatus.put(Status.DENIED, maximumBudgetPatronagesDenied);
 		
 		result = new AdministratorDashboard();
 		

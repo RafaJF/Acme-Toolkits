@@ -49,16 +49,27 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("SELECT count(p) FROM Patronage p WHERE p.status = :status")
 	Integer totalNumberOfPatronagesByStatus(Status status);
 
-	@Query("SELECT avg(p.budget.amount) FROM Patronage p WHERE p.status = :status")
-	Double averageBudgetPatronagesByStatus(Status status);
+//	@Query("SELECT avg(p.budget.amount) FROM Patronage p WHERE p.status = :status")
+//	Double averageBudgetPatronagesByStatus(Status status);
+//	
+//	@Query("SELECT stddev(p.budget.amount) FROM Patronage p WHERE p.status = :status")
+//	Double deviationBudgetPatronagesByStatus(Status status);
+//
+//	@Query("SELECT min(p.budget.amount) FROM Patronage p WHERE p.status = :status")
+//	Double minimumBudgetPatronagesByStatus(Status status);
+//
+//	@Query("SELECT max(p.budget.amount) FROM Patronage p WHERE p.status = :status")
+//	Double maximumBudgetPatronagesByStatus(Status status);
+
+	@Query("SELECT p.budget.currency, avg(p.budget.amount) FROM Patronage p WHERE p.status = :status GROUP BY p.budget.currency")
+	Collection<Tuple> averageBudgetPatronagesByStatus(Status status);
 	
-	@Query("SELECT stddev(p.budget.amount) FROM Patronage p WHERE p.status = :status")
-	Double deviationBudgetPatronagesByStatus(Status status);
+	@Query("SELECT p.budget.currency, stddev(p.budget.amount) FROM Patronage p WHERE p.status = :status GROUP BY p.budget.currency")
+	Collection<Tuple> deviationBudgetPatronagesByStatus(Status status);
 
-	@Query("SELECT min(p.budget.amount) FROM Patronage p WHERE p.status = :status")
-	Double minimumBudgetPatronagesByStatus(Status status);
+	@Query("SELECT p.budget.currency, min(p.budget.amount) FROM Patronage p WHERE p.status = :status GROUP BY p.budget.currency")
+	Collection<Tuple> minimumBudgetPatronagesByStatus(Status status);
 
-	@Query("SELECT max(p.budget.amount) FROM Patronage p WHERE p.status = :status")
-	Double maximumBudgetPatronagesByStatus(Status status);
-
+	@Query("SELECT p.budget.currency, max(p.budget.amount) FROM Patronage p WHERE p.status = :status GROUP BY p.budget.currency")
+	Collection<Tuple> maximumBudgetPatronagesByStatus(Status status);
 }
