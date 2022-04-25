@@ -25,7 +25,6 @@ public void positiveTest(final int recordIndex, final String status, final Strin
 	super.checkInputBoxHasValue("status", status);
 	super.checkInputBoxHasValue("code", code);
 	super.checkInputBoxHasValue("legalStuff", legalStuff);
-	super.checkInputBoxHasValue("budget", budget);
 	super.checkInputBoxHasValue("creationMoment", creationMoment);
 	super.checkInputBoxHasValue("startDate", startDate);
 	super.checkInputBoxHasValue("endDate", endDate);

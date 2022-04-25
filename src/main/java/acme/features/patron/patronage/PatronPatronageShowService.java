@@ -3,15 +3,21 @@ package acme.features.patron.patronage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.moneyExchange.MoneyExchange;
 import acme.entities.patronage.Patronage;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractShowService;
 import acme.roles.Patron;
 @Service
 public class PatronPatronageShowService implements AbstractShowService<Patron,Patronage> {
 	@Autowired
 	protected PatronPatronageRepository repository;
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository systemConfigRepository;
 	
 	@Override
 	public boolean authorise(final Request<Patronage> request) {
@@ -26,7 +32,12 @@ public class PatronPatronageShowService implements AbstractShowService<Patron,Pa
 	public Patronage findOne(final Request<Patronage> request) {
 		assert request != null;
 		final int id = request.getModel().getInteger("id");
-		return this.repository.findOnePatronageById(id);
+		final Patronage p = this.repository.findOnePatronageById(id);
+		
+		final Money newBudget = this.moneyExchangePatronages(p);
+		p.setBudget(newBudget);
+		
+		return p;	
 	}
 
 	@Override
@@ -49,5 +60,29 @@ public class PatronPatronageShowService implements AbstractShowService<Patron,Pa
 
 		
 	}
+	
+	//Método auxiliar cambio de divisa
+		public Money moneyExchangePatronages(final Patronage p) {
+			final String itemCurrency = p.getBudget().getCurrency();
+		
+			final AuthenticatedMoneyExchangePerformService moneyExchange = new AuthenticatedMoneyExchangePerformService();
+			final String systemCurrency = this.systemConfigRepository.findSystemConfiguration().getSystemCurrency();
+			final Double conversionAmount;
+			
+			if(!systemCurrency.equals(itemCurrency)) {
+				MoneyExchange conversion;
+				conversion = moneyExchange.computeMoneyExchange(p.getBudget(), systemCurrency);
+				conversionAmount = conversion.getTarget().getAmount();	
+			}
+			else {
+				conversionAmount = p.getBudget().getAmount();
+			}
+			
+			final Money newBudget = new Money();
+			newBudget.setAmount(conversionAmount);
+			newBudget.setCurrency(systemCurrency);
+			
+			return newBudget;
+		}
 
 }
