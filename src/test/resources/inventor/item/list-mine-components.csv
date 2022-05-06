@@ -1,2 +1,2 @@
-recordIndex,name,code,technology,description,retail-price,info
-0,hammer,COM-101,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,it's a item,EUR 10.00,https://regexr.com/
+recordIndex,name,code,retail-price,
+0,keyboard,ABC-124-C,"EUR 1,025.00"

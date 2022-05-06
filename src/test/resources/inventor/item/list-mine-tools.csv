@@ -1,8 +1,6 @@
-recordIndex,name,code,technology,description,retail-price,info
-0,axe,HLS-124,limited,it's a item,USD 845.32,https://regexr.com/
-1,hammer,BCD-124,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,it's a item,EUR 10.00,https://regexr.com/
-2,mouse,ABC-124-M,limited,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has s.",GBP 621.50,https://regexr.com/
-3,mouse,ABC-124-J,limited,a,USD 562.12,https://regexr.com/
-4,mouse,ABC-123,super,it's a item,EUR 155.00,https://regexr.com/
-5,screw,FRC-125,super,it's a item,EUR 130.00,https://regexr.com/
-6,screwdriver,BCD-125,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,it's a item,USD 103.60,https://regexr.com/
+recordIndex,name,code,retail-price
+0,a,BCD-126,EUR 265.58
+1,axe,HLS-124,USD 845.32
+2,hammer,BCD-124,USD 10.00
+3,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,ABC-125,EUR 168.75
+4,mouse ,ABC-123 ,EUR 155.00

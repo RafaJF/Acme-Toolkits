@@ -11,8 +11,8 @@ public class InventorItemShowTest extends TestHarness{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/item/show.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positiveTest(final int recordIndex,final String name, final String code,final String technology, final String description, final String retailPrice,
-		final String info, final String itemType, final String published) {
+	public void positiveToolsTest(final int recordIndex,final String name, final String code,final String technology, final String description, final String retailPrice,
+		final String info) {
 			
 		super.signIn("inventor1", "inventor1");
 		super.clickOnMenu("Inventor", "List my tools");
@@ -21,7 +21,7 @@ public class InventorItemShowTest extends TestHarness{
 		
 		super.checkColumnHasValue(recordIndex, 0, name);
 		super.checkColumnHasValue(recordIndex, 1, code);
-		super.checkColumnHasValue(recordIndex, 2, technology);
+		super.checkColumnHasValue(recordIndex, 2, retailPrice);
 		
 		super.clickOnListingRecord(recordIndex);
 		
@@ -29,10 +29,7 @@ public class InventorItemShowTest extends TestHarness{
 		super.checkInputBoxHasValue("code", code);
 		super.checkInputBoxHasValue("technology", technology);
 		super.checkInputBoxHasValue("description", description);
-		super.checkInputBoxHasValue("retailPrice", retailPrice);
 		super.checkInputBoxHasValue("info", info);
-		super.checkInputBoxHasValue("itemType", itemType);
-		super.checkInputBoxHasValue("published", published);
 		
 		super.signOut();
 	}

@@ -1,2 +1,2 @@
-recordIndex,name,code,technology,description,retail-price,info,item-type,published
-0,axe,HLS-124,limited,it's a item,USD 845.32,https://regexr.com/,TOOL,true
+recordIndex,name,code,technology,description,retail-price,info
+0,a,BCD-126,limited,it's a item,EUR 265.58,https://regexr.com/

@@ -18,7 +18,6 @@ public class AnyToolkitListTest extends TestHarness {
 		super.sortListing(0, "asc");
 		super.checkColumnHasValue(recordIndexToolkit, 0, title);
 		super.checkColumnHasValue(recordIndexToolkit, 1, code);
-		super.checkColumnHasValue(recordIndexToolkit, 2, totalPrice);
 		
 		super.clickOnListingRecord(recordIndexToolkit);
 		super.checkFormExists();
@@ -27,18 +26,15 @@ public class AnyToolkitListTest extends TestHarness {
 		super.checkInputBoxHasValue("description", description);
 		super.checkInputBoxHasValue("assamblyNotes", assamblyNotes);
 		super.checkInputBoxHasValue("url", url);
-		super.checkInputBoxHasValue("totalPrice", totalPrice);
 		super.clickOnButton("Items");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 		super.checkColumnHasValue(recordIndexItem, 0, name);
-		super.checkColumnHasValue(recordIndexItem, 2, retailPrice);
 		
 		super.clickOnListingRecord(recordIndexItem);
 		super.checkFormExists();
 		super.checkInputBoxHasValue("name", name);
 		super.checkInputBoxHasValue("technology", technology);
-		super.checkInputBoxHasValue("retailPrice", retailPrice);
 		super.checkInputBoxHasValue("info", info);
 		super.checkInputBoxHasValue("itemType", itemType);
 		

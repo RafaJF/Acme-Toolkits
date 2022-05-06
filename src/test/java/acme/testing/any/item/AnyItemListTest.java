@@ -28,7 +28,6 @@ public class AnyItemListTest extends TestHarness {
 		super.checkInputBoxHasValue("code", code);
 		super.checkInputBoxHasValue("technology", technology);
 		super.checkInputBoxHasValue("description", description);
-		super.checkInputBoxHasValue("retailPrice", retailPrice);
 		super.checkInputBoxHasValue("info", info);
 		super.checkInputBoxHasValue("itemType", itemType);
 		super.checkInputBoxHasValue("published", published);
@@ -56,7 +55,6 @@ public class AnyItemListTest extends TestHarness {
 		super.checkInputBoxHasValue("code", code);
 		super.checkInputBoxHasValue("technology", technology);
 		super.checkInputBoxHasValue("description", description);
-		super.checkInputBoxHasValue("retailPrice", retailPrice);
 		super.checkInputBoxHasValue("info", info);
 		super.checkInputBoxHasValue("itemType", itemType);
 		super.checkInputBoxHasValue("published", published);
