@@ -8,4 +8,9 @@
 	<acme:input-url  code="inventor.patronage-report.form.label.memorandum" path="memorandum"/>
 	<acme:input-url code="inventor.patronage-report.form.label.more-info" path="moreInfo"/>
 	<acme:input-textbox code="inventor.patronage-report.form.label.patronage.code" path="patronage.code"/>
+	
+	<jstl:when test="${command == 'create'}">
+			<acme:submit code="employer.duty.form.button.create" action="/inventor/patronage-report/create?masterId=${masterId}"/>
+		</jstl:when>
+	
 </acme:form>
