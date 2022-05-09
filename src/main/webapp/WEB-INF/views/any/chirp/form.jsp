@@ -15,11 +15,12 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
-<acme:list readonly="true">
-	<acme:list-column code="any.chirp.list.label.creation-moment" path="creationMoment" width="10%"/>
-	<acme:list-column code="any.chirp.list.label.title" path="title" width="10%"/>
-	<acme:list-column code="any.chirp.list.label.autor" path="autor" width="10%"/>
-	<acme:list-column code="any.chirp.list.label.body" path="body" width="60%"/>
-	<acme:list-column code="any.chirp.list.label.email" path="email" width="10%"/>
-</acme:list>
-<acme:button code="any.chirp.list.button.create" action="/any/chirp/create"/>
+<acme:form>
+	<acme:input-moment code="any.chirp.form.label.creation-moment" path="creationMoment" readonly="true"/>
+	<acme:input-textbox code="any.chirp.form.label.title" path="title"/>
+	<acme:input-textbox code="any.chirp.form.label.autor" path="autor"/>
+	<acme:input-textarea code="any.chirp.form.label.body" path="body"/>
+	<acme:input-email code="any.chirp.form.label.email" path="email"/>
+	<acme:input-checkbox code="any.chirp.form.label.confirmation" path="confirmation"/>
+	<acme:submit code="any.chirp.form.button.create" action="/any/chirp/create"/>
+</acme:form>
