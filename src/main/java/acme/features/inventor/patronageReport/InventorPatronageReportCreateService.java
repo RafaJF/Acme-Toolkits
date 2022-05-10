@@ -1,6 +1,7 @@
 package acme.features.inventor.patronageReport;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import acme.entities.patronage.Patronage;
 import acme.entities.patronageReport.PatronageReport;
@@ -11,6 +12,7 @@ import acme.framework.controllers.Request;
 import acme.framework.services.AbstractCreateService;
 import acme.roles.Inventor;
 
+@Service
 public class InventorPatronageReportCreateService implements AbstractCreateService<Inventor, PatronageReport>{
 	
 	@Autowired
@@ -22,12 +24,18 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 	@Override
 	public boolean authorise(final Request<PatronageReport> request) {
 		assert request != null;
+		
+		boolean res;
+		int masterId;
+		Patronage patronage;
+		
+		masterId = request.getModel().getInteger("masterId");
+		patronage = this.inventorPatronageRepository.findOnePatronageById(masterId);
+		res = (patronage != null && request.isPrincipal(patronage.getInventor())
+			&& request.isPrincipal(patronage.getPatron()));
 
-		boolean result;
 
-		result = !request.getPrincipal().hasRole(Inventor.class);
-
-		return result;
+		return res;
 	}
 
 	@Override
@@ -48,7 +56,7 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 
 		request.unbind(entity, model, "sequenceNumber", "creationMoment","memorandum","moreInfo");
 		model.setAttribute("masterId", request.getModel().getAttribute("masterId"));
-		model.setAttribute("draftMode", entity.getPatronage());
+		model.setAttribute("confirmation", false);
 	}
 
 	@Override
@@ -60,7 +68,8 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		Patronage patronage;
 
 		masterId = request.getModel().getInteger("masterId");
-		patronage = this.inventorPatronageRepository.findOnePatronageById(masterId);
+		patronage=this.inventorPatronageRepository.findOnePatronageById(masterId);
+		
 
 		result = new PatronageReport();
 		result.setSequenceNumber("");
