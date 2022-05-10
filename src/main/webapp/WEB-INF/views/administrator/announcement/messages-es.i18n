@@ -1,0 +1,8 @@
+administrator.announcement.form.label.title = Título
+administrator.announcement.form.label.body = Cuerpo
+administrator.announcement.form.label.info = Información
+administrator.announcement.form.label.criticalFlag = Identificador crítico
+administrator.announcement.form.label.confirmation = Confirme que los datos del anuncio están correctamente cumplimentados
+administrator.announcement.form.button.create = Crear
+
+administrator.announcement.confirmation.error = Por favor, marque la casilla de confirmación 

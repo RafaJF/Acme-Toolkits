@@ -44,6 +44,7 @@ master.menu.authenticated.toolkit.list = Listado de kits de herramientas
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
+master.menu.administrator.announcement.create = Publicar un anuncio
 master.menu.administrator.administrator-dashboard = Panel de indicadores
 master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.system-configuration = Configuración del sistema
