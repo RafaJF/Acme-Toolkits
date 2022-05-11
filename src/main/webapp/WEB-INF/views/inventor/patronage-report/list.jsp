@@ -17,4 +17,4 @@
 
 <acme:button test="${showCreate}"
 	code="employer.duty.list.button.create"
-	action="/inventor/patronage-report/create?masterId=${masterId}" />
+	action="/inventor/patronage-report/create" />
