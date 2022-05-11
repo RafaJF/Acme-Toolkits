@@ -1,8 +1,0 @@
-key,enabled,identity,password,username
-user-account-anonymous-01,false,"UserIdentity{name: 'John', surname: 'Doe', email: 'john.doe@acme.com'}",HIDDEN-PASSWORD,anonymous
-user-account-administrator-01,true,"UserIdentity{name: 'Administrator', surname: 'Acme', email: 'administrator@acme.com'}",administrator,administrator
-user-account-inventor-01,true,"UserIdentity{name: 'Inventor', surname: 'One', email: 'inventor1@acme.com'}",inventor1,inventor1
-user-account-inventor-02,true,"UserIdentity{name: 'Inventor', surname: 'Two', email: 'inventor2@acme.com'}",inventor2,inventor2
-user-account-patron-01,true,"UserIdentity{name: 'Patron', surname: 'One', email: 'patron1@acme.com'}",patron1,patron1
-user-account-patron-02,true,"UserIdentity{name: 'Patron', surname: 'Two', email: 'patron2@acme.com'}",patron2,patron2
-user-account-inventor-03,true,"UserIdentity{name: 'Inventor', surname: 'Three', email: 'inventor3@acme.com'}",inventor3,inventor3
