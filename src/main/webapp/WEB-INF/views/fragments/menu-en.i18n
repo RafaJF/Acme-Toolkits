@@ -45,6 +45,7 @@ master.menu.authenticated.toolkit.list = Toolkit list
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
+master.menu.administrator.announcement.create = Publish a announcement
 master.menu.administrator.administrator-dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.system-configuration = System configuration
