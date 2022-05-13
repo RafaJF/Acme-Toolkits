@@ -6,9 +6,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.patronage.Patronage;
 import acme.entities.patronageReport.PatronageReport;
-import acme.features.inventor.patronage.InventorPatronageRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -20,9 +18,7 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 	
 	@Autowired
 	protected InventorPatronageReportRepository inventorPatronageReportRepository;
-	
-	@Autowired
-	protected InventorPatronageRepository inventorPatronageRepository;
+
 
 	@Override
 	public boolean authorise(final Request<PatronageReport> request) {
@@ -47,6 +43,7 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		assert model != null;
 
 		request.unbind(entity, model, "sequenceNumber", "creationMoment", "memorandum", "moreInfo");
+		model.setAttribute("confirmation", false);
 	}
 
 	@Override
@@ -54,14 +51,6 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		assert request != null;
 
 		PatronageReport result;
-		Patronage patronage;
-		Inventor inventor;
-
-		inventor = this.inventorPatronageReportRepository.findOneInventorById(request.getPrincipal().getActiveRoleId());
-		
-		patronage = new Patronage();
-		patronage.setInventor(inventor);
-		
 		
 		Date date;
 		date = Calendar.getInstance().getTime();
@@ -71,7 +60,6 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		result.setCreationMoment(date);
 		result.setMemorandum("");
 		result.setMoreInfo("");
-		result.setPatronage(patronage);
 		
 
 		return result;
@@ -83,6 +71,11 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		assert entity != null;
 		assert errors != null;
 		
+		boolean confirmation;
+		
+		confirmation = request.getModel().getBoolean("confirmation");
+		errors.state(request, confirmation, "confirmation", "inventor.patronageReport.error.confirmation");
+		
 		if(!errors.hasErrors("sequenceNumber")) {
 			PatronageReport duplicateCode;
 			duplicateCode = this.inventorPatronageReportRepository.findOnePatronageReportByCode(entity.getSequenceNumber());
@@ -91,7 +84,7 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		if(!errors.hasErrors("moreInfo")) {
 			boolean isUrl;
 			isUrl = (entity.getMoreInfo().startsWith("http") || entity.getMoreInfo().startsWith("www")) && entity.getMoreInfo().contains(".");
-			errors.state(request, isUrl == true, "moreInfo", "inventor.patronageReport.form.error.moreInfo");
+			errors.state(request, isUrl, "moreInfo", "inventor.patronageReport.form.error.moreInfo");
 		}
 	}
 

@@ -2,6 +2,7 @@
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
+
 <acme:list>
 	<acme:list-column
 		code="inventor.patronage-report.list.label.sequence-number"
@@ -15,6 +16,4 @@
 
 </acme:list>
 
-<acme:button test="${showCreate}"
-	code="employer.duty.list.button.create"
-	action="/inventor/patronage-report/create" />
+<acme:button code="inventor.patronage-report.form.button.create" action="/inventor/patronage-report/create" />
