@@ -13,6 +13,13 @@
 
 	<jstl:choose>
 		<jstl:when test="${command == 'create'}">
+		
+		<acme:input-select code="inventor.patronage-report.form.label.patronages" path="patronages">
+			<jstl:forEach items="${patronages}" var ="patronages">
+				<acme:input-option code="${patronages}" value="${patronages}"/>
+			</jstl:forEach>
+		</acme:input-select>
+		
 			<acme:input-checkbox code="administrator.announcement.form.label.confirmation" path="confirmation" />
 			<acme:submit code="inventor.patronage-report.form.button.create" action="/inventor/patronage-report/create" />
 			

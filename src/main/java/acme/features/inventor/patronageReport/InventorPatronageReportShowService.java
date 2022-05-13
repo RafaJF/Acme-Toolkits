@@ -39,7 +39,7 @@ public void unbind(final Request<PatronageReport> request, final PatronageReport
 	assert entity != null;
 	assert model != null;
 
-	request.unbind(entity, model,  "sequenceNumber", "creationMoment", "memorandum", "moreInfo", "patronage.code");
+	request.unbind(entity, model,  "sequenceNumber", "creationMoment", "memorandum", "moreInfo");
 	
 }
 }
