@@ -48,7 +48,7 @@ public class InventorToolkitListService implements AbstractListService<Inventor,
 		
 		final Collection<Toolkit> result = new HashSet<>();
 		for(final Toolkit t : toolkits) {
-			System.out.println(t.getCode());
+			
 			t.setTotalPrice(this.getTotalPrice(t));
 			
 				result.add(t);
