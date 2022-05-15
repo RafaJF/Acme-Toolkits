@@ -1,0 +1,19 @@
+inventor.quantity.list.label.item.code = Código
+inventor.quantity.list.label.item.name = Nombre
+inventor.quantity.list.label.item.itemType = Tipo
+inventor.quantity.list.label.item.retailPrice = Precio
+inventor.quantity.list.label.item.amount = Cantidad
+inventor.quantity.list.button.create = Añadir objeto
+
+inventor.quantity.form.label.toolkit.title = Titulo
+inventor.quantity.form.label.item.name = Nombre
+inventor.quantity.form.label.amount = Cantidad
+inventor.quantity.form.button.update = Actualizar
+inventor.quantity.form.button.delete = Eliminar
+inventor.quantity.form.button.create = Añadir
+inventor.quantity.form.error.amount = Solo puedes añadir una unidad de cada herramienta
+inventor.quantity.form.label.item.code = Código del Objeto
+inventor.quantity.form.label.item.technology = Tecnologia del objeto
+inventor.quantity.form.label.item.description = Descripción del objeto
+inventor.quantity.form.label.item.retaiLPrice = Precio del objeto
+inventor.quantity.form.label.item.itemType = Tipo del objeto

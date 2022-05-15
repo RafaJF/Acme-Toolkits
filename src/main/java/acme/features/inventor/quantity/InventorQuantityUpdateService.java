@@ -9,43 +9,37 @@ import org.springframework.stereotype.Service;
 import acme.entities.item.Item;
 import acme.entities.quantity.Quantity;
 import acme.entities.toolkit.Toolkit;
-import acme.features.inventor.toolkit.InventorToolkitRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
-import acme.framework.services.AbstractCreateService;
+import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
 @Service
-public class InventorQuantityCreateService implements AbstractCreateService<Inventor,Quantity>{
+public class InventorQuantityUpdateService implements AbstractUpdateService<Inventor,Quantity>{
 	@Autowired
-	protected InventorQuantityRepository repository;
-	@Autowired
-	protected InventorToolkitRepository toolkitRepository;
+	InventorQuantityRepository repository;
 	@Override
 	public boolean authorise(final Request<Quantity> request) {
 		assert request != null;
-		
 		boolean result;
-		int toolkitId;
 		Toolkit toolkit;
-		toolkitId = request.getModel().getInteger("id");
-		toolkit = this.toolkitRepository.findToolkitById(toolkitId);
-		result = toolkit != null && !toolkit.isPublished() && request.isPrincipal(toolkit.getInventor());
+		final int quantityId = request.getModel().getInteger("id");
+		toolkit = this.repository.findToolkitByQuantityId(quantityId);
+		result = !toolkit.isPublished() && request.isPrincipal(toolkit.getInventor());
 		return result;
-		
 	}
 
 	@Override
 	public void bind(final Request<Quantity> request, final Quantity entity, final Errors errors) {
+		
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
 		final String itemName;
 		Item item;
 		itemName = request.getModel().getString("item.name");
-		System.out.println("PRUEBA-1");
 		item = this.repository.findItemByName(itemName);
-		System.out.println("PRUEBA-2");
 		entity.setItem(item);
 		request.bind(entity, errors, "amount", "item.name", "toolkit.title");
 		
@@ -53,15 +47,15 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 
 	@Override
 	public void unbind(final Request<Quantity> request, final Quantity entity, final Model model) {
-		
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 	
 		request.unbind(entity, model, "amount", "item.name", "toolkit.title");
+		
 		model.setAttribute("id", request.getModel().getAttribute("id"));
 		model.setAttribute("published", entity.getToolkit().isPublished());
-		final Collection<Item> items ;
+		final Collection<Item> items;
 		final Collection<Item> publishedItems = new HashSet<>();
 		items = this.repository.findAllItems();
 		for(final Item i:items) {
@@ -74,23 +68,17 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 		
 		
 	}
-
+		
+	
 
 	@Override
-	public Quantity instantiate(final Request<Quantity> request) {
+	public Quantity findOne(final Request<Quantity> request) {
 		assert request != null;
-		Quantity result;
-		Item item;
-		int toolkitId;
-		toolkitId = request.getModel().getInteger("id");
-		Toolkit toolkit;
-		toolkit = this.toolkitRepository.findToolkitById(toolkitId);
-		result = new Quantity();
-		item = new Item();
-		result.setToolkit(toolkit);
-		result.setItem(item);
-		
-		return result;
+		int quantityId;
+		Quantity quantity;
+		quantityId = request.getModel().getInteger("id");
+		quantity = this.repository.findQuantityById(quantityId);
+		return quantity;
 	}
 
 	@Override
@@ -104,15 +92,11 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 		if(entity.getItem().getItemType().toString().equals("TOOL")) {
 			errors.state(request,entity.getAmount()<=1 && entity.getAmount()>=0 , "amount", "inventor.quantity.form.error.amount");
 		}
-		Quantity existingQuantity;
-		existingQuantity = this.repository.findQuantityByItemIdAndToolkitId(entity.getItem().getId(), entity.getToolkit().getId());
-		errors.state(request, existingQuantity == null, "item.name", "inventor.quantity.form.error.duplicated");
-		
-		
+
 	}
 
 	@Override
-	public void create(final Request<Quantity> request, final Quantity entity) {
+	public void update(final Request<Quantity> request, final Quantity entity) {
 		assert request != null;
 		assert entity != null;
 	

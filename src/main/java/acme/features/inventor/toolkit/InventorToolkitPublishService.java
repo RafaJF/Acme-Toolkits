@@ -1,8 +1,11 @@
 package acme.features.inventor.toolkit;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.quantity.Quantity;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -17,7 +20,12 @@ public class InventorToolkitPublishService implements AbstractUpdateService<Inve
 	@Override
 	public boolean authorise(final Request<Toolkit> request) {
 		assert request != null;
-		return true;
+		int toolkitId;
+		Toolkit toolkit;
+		toolkitId = request.getModel().getInteger("id");
+		toolkit = this.repository.findToolkitById(toolkitId);
+	
+		return !toolkit.isPublished() && request.isPrincipal(toolkit.getInventor());
 	}
 
 	@Override
@@ -28,7 +36,8 @@ public class InventorToolkitPublishService implements AbstractUpdateService<Inve
 		assert errors != null;
 
 		request.bind(entity, errors, "code", "title", "description", "assamblyNotes", "url","published");
-		
+		final Collection<Quantity> quantities = this.repository.findAllQuantityOfToolkit(entity);
+		errors.state(request, !quantities.isEmpty() , "published", "inventor.toolkit.form.error.published");
 	}
 
 	@Override
@@ -58,17 +67,14 @@ public class InventorToolkitPublishService implements AbstractUpdateService<Inve
 		assert entity != null;
 		assert errors != null;
 		
+		
 	}
 
 	@Override
 	public void update(final Request<Toolkit> request, final Toolkit entity) {
 		assert request != null;
 		assert entity != null;
-		if(entity.isPublished()) {
-			entity.setPublished(false);
-		}else {
-			entity.setPublished(true);
-		}
+		entity.setPublished(true);
 		
 		this.repository.save(entity);
 		

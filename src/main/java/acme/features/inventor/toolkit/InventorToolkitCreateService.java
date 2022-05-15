@@ -1,11 +1,8 @@
 package acme.features.inventor.toolkit;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.item.Item;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -31,9 +28,8 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "code", "title", "description", "assamblyNotes", "url","published");
-		final Collection<Item> items = this.repository.findAllItem();
-		request.getModel().setAttribute("items", items);
+		request.bind(entity, errors, "code", "title", "description", "assamblyNotes", "url");
+		
 		
 	}
 
@@ -43,9 +39,8 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "title", "description", "assamblyNotes", "url","published");
-		final Collection<Item> items = this.repository.findAllItem();
-		request.getModel().setAttribute("items", items);
+		request.unbind(entity, model, "code", "title", "description", "assamblyNotes", "url");
+		
 	}
 
 	@Override
@@ -61,6 +56,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		
 		result = new Toolkit();
 		result.setInventor(inventor);
+		result.setPublished(false);
 		
 		return result;
 	}
@@ -70,16 +66,17 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-//		if(!errors.hasErrors("code")) {
-//			Toolkit existingToolkit;
-//			existingToolkit = this.repository.findToolkitByCode(entity.getCode());
-//			errors.state(request, existingToolkit == null , "code", "inventor.toolkit.form.error.duplicated");
-//		}
-//		if(!errors.hasErrors("url")) {
-//			boolean isUrl;
-//			isUrl = (entity.getUrl().startsWith("http") || entity.getUrl().startsWith("www")) && entity.getUrl().contains(".");
-//			errors.state(request, isUrl == true, "url", "inventor.toolkit.form.error.url");
-//		}
+		if(!errors.hasErrors("code")) {
+			Toolkit existingToolkit;
+			existingToolkit = this.repository.findToolkitByCode(entity.getCode());
+			errors.state(request, existingToolkit == null , "code", "inventor.toolkit.form.error.duplicated");
+		}
+		if(!errors.hasErrors("url")) {
+			boolean isUrl;
+			isUrl = (entity.getUrl().startsWith("http") || entity.getUrl().startsWith("www")) && entity.getUrl().contains(".");
+			errors.state(request, isUrl == true, "url", "inventor.toolkit.form.error.url");
+		}
+		
 		
 	}
 

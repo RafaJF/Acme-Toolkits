@@ -1,0 +1,19 @@
+inventor.quantity.list.label.item.code = Item's code
+inventor.quantity.list.label.item.name = Item's name
+inventor.quantity.list.label.item.itemType = Item's type
+inventor.quantity.list.label.item.retailPrice = Retail price
+inventor.quantity.list.label.item.amount = Amount
+inventor.quantity.list.button.create = Add Item
+
+inventor.quantity.form.label.toolkit.title = Toolkit's title
+inventor.quantity.form.label.item.name = Item's name
+inventor.quantity.form.label.amount = Amount
+inventor.quantity.form.button.update = Update
+inventor.quantity.form.button.delete = Delete
+inventor.quantity.form.button.create = Add
+inventor.quantity.form.error.amount = You can only add one unit of each tool to the toolkit 
+inventor.quantity.form.label.item.code = Item's code
+inventor.quantity.form.label.item.technology = Item's technology
+inventor.quantity.form.label.item.description = Item's description
+inventor.quantity.form.label.item.retaiLPrice = Item's retail price
+inventor.quantity.form.label.item.itemType = Item's type
