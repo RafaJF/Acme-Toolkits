@@ -1,6 +1,6 @@
 administrator.announcement.form.label.title = Title
 administrator.announcement.form.label.body = Body
-administrator.announcement.form.label.info = Info
+administrator.announcement.form.label.info = Information
 administrator.announcement.form.label.criticalFlag = Critical Flag
 administrator.announcement.form.label.confirmation = Confirm that the announcement data is correctly filled in
 administrator.announcement.form.button.create = Create
