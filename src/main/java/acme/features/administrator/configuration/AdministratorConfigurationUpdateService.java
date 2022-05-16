@@ -60,6 +60,18 @@ public class AdministratorConfigurationUpdateService implements AbstractUpdateSe
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
+		if(!errors.hasErrors("systemCurrency")) {
+			errors.state(request, entity.getAcceptedCurrencies().contains(entity.getSystemCurrency()) , "systemCurrency", "administrator.configuration.form.error.systemCurrency");
+		}
+		
+		if(!errors.hasErrors("strongSpamTreshold")) {
+			errors.state(request, entity.getStrongThreshold()>0 && entity.getStrongThreshold()<=100, "strongTreshold", "administrator.configuration.form.error.strongTreshold");
+		}
+
+		if(!errors.hasErrors("weakSpamTreshold")) {
+			errors.state(request, entity.getWeakThreshold()>0 && entity.getWeakThreshold()<=100, "weakTreshold", "administrator.configuration.form.error.weakTreshold");
+		}
 
 	}
 	
