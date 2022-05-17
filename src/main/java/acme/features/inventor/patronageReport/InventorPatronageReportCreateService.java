@@ -3,6 +3,7 @@ package acme.features.inventor.patronageReport;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,16 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "sequenceNumber", "creationMoment", "memorandum", "moreInfo");
+		
+		
+		String patronageCode;
+		Patronage patronage;
+		
+		patronageCode = request.getModel().getString("patronage.code");
+		patronage=this.patronageRepository.findPatronagesByCode(patronageCode);
+		entity.setPatronage(patronage);
+		
+		request.bind(entity, errors, "sequenceNumber", "creationMoment", "memorandum", "moreInfo","patronage.code");
 		
 		
 	}
@@ -50,10 +60,19 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "sequenceNumber", "creationMoment", "memorandum", "moreInfo");
+		request.unbind(entity, model, "sequenceNumber", "creationMoment", "memorandum", "moreInfo","patronage.code");
+		model.setAttribute("id", request.getModel().getAttribute("id"));
 		model.setAttribute("confirmation", false);
 		final Collection<Patronage> patronages = this.patronageRepository.findPatronagesByInventorId(request.getPrincipal().getActiveRoleId());
-		model.setAttribute("patronages", patronages);
+		final Collection<Patronage> publishedPatronages = new HashSet<>();
+		
+		for(final Patronage p:patronages) {
+			if(p.isPublished()) {
+				publishedPatronages.add(p);
+			}
+		}
+		
+		model.setAttribute("publishedPatronages", publishedPatronages);
 		
 	}
 
@@ -63,15 +82,18 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		assert request != null;
 		
 		PatronageReport result;
+		Patronage patronage;
+		
+		patronage = new Patronage();
 		
 		Date date;
 		date = Calendar.getInstance().getTime();
 		
 		result = new PatronageReport();
-		result.setSequenceNumber("");
 		result.setCreationMoment(date);
-		result.setMemorandum("");
-		result.setMoreInfo("");
+		result.setPatronage(patronage);
+		result.setPublished(false);
+
 		
 
 		return result;
