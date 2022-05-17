@@ -52,7 +52,6 @@ public class AdministratorConfigurationUpdateService implements AbstractUpdateSe
         request.unbind(entity, model, "systemCurrency", "acceptedCurrencies", "strongSpamTermsEn", "strongSpamTermsEs",
             "strongThreshold", "weakSpamTermsEn", "weakSpamTermsEs","weakThreshold");
         model.setAttribute("confirmation", false);
-        model.setAttribute("readonly", true);
     }
 	
 	@Override
