@@ -40,14 +40,12 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		final String itemName;
+		int itemId;
 		Item item;
-		itemName = request.getModel().getString("item.name");
-		System.out.println("PRUEBA-1");
-		item = this.repository.findItemByName(itemName);
-		System.out.println("PRUEBA-2");
+		itemId = request.getModel().getInteger("item.id");
+		item = this.repository.findItemById(itemId);
 		entity.setItem(item);
-		request.bind(entity, errors, "amount", "item.name", "toolkit.title");
+		request.bind(entity, errors, "amount", "item.id", "toolkit.title");
 		
 	}
 
@@ -106,7 +104,7 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 		}
 		Quantity existingQuantity;
 		existingQuantity = this.repository.findQuantityByItemIdAndToolkitId(entity.getItem().getId(), entity.getToolkit().getId());
-		errors.state(request, existingQuantity == null, "item.name", "inventor.quantity.form.error.duplicated");
+		errors.state(request, existingQuantity == null, "item.id", "inventor.quantity.form.error.duplicated");
 		
 		
 	}
