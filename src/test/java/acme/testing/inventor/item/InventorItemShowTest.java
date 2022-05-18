@@ -36,7 +36,7 @@ public class InventorItemShowTest extends TestHarness{
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/item/showComponents.csv", encoding = "utf-8", numLinesToSkip = 1)
-	@Order(10)
+	@Order(20)
 	public void positiveComponentTest(final int recordIndex,final String name, final String code,final String technology, final String description, final String retailPrice,
 		final String info) {
 			
