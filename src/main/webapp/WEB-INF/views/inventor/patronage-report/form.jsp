@@ -16,12 +16,12 @@
 		
 		<acme:input-select code="inventor.patronage-report.form.label.patronages" path="patronage.code">
 			<jstl:forEach items="${publishedPatronages}" var ="patronage">
-				<acme:input-option code="${patronage.code}" value="${publishedPatronages}"/>
+				<acme:input-option code="${patronage.code}" value="${patronage.code}"/>
 			</jstl:forEach>
 		</acme:input-select>
 		
 			<acme:input-checkbox code="administrator.announcement.form.label.confirmation" path="confirmation" />
-			<acme:submit code="inventor.patronage-report.form.button.create" action="/inventor/patronage-report/create?id=${id}" />
+			<acme:submit code="inventor.patronage-report.form.button.create" action="/inventor/patronage-report/create" />
 			
 		</jstl:when>
 	</jstl:choose>

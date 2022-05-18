@@ -19,4 +19,4 @@
 
 </acme:list>
 
-<acme:button code="inventor.patronage-report.form.button.create" action="/inventor/patronage-report/create?id=${id}" />
+<acme:button code="inventor.patronage-report.form.button.create" action="/inventor/patronage-report/create" />

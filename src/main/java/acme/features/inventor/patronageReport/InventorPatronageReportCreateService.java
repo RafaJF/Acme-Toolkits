@@ -61,7 +61,7 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		assert model != null;
 
 		request.unbind(entity, model, "sequenceNumber", "creationMoment", "memorandum", "moreInfo","patronage.code");
-		model.setAttribute("id", request.getModel().getAttribute("id"));
+		
 		model.setAttribute("confirmation", false);
 		final Collection<Patronage> patronages = this.patronageRepository.findPatronagesByInventorId(request.getPrincipal().getActiveRoleId());
 		final Collection<Patronage> publishedPatronages = new HashSet<>();
