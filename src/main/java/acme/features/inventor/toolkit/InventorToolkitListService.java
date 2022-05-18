@@ -33,7 +33,7 @@ public class InventorToolkitListService implements AbstractListService<Inventor,
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "title", "totalPrice");
+		request.unbind(entity, model, "code", "title", "totalPrice","published");
 	}
 	
 	
@@ -48,10 +48,11 @@ public class InventorToolkitListService implements AbstractListService<Inventor,
 		
 		final Collection<Toolkit> result = new HashSet<>();
 		for(final Toolkit t : toolkits) {
+			
 			t.setTotalPrice(this.getTotalPrice(t));
-			if(t.isPublished()) {
+			
 				result.add(t);
-			}
+			
 		}
 		
 		return result;

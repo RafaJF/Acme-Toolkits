@@ -16,5 +16,16 @@
 		<acme:input-option code="TOOL" value="TOOL" selected="${itemType == 'TOOL'}"/>
 	</acme:input-select>
 	<acme:input-checkbox code="inventor.item.form.label.published" path="published"/>
+	
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') && published == false}">
+			<acme:submit code="inventor.item.form.button.update" action="/inventor/item/update"/>
+			<acme:submit code="inventor.item.form.button.delete" action="/inventor/item/delete"/>
+			<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish"/>
+		</jstl:when>
+		<jstl:when test="${command == 'create'}">
+			<acme:submit code="inventor.item.list.button.create" action="/inventor/item/create"/>
+		</jstl:when>
+	</jstl:choose>
 
 </acme:form>
