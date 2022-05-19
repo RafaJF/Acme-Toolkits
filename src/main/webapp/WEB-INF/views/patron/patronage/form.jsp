@@ -6,18 +6,30 @@
 <acme:form>
 
 	<jstl:choose>
-		<jstl:when test="${published == true}">
-			<acme:input-select code="patron.patronage.form.label.status" path="status">
+	
+		<jstl:when test="${published==true}">
+			<acme:input-select code="patron.patronage.form.label.status" path="status" readonly="true">
 				<acme:input-option code="patron.patronage.form.label.proposed" value="PROPOSED" selected="${status == 'PROPOSED'}"/>
 				<acme:input-option code="patron.patronage.form.label.accepted" value="ACCEPTED" selected="${status == 'ACCEPTED'}"/>
 				<acme:input-option code="patron.patronage.form.label.denied" value="DENIED" selected="${status == 'DENIED'}"/>
 			</acme:input-select>
 		</jstl:when>
 	</jstl:choose>
-
+	
+	<jstl:choose>
+		<jstl:when test="${command == 'create' }">
+			<acme:input-textbox code="patron.patronage.form.label.code" path="code"/>
+		</jstl:when>
+	</jstl:choose>
+	
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(command, 'show,update,delete,publish')}">
+			<acme:input-textbox code="patron.patronage.form.label.code" path="code" readonly="true"/>
+		</jstl:when>
+	</jstl:choose>
 	
 	
-		<acme:input-textbox code="patron.patronage.form.label.code" path="code"/>
+		
 		<acme:input-textarea code="patron.patronage.form.label.legal-stuff" path="legalStuff"/>
 		<acme:input-money code="patron.patronage.form.label.budget" path="budget"/>
 		
@@ -42,18 +54,17 @@
 					<acme:input-option code="${inventor.getUserAccount().getUsername()}" value="${inventor.getId()}" selected="${ inventor.getId() == inventId }"/>
 				</jstl:forEach>
 			</acme:input-select>
-			<acme:input-textbox code="patron.patronage.label.inventor-full-name" path="inventorFullName"/>
-			<acme:input-textbox code="patron.patronage.label.inventor-email" path="inventorEmail"/>
+
 
 		</jstl:when>
 		
 		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish')}">
 
-			<acme:input-textbox code="patron.patronage.label.inventor-full-name" path="inventorFullName"/>
-			<acme:input-textbox code="patron.patronage.label.inventor-email" path="inventorEmail"/>
-			<acme:input-textbox code="patron.patronage.label.inventor-company" path="inventorCompany"/>
-			<acme:input-textbox code="patron.patronage.label.inventor-statement" path="inventorStatement"/>
-			<acme:input-textbox code="patron.patronage.label.inventor-info" path="inventorInfo"/>
+			<acme:input-textbox code="patron.patronage.label.inventor-full-name" path="inventorFullName" readonly="true"/>
+			<acme:input-textbox code="patron.patronage.label.inventor-email" path="inventorEmail" readonly="true"/>
+			<acme:input-textbox code="patron.patronage.label.inventor-company" path="inventorCompany" readonly="true"/>
+			<acme:input-textbox code="patron.patronage.label.inventor-statement" path="inventorStatement" readonly="true"/>
+			<acme:input-textbox code="patron.patronage.label.inventor-info" path="inventorInfo" readonly="true"/>
 		</jstl:when>
 		
 	</jstl:choose>

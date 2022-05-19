@@ -21,6 +21,8 @@ patron.patronage.form.label.proposed = Proposed
 patron.patronage.form.label.accepted = Accepted
 patron.patronage.form.label.denied = Denied
 
+patron.patronage.form.label.inventor = Inventor
+
 patron.patronage.form.button.update = Update
 patron.patronage.form.button.delete = Delete
 patron.patronage.form.button.create = Create
@@ -31,7 +33,7 @@ patron.patronage.label.inventor-company = Inventor's company
 patron.patronage.label.inventor-statement = Inventor's statement
 patron.patronage.label.inventor-info = More info about inventor
 
-patron.patronage.form.error.code= This code already exist
+patron.patronage.form.error.code-exists= This code already exists
 patron.patronage.form.error.budget-currency= This currency is invalid
 patron.patronage.form.error.budget-amount= This amount can't be negative
 patron.patronage.form.error.start-date = Start date must starting at least one month after the patronage is created

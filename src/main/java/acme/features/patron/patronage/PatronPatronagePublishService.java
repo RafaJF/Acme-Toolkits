@@ -54,8 +54,7 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		//entity.setInventor(this.repository.findInventorById(Integer.valueOf(request.getModel().getAttribute("inventorId").toString())).orElse(null));
-
+	
 		request.bind(entity, errors, "code", "legalStuff", "budget", "startDate", "endDate", "moreInfo");
 	}
 
@@ -68,7 +67,10 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
         if(!errors.hasErrors("code")) {
         	
         	final Patronage patronageByCode =  this.repository.findPatronageByCode(entity.getCode());
-        	errors.state(request, patronageByCode == null, "code", "patron.patronage.form.error.code");
+        	if(patronageByCode != null) {
+        		errors.state(request, patronageByCode.getId() == entity.getId(), "code", "patron.patronage.form.error.code-exists");
+        	}
+        	
         }
         
 		if (!errors.hasErrors("budget")) {
@@ -87,14 +89,9 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 			errors.state(request, entity.getBudget().getAmount() > 0, "budget", "patron.patronage.form.error.budget-amount");
 		}
 
-           ////HAY QUE SEGUIR POR AQUIII
 		
 		if(!errors.hasErrors("startDate")) {
 				
-//			final Calendar calendar = Calendar.getInstance();
-//			calendar.add(Calendar.MONTH, 1);
-//			calendar.add(Calendar.MILLISECOND, -1);
-
 			final Date startDateMin = DateUtils.addMonths(entity.getCreationMoment(), 1);
 			
 			errors.state(request, entity.getStartDate().after(startDateMin), "startDate", "patron.patronage.form.error.start-date");			
@@ -117,7 +114,7 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "legalStuff", "budget", "startDate", "endDate", "moreInfo", "inventorId","inventorFullname", "inventorEmail");
+		request.unbind(entity, model, "code", "legalStuff", "budget", "startDate", "endDate", "moreInfo", "inventorId");
 		model.setAttribute("inventors", this.repository.findInventors());
 		model.setAttribute("inventorId", entity.getInventor().getId());
 	}

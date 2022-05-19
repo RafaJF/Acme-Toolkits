@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.patronage.Patronage;
+import acme.entities.patronageReport.PatronageReport;
 import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Inventor;
@@ -21,9 +22,6 @@ public interface PatronPatronageRepository extends AbstractRepository{
 	
 	@Query("select patron from Patron patron WHERE patron.id=:id")
 	Patron findPatronById(int id);
-	
-    @Query("select i from Inventor i WHERE i.userAccount.username = :username")
-    Inventor findInventorByUsername(String username);
     
     @Query("select i from Inventor i WHERE i.id = :id")
     Inventor findInventorById(int id);
@@ -36,4 +34,7 @@ public interface PatronPatronageRepository extends AbstractRepository{
 	
     @Query("select i from Inventor i")
     Collection<Inventor> findInventors();
+	
+	@Query("SELECT pr FROM PatronageReport pr WHERE pr.patronage.id =:id")
+	Collection<PatronageReport> findAllPatronageReportsOfPatronages(Integer id);
 }
