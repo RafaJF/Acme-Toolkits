@@ -5,13 +5,19 @@
 
 <acme:form>
 
-	<acme:input-textbox		code="inventor.patronage-report.form.label.sequence-number"		path="sequenceNumber" />
+	
 	<acme:input-moment		code="inventor.patronage-report.form.label.creation-moment"		path="creationMoment"   readonly="true"/>
 	<acme:input-textarea code="inventor.patronage-report.form.label.memorandum"		path="memorandum" />
 	<acme:input-url code="inventor.patronage-report.form.label.more-info"		path="moreInfo" />
-<%--     <acme:input-textbox		code="inventor.patronage-report.form.label.patronage.code"		path="patronage.code" /> --%>
+
 
 	<jstl:choose>
+		
+		<jstl:when test="${command == 'show'}">
+			<acme:input-textbox		code="inventor.patronage-report.form.label.sequence-number"		path="sequenceNumber" />
+			<acme:input-textbox		code="inventor.patronage-report.form.label.patronage.code"	path="patronage.code" />
+		</jstl:when>
+	
 		<jstl:when test="${command == 'create'}">
 		
 		<acme:input-select code="inventor.patronage-report.form.label.patronages" path="patronage.code">
@@ -24,5 +30,6 @@
 			<acme:submit code="inventor.patronage-report.form.button.create" action="/inventor/patronage-report/create" />
 			
 		</jstl:when>
+		
 	</jstl:choose>
 </acme:form>

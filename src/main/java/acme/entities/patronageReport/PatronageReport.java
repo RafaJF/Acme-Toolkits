@@ -46,7 +46,6 @@ public class PatronageReport extends AbstractEntity{
 	@URL
 	protected String moreInfo;
 	
-	protected boolean published;
 
 	// Relationships ----------------------------------------------------------
 	

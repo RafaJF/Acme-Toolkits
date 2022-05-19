@@ -30,7 +30,7 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 	public boolean authorise(final Request<PatronageReport> request) {
 		
 		assert request != null;
-		
+
 		return true;
 	}
 
@@ -48,8 +48,22 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		patronageCode = request.getModel().getString("patronage.code");
 		patronage=this.patronageRepository.findPatronagesByCode(patronageCode);
 		entity.setPatronage(patronage);
-		
-		request.bind(entity, errors, "sequenceNumber", "creationMoment", "memorandum", "moreInfo","patronage.code");
+		//
+		final Integer numPatronageReports = this.reportRepository.numOfPatronagesReportByPatronage(patronageCode)+1;
+		final String sequence = numPatronageReports.toString();
+		String sequenceNumber;
+		if(sequence.length() == 1) {
+			sequenceNumber = patronageCode + ":000" + sequence;
+		}else if(sequence.length() == 2){
+			sequenceNumber = patronageCode + ":" + "00" + sequence ;
+		}else if(sequence.length() ==3) {
+			sequenceNumber = patronageCode + ":" + "0" + sequence;
+		}else {
+			sequenceNumber = patronageCode + ":" +sequence;
+		}
+		entity.setSequenceNumber(sequenceNumber);
+		//
+		request.bind(entity, errors,"creationMoment", "memorandum", "moreInfo","patronage.code");
 		
 		
 	}
@@ -60,7 +74,7 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "sequenceNumber", "creationMoment", "memorandum", "moreInfo","patronage.code");
+		
 		
 		model.setAttribute("confirmation", false);
 		final Collection<Patronage> patronages = this.patronageRepository.findPatronagesByInventorId(request.getPrincipal().getActiveRoleId());
@@ -73,6 +87,9 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		}
 		
 		model.setAttribute("publishedPatronages", publishedPatronages);
+		
+		request.unbind(entity, model, "creationMoment", "memorandum", "moreInfo","patronage.code");
+		
 		
 	}
 
@@ -92,9 +109,6 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		result = new PatronageReport();
 		result.setCreationMoment(date);
 		result.setPatronage(patronage);
-		result.setPublished(false);
-
-		
 
 		return result;
 	}
@@ -120,6 +134,7 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 			isUrl = (entity.getMoreInfo().startsWith("http") || entity.getMoreInfo().startsWith("www")) && entity.getMoreInfo().contains(".");
 			errors.state(request, isUrl, "moreInfo", "inventor.patronageReport.form.error.moreInfo");
 		}
+		
 		
 	}
 

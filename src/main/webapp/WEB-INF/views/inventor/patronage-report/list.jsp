@@ -9,13 +9,11 @@
 		path="sequenceNumber" width="20%" />
 	<acme:list-column
 		code="inventor.patronage-report.list.label.creation-moment"
-		path="creationMoment" width="15%" />
+		path="creationMoment" width="20%" />
 	<acme:list-column
 		code="inventor.patronage-report.list.label.memorandum"
-		path="memorandum" width="35%" />
-		<acme:list-column
-		code="inventor.patronage-report.list.label.published"
-		path="published" width="25%" />
+		path="memorandum" width="60%" />
+		
 
 </acme:list>
 
