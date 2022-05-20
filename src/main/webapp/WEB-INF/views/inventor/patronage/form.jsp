@@ -17,4 +17,27 @@
 	<acme:input-moment code="inventor.patronage.form.label.end-date" path="endDate"/>
 	<acme:input-url code="inventor.patronage.form.label.more-info" path="moreInfo"/>
 	<acme:input-textbox code="inventor.patronage.form.label.patron" path="company"/>
+	
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(command, 'show, update') && status =='PROPOSED'}">
+			<acme:submit code="inventor.patronage.form.button.updateStatus" action="/inventor/patronage/update-status"/>
+			
+		</jstl:when>
+		<jstl:when test="${command == 'show' && status != 'PROPOSED'}">
+			<h2><acme:message code="inventor.patronage.message.patron"/></h2>
+			<acme:input-textbox code="inventor.patronage.form.label.patron.username" path="username"/>
+			<acme:input-textbox code="inventor.patronage.form.label.patron.company" path="company"/>
+			<acme:input-textbox code="inventor.patronage.form.label.patron.statement" path="statement"/>
+			<acme:input-url code="inventor.patronage.form.label.patron.info" path="patronLink"/>
+		
+			<acme:button code="inventor.patronage.form.button.patronageReport" action="/inventor/patronage-report/list?patronageId=${patronageId}"/>
+		</jstl:when>
+	</jstl:choose>
+			
+		
+			
+		
+		
+		
+	
 </acme:form>

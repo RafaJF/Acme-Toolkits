@@ -6,3 +6,9 @@ administrator.configuration.form.label.strong-threshhold = Strong threshhold:
 administrator.configuration.form.label.weak-spam-terms-en = Weak spam terms (English):
 administrator.configuration.form.label.weak-spam-terms-es = Weak spam terms (Spanish):
 administrator.configuration.form.label.weak-threshhold = Weak threshhold:
+
+administrator.configuration.form.button.update = Update Configuration
+
+administrator.configuration.form.error.systemCurrency = The currency must be in accepted currencies
+administrator.configuration.form.error.strongTreshold = The value must be beetween 0 and 100
+administrator.configuration.form.error.weakTreshold = The value must be beetween 0 and 100

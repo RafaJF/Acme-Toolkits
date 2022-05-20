@@ -6,8 +6,12 @@ import java.util.HashSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.item.Item;
+import acme.entities.moneyExchange.MoneyExchange;
 import acme.entities.quantity.Quantity;
 import acme.entities.toolkit.Toolkit;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.datatypes.Money;
@@ -19,6 +23,8 @@ public class InventorToolkitListService implements AbstractListService<Inventor,
 	
 	@Autowired
 	protected InventorToolkitRepository repository;
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository systemConfigRepository;
 
 	@Override
 	public boolean authorise(final Request<Toolkit> request) {
@@ -33,7 +39,7 @@ public class InventorToolkitListService implements AbstractListService<Inventor,
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "title", "totalPrice");
+		request.unbind(entity, model, "code", "title", "totalPrice","published");
 	}
 	
 	
@@ -48,10 +54,11 @@ public class InventorToolkitListService implements AbstractListService<Inventor,
 		
 		final Collection<Toolkit> result = new HashSet<>();
 		for(final Toolkit t : toolkits) {
+			
 			t.setTotalPrice(this.getTotalPrice(t));
-			if(t.isPublished()) {
+			
 				result.add(t);
-			}
+			
 		}
 		
 		return result;
@@ -60,14 +67,44 @@ public class InventorToolkitListService implements AbstractListService<Inventor,
 	private Money getTotalPrice(final Toolkit t) {
         final Collection<Quantity> quantities = this.repository.findAllQuantityOfToolkit(t);
         final Money result = new Money();
-        result.setCurrency("EUR");
+        final String systemCurrency = this.systemConfigRepository.findSystemConfiguration().getSystemCurrency();
+        result.setCurrency(systemCurrency);
         result.setAmount(0.);
         for(final Quantity q:quantities) {
 
+                final String itemCurrency = q.getItem().getRetailPrice().getCurrency();
+                if (!itemCurrency.equals(systemCurrency)) {
+                	final Money newRetailPrice = this.moneyExchangeItems(q.getItem());
+            		q.getItem().setRetailPrice(newRetailPrice);
+                }
                 final Money itemPrice = q.getItem().getRetailPrice();
                 result.setAmount(result.getAmount()+ itemPrice.getAmount()*q.getAmount());
 
         }
         return result;
     }
+	
+	//Método auxiliar cambio de divisa
+	public Money moneyExchangeItems(final Item i) {
+		final String itemCurrency = i.getRetailPrice().getCurrency();
+			
+		final AuthenticatedMoneyExchangePerformService moneyExchange = new AuthenticatedMoneyExchangePerformService();
+		final String systemCurrency = this.systemConfigRepository.findSystemConfiguration().getSystemCurrency();
+		final Double conversionAmount;
+				
+		if(!systemCurrency.equals(itemCurrency)) {
+			MoneyExchange conversion;
+			conversion = moneyExchange.computeMoneyExchange(i.getRetailPrice(), systemCurrency);
+			conversionAmount = conversion.getTarget().getAmount();	
+		}
+		else {
+			conversionAmount = i.getRetailPrice().getAmount();
+		}
+			
+		final Money newBudget = new Money();
+		newBudget.setAmount(conversionAmount);
+		newBudget.setCurrency(systemCurrency);
+			
+		return newBudget;
+	}
 }

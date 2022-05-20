@@ -13,3 +13,16 @@ any.chirp.list.label.title = Título
 any.chirp.list.label.autor = Autor
 any.chirp.list.label.body = Cuerpo
 any.chirp.list.label.email = Correo electrónico
+any.chirp.list.button.create = Crear
+
+any.chirp.form.label.creation-moment = Fecha de creación
+any.chirp.form.label.title = Título
+any.chirp.form.label.autor = Autor
+any.chirp.form.label.body = Cuerpo
+any.chirp.form.label.email = Email
+any.chirp.form.button.create = Crear 
+any.chirp.form.label.confirmation = Confirmar
+
+any.chirp.form.error.title = Titulo menor que 100 caracteres
+any.chirp.form.error.autor = Autor menor que 100 caracteres
+any.chirp.form.error.body = Body menor que 256 caracteres

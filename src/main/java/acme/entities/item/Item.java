@@ -58,8 +58,6 @@ public class Item extends AbstractEntity{
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	protected ItemType itemType;
-
-
 	
 	protected boolean published;
 	

@@ -12,7 +12,7 @@ authenticated.patron.patron.form.title.create = Become an patron
 authenticated.patron.patron.form.title.update = Update patron data
 
 authenticated.patron.form.label.company = Company: 
-authenticated.patron.form.label.sector = Sector:
+authenticated.patron.form.label.statement = Sector:
 authenticated.patron.form.label.info = Info:
 
 authenticated.patron.form.button.create = Register

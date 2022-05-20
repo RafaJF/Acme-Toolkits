@@ -6,3 +6,9 @@ administrator.configuration.form.label.strong-threshhold = Umbral fuerte:
 administrator.configuration.form.label.weak-spam-terms-en = Términos de spam débiles (Inglés):
 administrator.configuration.form.label.weak-spam-terms-es = Términos de spam débiles (Español):
 administrator.configuration.form.label.weak-threshhold = Umbral débil:
+
+administrator.configuration.form.button.update = Actualizar Configuración
+
+administrator.configuration.form.error.systemCurrency = La divisa introducida debe estar entre las aceptadas
+administrator.configuration.form.error.strongTreshold = El valor introducido debe estar entre 0 y 100
+administrator.configuration.form.error.weakTreshold = El valor introducido debe estar entre 0 y 100
