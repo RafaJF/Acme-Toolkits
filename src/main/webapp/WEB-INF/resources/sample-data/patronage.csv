@@ -1,4 +1,3 @@
-key,key:inventor,key:patron,status,code,legal-stuff,budget,creation-moment,start-date,end-date,more-info,published
 patronage-01,inventor-01,patron-01,ACCEPTED,ABC-123,Example,EUR 150.0,2021/10/10 10:00,2021/11/15 10:00,2021/12/21 10:00,https://moreinfo.com,true
 patronage-02,inventor-02,patron-01,DENIED,DEF-456,texto con 100 caracteres: rellenoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,EUR 1000.0,2021/10/15 10:00,2021/11/20 10:00,2021/12/25 10:00,https://moreinfo.com,true
 patronage-03,inventor-01,patron-02,PROPOSED,GHI-789,Example,USD 125.0,2021/10/20 10:00,2021/11/22 10:00,2021/12/26 10:00,null,true
