@@ -1,2 +1,2 @@
-recordIndex,itemRecordIndex,name,code,technology,amount
-2,0,z,COM-105,limited,1
+recordIndex,itemRecordIndex,option,amount,name,type
+2,6,z - COMPONENT,1,z,COMPONENT

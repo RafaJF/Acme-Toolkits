@@ -61,10 +61,15 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 		model.setAttribute("published", entity.getToolkit().isPublished());
 		final Collection<Item> items ;
 		final Collection<Item> publishedItems = new HashSet<>();
+		
 		items = this.repository.findAllItems();
+
 		for(final Item i:items) {
 			if(i.isPublished()) {
-				publishedItems.add(i);
+				final Quantity q = this.repository.findQuantityByItemIdAndToolkitId(i.getId(), entity.getToolkit().getId());
+				if(q == null) {
+					publishedItems.add(i);
+				}
 			}
 		}
 		model.setAttribute("publishedItems", publishedItems);
@@ -102,9 +107,7 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 		if(entity.getItem().getItemType().toString().equals("TOOL")) {
 			errors.state(request,entity.getAmount()<=1 && entity.getAmount()>=0 , "amount", "inventor.quantity.form.error.amount");
 		}
-		Quantity existingQuantity;
-		existingQuantity = this.repository.findQuantityByItemIdAndToolkitId(entity.getItem().getId(), entity.getToolkit().getId());
-		errors.state(request, existingQuantity == null, "item.id", "inventor.quantity.form.error.duplicated");
+		
 		
 		
 	}
