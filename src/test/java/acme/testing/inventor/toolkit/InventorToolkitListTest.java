@@ -10,8 +10,8 @@ public class InventorToolkitListTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/toolkit/list.csv", encoding ="utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positiveTest(final int recordIndex, final int itemRecordIndex, final String code, final String title, final String description, final String assamblyNotes, final String url, final String totalPrice,
-		final String itemName, final String itemCode, final String technology,final String itemDescription, final String retailPrice, final String itemType, final String amount) {
+	public void positiveTest(final int recordIndex, final int itemRecordIndex, final String code, final String title, final String description, final String assamblyNotes, final String url, final String totalPrice, 
+		final String name, final String technology, final String retailPrice, final String info, final String itemType, final String published) {
 		
 		super.signIn("inventor1", "inventor1");
 		super.clickOnMenu("Inventor", "List my toolkits");
@@ -33,24 +33,16 @@ public class InventorToolkitListTest extends TestHarness {
 		super.clickOnButton("Items");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
-		super.checkColumnHasValue(itemRecordIndex, 0, itemCode);
-		super.checkColumnHasValue(itemRecordIndex, 1, itemName);
-		super.checkColumnHasValue(itemRecordIndex, 2, itemType);
-		super.checkColumnHasValue(itemRecordIndex, 3, retailPrice);
-		super.checkColumnHasValue(itemRecordIndex, 4, amount);
-		super.clickOnListingRecord(itemRecordIndex);
+		super.checkColumnHasValue(recordIndex, 0, name);
+		super.checkColumnHasValue(recordIndex, 2, retailPrice);
+		
+		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
-		
-
-		super.checkInputBoxHasValue("item.name", itemName);
-		super.checkInputBoxHasValue("item.code", itemCode);
-		super.checkInputBoxHasValue("item.technology", technology);
-		super.checkInputBoxHasValue("item.description", itemDescription);
-		super.checkInputBoxHasValue("item.retailPrice", retailPrice);
-		super.checkInputBoxHasValue("item.itemType", itemType);
-		super.checkInputBoxHasValue("amount", amount);
-		super.signOut();
-		
+		super.checkInputBoxHasValue("name", name);
+		super.checkInputBoxHasValue("technology", technology);
+		super.checkInputBoxHasValue("info", info);
+		super.checkInputBoxHasValue("itemType", itemType);
+		super.checkInputBoxHasValue("published", published);
 		
 	}
 }
