@@ -28,7 +28,7 @@ public class InventorPatronageReportCreateTest extends TestHarness {
 		super.clickOnSubmit("Create");
 		
 		super.checkListingExists();
-		super.sortListing(1, "desc");
+		super.sortListing(2, "asc");
 		
 		super.checkColumnHasValue(recordIndex, 2, memorandum);
 		
