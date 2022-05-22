@@ -39,9 +39,9 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 		final int id = request.getModel().getInteger("id");
 		
 		final Toolkit toolkit = this.repository.findToolkitById(id);
-		if(toolkit != null) {
+		
 		toolkit.setTotalPrice(this.getTotalPrice(toolkit));
-		}
+		
 		return toolkit;
 	}
 
@@ -51,10 +51,7 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "title", "description", "assamblyNotes", "url", "totalPrice","published");
-		Collection<Quantity> quantities;
-		quantities = this.repository.findAllQuantityOfToolkit(entity);
-		model.setAttribute("isEmpty", quantities.isEmpty());
+		request.unbind(entity, model, "code", "title", "description", "assamblyNotes", "url", "totalPrice");
 	}
 	
 	private Money getTotalPrice(final Toolkit t) {

@@ -1,7 +1,6 @@
 package acme.features.any.toolkit;
 
 import java.util.Collection;
-import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,15 +30,12 @@ public class AnyToolkitListService implements AbstractListService<Any, Toolkit> 
 	public Collection<Toolkit> findMany(final Request<Toolkit> request) {
 		assert request != null;
 		
-		Collection<Toolkit> toolkits;
-		final Collection<Toolkit> result = new HashSet<>();
-		toolkits = this.repository.findAllToolkit();
-		for(final Toolkit t: toolkits) {
-			if(t.isPublished()) {
+		Collection<Toolkit> result;
+		result = this.repository.findAllToolkit();
+		for(final Toolkit t: result) {
 			t.setTotalPrice(this.getTotalPrice(t));
-			result.add(t);
 		}
-		}
+			
 		return result;
 	}
 
