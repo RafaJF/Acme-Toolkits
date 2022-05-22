@@ -36,12 +36,12 @@ public class InventorQuantityUpdateService implements AbstractUpdateService<Inve
 		assert entity != null;
 		assert errors != null;
 		
-		final String itemName;
+		final int itemId;
 		Item item;
-		itemName = request.getModel().getString("item.name");
-		item = this.repository.findItemByName(itemName);
+		itemId = request.getModel().getInteger("item.id");
+		item = this.repository.findItemById(itemId);
 		entity.setItem(item);
-		request.bind(entity, errors, "amount", "item.name", "toolkit.title");
+		request.bind(entity, errors, "amount", "item.id", "toolkit.title");
 		
 	}
 

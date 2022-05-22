@@ -73,8 +73,10 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		}
 		if(!errors.hasErrors("url")) {
 			boolean isUrl;
+			if(!entity.getUrl().isEmpty()) {
 			isUrl = (entity.getUrl().startsWith("http") || entity.getUrl().startsWith("www")) && entity.getUrl().contains(".");
-			errors.state(request, isUrl == true, "url", "inventor.toolkit.form.error.url");
+			errors.state(request, isUrl, "url", "inventor.toolkit.form.error.url");
+		}
 		}
 		
 		

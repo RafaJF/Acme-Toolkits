@@ -40,14 +40,12 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		final String itemName;
+		int itemId;
 		Item item;
-		itemName = request.getModel().getString("item.name");
-		System.out.println("PRUEBA-1");
-		item = this.repository.findItemByName(itemName);
-		System.out.println("PRUEBA-2");
+		itemId = request.getModel().getInteger("item.id");
+		item = this.repository.findItemById(itemId);
 		entity.setItem(item);
-		request.bind(entity, errors, "amount", "item.name", "toolkit.title");
+		request.bind(entity, errors, "amount", "item.id", "toolkit.title");
 		
 	}
 
@@ -63,10 +61,15 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 		model.setAttribute("published", entity.getToolkit().isPublished());
 		final Collection<Item> items ;
 		final Collection<Item> publishedItems = new HashSet<>();
+		
 		items = this.repository.findAllItems();
+
 		for(final Item i:items) {
 			if(i.isPublished()) {
-				publishedItems.add(i);
+				final Quantity q = this.repository.findQuantityByItemIdAndToolkitId(i.getId(), entity.getToolkit().getId());
+				if(q == null) {
+					publishedItems.add(i);
+				}
 			}
 		}
 		model.setAttribute("publishedItems", publishedItems);
@@ -104,9 +107,7 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 		if(entity.getItem().getItemType().toString().equals("TOOL")) {
 			errors.state(request,entity.getAmount()<=1 && entity.getAmount()>=0 , "amount", "inventor.quantity.form.error.amount");
 		}
-		Quantity existingQuantity;
-		existingQuantity = this.repository.findQuantityByItemIdAndToolkitId(entity.getItem().getId(), entity.getToolkit().getId());
-		errors.state(request, existingQuantity == null, "item.name", "inventor.quantity.form.error.duplicated");
+		
 		
 		
 	}
