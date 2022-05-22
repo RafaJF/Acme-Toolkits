@@ -38,6 +38,7 @@ public class InventorToolkitCreateDeleteTest extends TestHarness {
 		super.checkInputBoxHasValue("assamblyNotes", assamblyNotes);
 		super.checkInputBoxHasValue("url", url);
 		super.clickOnSubmit("Delete");
+		super.checkNotErrorsExist();
 		
 		super.signOut();
 		
@@ -45,7 +46,7 @@ public class InventorToolkitCreateDeleteTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/toolkit/createAndRemove-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positiveTest(final String code, final String title, final String description, final String assamblyNotes, final String url) {
+	public void negativeTest(final String code, final String title, final String description, final String assamblyNotes, final String url) {
 		
 		super.signIn("inventor1", "inventor1");
 		super.clickOnMenu("Inventor", "List my toolkits");
