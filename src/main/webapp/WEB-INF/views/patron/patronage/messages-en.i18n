@@ -16,10 +16,11 @@ patron.patronage.form.label.start-date = Start date
 patron.patronage.form.label.end-date = End date
 patron.patronage.form.label.more-info = More info
 patron.patronage.form.label.patron.company = Patron's company
+patron.patronage.form.label.published = Published
 
-patron.patronage.form.label.proposed = Proposed
-patron.patronage.form.label.accepted = Accepted
-patron.patronage.form.label.denied = Denied
+patron.patronage.form.label.proposed = PROPOSED
+patron.patronage.form.label.accepted = ACCEPTED
+patron.patronage.form.label.denied = DENIED
 
 patron.patronage.form.label.inventor = Inventor
 

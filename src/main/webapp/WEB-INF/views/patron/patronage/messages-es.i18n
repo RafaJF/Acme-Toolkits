@@ -18,6 +18,7 @@ patron.patronage.form.label.end-date = Fecha fin
 patron.patronage.form.label.more-info = Más información
 patron.patronage.form.label.patron = Patrocinador
 patron.patronage.form.label.patron.company = Compañía
+patron.patronage.form.label.published = Publicado
 
 patron.patronage.form.label.proposed = PROPUESTO
 patron.patronage.form.label.accepted = ACEPTADO
