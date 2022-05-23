@@ -22,7 +22,6 @@ public class InventorToolListService implements AbstractListService<Inventor,Ite
 	 
 	@Autowired 
 	protected InventorItemRepository repository; 
-	
 	@Autowired
 	protected AuthenticatedSystemConfigurationRepository systemConfigRepository;
 	 
@@ -51,6 +50,9 @@ public class InventorToolListService implements AbstractListService<Inventor,Ite
 		assert entity != null; 
 		assert model != null; 
 		
+		final Money newRetailPrice = this.moneyExchangeItem(entity);
+		model.setAttribute("newRetailPrice", newRetailPrice);
+		
 		if(entity.isPublished()) {
 			model.setAttribute("published", "\u2714");
 		} else if(!entity.isPublished()) {
@@ -65,7 +67,8 @@ public class InventorToolListService implements AbstractListService<Inventor,Ite
 	} 
 	
 	//Método auxiliar cambio de divisa
-		public Money moneyExchangePatronages(final Item i) {
+		public Money moneyExchangeItem(final Item i) {
+
 			final String itemCurrency = i.getRetailPrice().getCurrency();
 			
 			final AuthenticatedMoneyExchangePerformService moneyExchange = new AuthenticatedMoneyExchangePerformService();

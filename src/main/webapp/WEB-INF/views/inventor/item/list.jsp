@@ -6,9 +6,8 @@
 <acme:list>
 	<acme:list-column code="inventor.item.list.label.name" path="name" width="30%"/>
 	<acme:list-column code="inventor.item.list.label.code" path="code" width="20%"/>
-	<acme:list-column code="inventor.item.list.label.retail-price-default" path="newRetailPrice" width="20%"/>
-	<acme:list-column code="inventor.item.list.label.retail-price" path="retailPrice" width="20%"/>
-	<acme:list-column code="inventor.item.list.label.published" path="published" width="10%"/>
+	<acme:list-column code="inventor.item.list.label.retail-price" path="newRetailPrice" width="20%"/>
+	<acme:list-column code="inventor.item.list.label.published" path="published" width="20%"/>
 </acme:list>
 
 <acme:button code="inventor.item.list.button.create" action="/inventor/item/create"/>

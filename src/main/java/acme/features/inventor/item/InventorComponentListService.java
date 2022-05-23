@@ -22,10 +22,8 @@ public class InventorComponentListService implements AbstractListService<Invento
 
 	@Autowired
 	protected InventorItemRepository repository;
-	
 	@Autowired
 	protected AuthenticatedSystemConfigurationRepository systemConfigRepository;
-
 
 	// AbstractCreateService<Authenticated, Consumer> ---------------------------
 
@@ -42,14 +40,14 @@ public class InventorComponentListService implements AbstractListService<Invento
 		assert entity != null;
 		assert model != null;
 		
+		final Money newRetailPrice = this.moneyExchangeItem(entity);
+		model.setAttribute("newRetailPrice", newRetailPrice);
+		
 		if(entity.isPublished()) {
 			model.setAttribute("published", "\u2714");
 		} else if(!entity.isPublished()) {
 			model.setAttribute("published", "\u274C");
 		}
-		
-		final Money newRetailPrice = this.moneyExchangePatronages(entity);
-		model.setAttribute("newRetailPrice", newRetailPrice);
 
 		request.unbind(entity, model, "name", "code", "retailPrice");
 	}
@@ -64,13 +62,15 @@ public class InventorComponentListService implements AbstractListService<Invento
 	}
 	
 	//Método auxiliar cambio de divisa
-	public Money moneyExchangePatronages(final Item i) {
+
+	public Money moneyExchangeItem(final Item i) {
+
 		final String itemCurrency = i.getRetailPrice().getCurrency();
 		
 		final AuthenticatedMoneyExchangePerformService moneyExchange = new AuthenticatedMoneyExchangePerformService();
 		final String systemCurrency = this.systemConfigRepository.findSystemConfiguration().getSystemCurrency();
 		final Double conversionAmount;
-			
+
 		if(!systemCurrency.equals(itemCurrency)) {
 			MoneyExchange conversion;
 			conversion = moneyExchange.computeMoneyExchange(i.getRetailPrice(), systemCurrency);
@@ -79,12 +79,12 @@ public class InventorComponentListService implements AbstractListService<Invento
 		else {
 			conversionAmount = i.getRetailPrice().getAmount();
 		}
-			
+
 		final Money newBudget = new Money();
 		newBudget.setAmount(conversionAmount);
 		newBudget.setCurrency(systemCurrency);
-			
+				
 		return newBudget;
 	}
-	
+
 }

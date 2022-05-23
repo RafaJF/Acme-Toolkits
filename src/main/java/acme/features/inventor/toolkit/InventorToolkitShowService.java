@@ -82,7 +82,7 @@ public class InventorToolkitShowService implements AbstractShowService<Inventor,
         return result;
     }
 	
-	//Método auxiliar cambio de divisa
+	//Método auxiliar
 	public Money moneyExchangeItems(final Item i) {
 		final String itemCurrency = i.getRetailPrice().getCurrency();
 			

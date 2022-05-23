@@ -3,7 +3,6 @@ package acme.features.inventor.quantity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.item.Item;
 import acme.entities.moneyExchange.MoneyExchange;
 import acme.entities.quantity.Quantity;
 import acme.entities.toolkit.Toolkit;
@@ -40,8 +39,8 @@ public class InventorQuantityShowService implements AbstractShowService<Inventor
 		Quantity quantity;
 		quantityId = request.getModel().getInteger("id");
 		quantity = this.repository.findQuantityById(quantityId);
-		final Money newRetailPrice = this.moneyExchangeItems(quantity.getItem());
-		quantity.getItem().setRetailPrice(newRetailPrice);
+//		final Money newRetailPrice = this.moneyExchangeItems(quantity.getItem());
+//		quantity.getItem().setRetailPrice(newRetailPrice);
 		return quantity;
 	}
 
@@ -50,6 +49,9 @@ public class InventorQuantityShowService implements AbstractShowService<Inventor
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		
+		final Money newRetailPrice = this.moneyExchangeQuantity(entity);
+		model.setAttribute("newRetailPrice", newRetailPrice);
 
 		request.unbind(entity, model, "amount", "toolkit.title", "item.name", "item.code", "item.technology", "item.description", "item.retailPrice",
 			"item.itemType", "item.published");
@@ -59,8 +61,8 @@ public class InventorQuantityShowService implements AbstractShowService<Inventor
 	
 	//Métodos auxiliares
 	
-	public Money moneyExchangeItems(final Item i) {
-		final String itemCurrency = i.getRetailPrice().getCurrency();
+	public Money moneyExchangeQuantity(final Quantity q) {
+		final String itemCurrency = q.getItem().getRetailPrice().getCurrency();
 			
 		final AuthenticatedMoneyExchangePerformService moneyExchange = new AuthenticatedMoneyExchangePerformService();
 		final String systemCurrency = this.systemConfigRepository.findSystemConfiguration().getSystemCurrency();
@@ -68,11 +70,11 @@ public class InventorQuantityShowService implements AbstractShowService<Inventor
 				
 		if(!systemCurrency.equals(itemCurrency)) {
 			MoneyExchange conversion;
-			conversion = moneyExchange.computeMoneyExchange(i.getRetailPrice(), systemCurrency);
+			conversion = moneyExchange.computeMoneyExchange(q.getItem().getRetailPrice(), systemCurrency);
 			conversionAmount = conversion.getTarget().getAmount();	
 		}
 		else {
-			conversionAmount = i.getRetailPrice().getAmount();
+			conversionAmount = q.getItem().getRetailPrice().getAmount();
 		}
 			
 		final Money newBudget = new Money();

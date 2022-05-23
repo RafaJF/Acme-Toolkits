@@ -11,6 +11,13 @@
 	<acme:input-textbox code="any.item.form.label.technology" path="technology"/>
 	<acme:input-textarea code="any.item.form.label.description" path="description"/>
 	<acme:input-money code="any.item.form.label.retailPrice" path="retailPrice"/>
+	
+	<jstl:choose>
+		<jstl:when test="${command == 'show'&& newRetailPrice.getCurrency()!=retailPrice.getCurrency()}">
+            <acme:input-money code="inventor.item.form.label.retail-price-conversion" path="newRetailPrice"/>
+    	</jstl:when>
+    </jstl:choose>
+    
 	<acme:input-url code="any.item.form.label.info" path="info"/>
 	
 	
