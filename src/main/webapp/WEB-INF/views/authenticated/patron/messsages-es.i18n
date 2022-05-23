@@ -15,12 +15,9 @@ authenticated.patron.form.label.company = Compañía:
 authenticated.patron.form.label.statement = Sector:
 authenticated.patron.form.label.info = Información:
 
-<<<<<<< Updated upstream
-authenticated.provider.form.button.create = Registrar
-authenticated.provider.form.button.update = Actualizar
 
 alert-message.form.spam = Algunas palabras empleadas no son adecuadas
-=======
+
 authenticated.patron.form.button.create = Registrar
 authenticated.patron.form.button.update = Actualizar
->>>>>>> Stashed changes
+
