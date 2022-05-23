@@ -24,7 +24,12 @@
 		<acme:input-option code="COMPONENT" value="COMPONENT" selected="${itemType == 'COMPONENT'}"/>
 		<acme:input-option code="TOOL" value="TOOL" selected="${itemType == 'TOOL'}"/>
 	</acme:input-select>
-	<acme:input-checkbox code="inventor.item.form.label.published" path="published"/>
+	
+	<jstl:choose>
+		<jstl:when test="${command != 'create'}">
+			<acme:input-checkbox code="inventor.item.form.label.published" path="published"/>
+		</jstl:when>
+	</jstl:choose>
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') && published == false}">

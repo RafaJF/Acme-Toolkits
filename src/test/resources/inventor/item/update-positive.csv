@@ -1,0 +1,4 @@
+recordIndex,name,code,technology,description,retailPrice,info,itemType
+0,Acomponent01,QPB-001,tech01,description,"EUR 1,234.56",http://asd.com,COMPONENT
+1,B,QPB-002-W,t,d,"EUR 0.01",,COMPONENT
+2,Cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc,QPB-003,cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc,ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd,"EUR 111,234.56",http://asd.com,COMPONENT
