@@ -58,10 +58,7 @@ public class InventorToolListService implements AbstractListService<Inventor,Ite
 		} else if(!entity.isPublished()) {
 			model.setAttribute("published", "\u274C");
 		}
-		
-		final Money newRetailPrice = this.moneyExchangePatronages(entity);
-		model.setAttribute("newRetailPrice", newRetailPrice);
-		
+				
 		request.unbind(entity, model, "name","code","retailPrice"); 
 		 
 	} 

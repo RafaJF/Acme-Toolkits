@@ -1,27 +1,13 @@
-recordIndex,creationMoment,title,autor,body,email
-0,2022/03/27 15:30,Title of Chirp 38,Autor 3,Body ,autor4@gmail.com
-1,2022/03/28 14:50,Title of Chirp 39,Autor 1,Body ,autor4@gmail.com
-2,2022/03/30 12:00,Title of Chirp 3,Autor 3,Body 3,autor3@gmail.com
-3,2022/03/31 23:59,Title of Chirp 46,Autor 3,Body ,autor4@gmail.com
-4,2022/04/01 00:00,Title of Chirp 48,Autor 8,Body ,autor4@gmail.com
-5,2022/04/01 00:01,Title of Chirp 47,Autor 4,Body ,autor4@gmail.com
-6,2022/04/01 10:00,Title of Chirp 45,Autor 4,Body ,autor4@gmail.com
-7,2022/04/04 20:40,Title of Chirp 44,Autor 3,Body ,autor4@gmail.com
-8,2022/04/05 15:00,Title of Chirp 23,Autor 2,Body ,autor4@gmail.com
-9,2022/04/06 17:30,Title of Chirp 22,Autor 3,Body ,autor4@gmail.com
-10,2022/04/10 07:00,Title of Chirp 29,Autor 3,Body ,autor4@gmail.com
-11,2022/04/10 08:30,Title of Chirp 27,Autor 8,Body ,autor4@gmail.com
-12,2022/04/10 09:00,Title of Chirp 26,Autor 7,Body ,autor4@gmail.com
-13,2022/04/10 11:00,Title of Chirp 24,Autor 2,Body ,autor4@gmail.com
-14,2022/04/10 11:59,Title of Chirp 15,Autor 3,Body ,autor4@gmail.com
-15,2022/04/10 12:40,Title of Chirp 43,Autor 5,Body ,autor4@gmail.com
-16,2022/04/10 18:00,Title of Chirp 42,Autor 4,Body ,autor4@gmail.com
-17,2022/04/10 18:00,Title of Chirp 4,Autor 4,Body 4,autor4@gmail.com
-18,2022/04/10 23:00,Title of Chirp 32,Autor 7,Body ,autor4@gmail.com
-19,2022/04/11 05:00,Title of Chirp 31,Autor 4,Body ,autor4@gmail.com
-20,2022/04/16 13:56,Title of Chirp 40,Autor 1,Body ,autor4@gmail.com
-21,2022/04/17 21:00,Title of Chirp 35,Autor 4,Body ,autor4@gmail.com
-22,2022/04/20 18:00,Title of Chirp 50,Autor 4,Body ,autor4@gmail.com
-23,2022/04/20 22:30,Title of Chirp 33,Autor 8,Body ,autor4@gmail.com
-24,2022/04/24 11:00,Title of Chirp 49,Autor 9,Body ,autor4@gmail.com
-25,2022/04/25 10:00,Title of Chirp 5,Autor 5,Body 5,
+recordIndex,delta-days,title,autor,body,email
+0,-12,Title of Chirp 50,Autor 4,Body ,autor4@gmail.com
+1,-11,Title of Chirp 49,Autor 9,Body ,autor4@gmail.com
+2,-10,Title of Chirp 48,Autor 8,Body ,autor4@gmail.com
+3,-9,Title of Chirp 47,Autor 4,Body ,autor4@gmail.com
+4,-8,Title of Chirp 46,Autor 3,Body ,autor4@gmail.com
+5,-7,Title of Chirp 45,Autor 4,Body ,autor4@gmail.com
+6,-6,Title of Chirp 44,Autor 3,Body ,autor4@gmail.com
+7,-5,Title of Chirp 43,Autor 5,Body ,autor4@gmail.com
+8,-4,Title of Chirp 42,Autor 4,Body ,autor4@gmail.com
+9,-3,Title of Chirp 41,Autor 1,Body ,autor4@gmail.com
+10,-2,Title of Chirp 40,Autor 1,Body ,autor4@gmail.com
+11,-1,Title of Chirp 39,Autor 1,Body ,autor4@gmail.com
