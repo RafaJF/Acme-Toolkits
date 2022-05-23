@@ -21,7 +21,7 @@ public class AdministratorAnnouncementCreateService implements AbstractCreateSer
 
 	@Autowired
 	protected AdministratorAnnouncementRespository administratorAnnouncementRepository;
-
+	
 
 	@Override
 	public boolean authorise(final Request<Announcement> request) {
