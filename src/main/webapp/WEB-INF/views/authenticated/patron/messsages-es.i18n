@@ -11,11 +11,13 @@
 authenticated.provider.provider.form.title.create = Hazte proveedor
 authenticated.provider.provider.form.title.update = Actualizar datos de proveedor
 
-authenticated.provider.form.label.company = Compañía: 
-authenticated.provider.form.label.statement = Sector:
+authenticated.patron.form.label.company = Compañía: 
+authenticated.patron.form.label.statement = Sector:
 authenticated.patron.form.label.info = Información:
 
-authenticated.provider.form.button.create = Registrar
-authenticated.provider.form.button.update = Actualizar
 
 alert-message.form.spam = Algunas palabras empleadas no son adecuadas
+
+authenticated.patron.form.button.create = Registrar
+authenticated.patron.form.button.update = Actualizar
+

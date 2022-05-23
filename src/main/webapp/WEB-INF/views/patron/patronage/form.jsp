@@ -9,9 +9,9 @@
 	
 		<jstl:when test="${published==true}">
 			<acme:input-select code="patron.patronage.form.label.status" path="status" readonly="true">
-				<acme:input-option code="patron.patronage.form.label.proposed" value="PROPOSED" selected="${status == 'PROPOSED'}"/>
-				<acme:input-option code="patron.patronage.form.label.accepted" value="ACCEPTED" selected="${status == 'ACCEPTED'}"/>
-				<acme:input-option code="patron.patronage.form.label.denied" value="DENIED" selected="${status == 'DENIED'}"/>
+				<acme:input-option code="PROPOSED" value="PROPOSED" selected="${status == 'PROPOSED'}"/>
+				<acme:input-option code="ACCEPTED" value="ACCEPTED" selected="${status == 'ACCEPTED'}"/>
+				<acme:input-option code="DENIED" value="DENIED" selected="${status == 'DENIED'}"/>
 			</acme:input-select>
 		</jstl:when>
 	</jstl:choose>

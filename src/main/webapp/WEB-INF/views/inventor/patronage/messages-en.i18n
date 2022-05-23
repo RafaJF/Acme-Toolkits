@@ -20,3 +20,7 @@ inventor.patronage.form.label.patron = Patron
 alert-message.form.spam = Some words used are not appropriate
 inventor.patronage.form.button.updateStatus = Update Status
 inventor.patronage.form.button.patronageReport = Patronage reports
+
+PROPOSED=PROPOSED
+ACCEPTED=ACCEPTED
+DENIED=DENIED
