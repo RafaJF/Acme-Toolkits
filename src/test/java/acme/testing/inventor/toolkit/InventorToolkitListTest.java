@@ -19,7 +19,6 @@ public class InventorToolkitListTest extends TestHarness {
 		super.sortListing(0, "asc");
 		super.checkColumnHasValue(recordIndex, 0, code);
 		super.checkColumnHasValue(recordIndex, 1, title);
-		super.checkColumnHasValue(recordIndex, 2, totalPrice);
 		
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
@@ -28,7 +27,6 @@ public class InventorToolkitListTest extends TestHarness {
 		super.checkInputBoxHasValue("description", description);
 		super.checkInputBoxHasValue("assamblyNotes", assamblyNotes);
 		super.checkInputBoxHasValue("url", url);
-		super.checkInputBoxHasValue("totalPrice", totalPrice);
 		
 		super.clickOnButton("Items");
 		super.checkListingExists();

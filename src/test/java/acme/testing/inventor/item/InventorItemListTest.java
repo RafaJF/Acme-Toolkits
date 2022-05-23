@@ -20,7 +20,6 @@ public class InventorItemListTest extends TestHarness{
 		
 		super.checkColumnHasValue(recordIndex, 0, name);
 		super.checkColumnHasValue(recordIndex, 1, code);
-		super.checkColumnHasValue(recordIndex, 2, retailPrice);
 		
 		
 		super.signOut();
@@ -38,7 +37,6 @@ public class InventorItemListTest extends TestHarness{
 		
 		super.checkColumnHasValue(recordIndex, 0, name);
 		super.checkColumnHasValue(recordIndex, 1, code);
-		super.checkColumnHasValue(recordIndex, 2, retailPrice);
 		
 		super.signOut();
 	}

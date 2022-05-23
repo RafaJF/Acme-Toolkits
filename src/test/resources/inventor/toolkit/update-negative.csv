@@ -1,5 +1,3 @@
 recordIndex,code,title,description,assambly-notes,url
 3,AAA-111,updatedTitle,updatedDescription,updatedAssamblyNotes,http://updatedMoreInfo.com
-5,AAA-111,sex,descriptionError,asammblyError,
 6,AAA-111,titleError,sex,asammblyError,
-7,AAA-111,titleError,descriptionError,sex,

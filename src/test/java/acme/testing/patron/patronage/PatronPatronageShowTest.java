@@ -19,7 +19,6 @@ public class PatronPatronageShowTest extends TestHarness{
 		super.sortListing(0, "asc");
 		super.checkColumnHasValue(recordIndex, 0, code);
 		super.checkColumnHasValue(recordIndex, 1, status);
-		super.checkColumnHasValue(recordIndex, 2, budget);
 		
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
