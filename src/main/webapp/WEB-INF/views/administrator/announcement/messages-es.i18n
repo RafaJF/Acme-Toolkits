@@ -6,3 +6,5 @@ administrator.announcement.form.label.confirmation = Confirme que los datos del 
 administrator.announcement.form.button.create = Crear
 
 administrator.announcement.confirmation.error = Por favor, marque la casilla de confirmación 
+
+alert-message.form.spam = Algunas palabras empleadas no son adecuadas

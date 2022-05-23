@@ -23,3 +23,5 @@ inventor.toolkit.form.error.published = Este conjunto de herramientas no tiene o
 inventor.toolkit.list.button.create = Crear conjunto de herramientas
 inventor.toolkit.form.button.quantities = Objetos
 inventor.toolkit.form.error.duplicated = Ya existe un conjunto de herramientas con ese código
+
+alert-message.form.spam = Algunas palabras empleadas no son adecuadas

@@ -28,3 +28,5 @@ inventor.item.form.error.duplicated-code = Código duplicado
 inventor.item.form.error.retail-price-amount-negative-or-zero = El precio debe ser positivo
 inventor.item.form.error.retail-price-currency-invalid = La divisa no es válida
 
+alert-message.form.spam = Algunas palabras empleadas no son adecuadas
+

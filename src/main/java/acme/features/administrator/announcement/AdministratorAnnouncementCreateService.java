@@ -8,18 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.announcement.Announcement;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
 import acme.framework.roles.Administrator;
 import acme.framework.services.AbstractCreateService;
+import spamDetector.SpamDetector;
 
 @Service
 public class AdministratorAnnouncementCreateService implements AbstractCreateService<Administrator, Announcement>{
 
 	@Autowired
 	protected AdministratorAnnouncementRespository administratorAnnouncementRepository;
-
+	
 
 	@Override
 	public boolean authorise(final Request<Announcement> request) {
@@ -68,9 +70,59 @@ public class AdministratorAnnouncementCreateService implements AbstractCreateSer
 		assert errors != null;
 	
 		boolean confirmation;
-	
+		
+		
 		confirmation = request.getModel().getBoolean("confirmation");
 		errors.state(request, confirmation, "confirmation", "administrator.announcement.confirmation.error");
+		
+		if(!errors.hasErrors("title")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.administratorAnnouncementRepository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
+			
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+						
+			res = SpamDetector.spamDetector(entity.getTitle(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+			
+			errors.state(request, res, "title", "alert-message.form.spam");
+		}
+		
+		if(!errors.hasErrors("body")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.administratorAnnouncementRepository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
+			
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+						
+			res = SpamDetector.spamDetector(entity.getBody(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+			
+			errors.state(request, res, "body", "alert-message.form.spam");
+		}
+		
+		if(!errors.hasErrors("info")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.administratorAnnouncementRepository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
+			
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+						
+			res = SpamDetector.spamDetector(entity.getInfo(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+			
+			errors.state(request, res, "info", "alert-message.form.spam");
+		}
+		
 	}
 	
 	@Override

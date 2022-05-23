@@ -6,3 +6,6 @@ administrator.announcement.form.label.confirmation = Confirm that the announceme
 administrator.announcement.form.button.create = Create
 
 administrator.announcement.confirmation.error = Please check the confirmation box 
+
+alert-message.form.spam = Some words used are not appropriate
+

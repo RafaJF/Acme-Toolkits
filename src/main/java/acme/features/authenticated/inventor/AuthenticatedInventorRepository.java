@@ -3,6 +3,7 @@ package acme.features.authenticated.inventor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.framework.entities.UserAccount;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Inventor;
@@ -15,5 +16,8 @@ public interface AuthenticatedInventorRepository extends AbstractRepository {
 
 	@Query("select i from Inventor i where i.userAccount.id = :id")
 	Inventor findOneInventorByUserAccountId(int id);
+	
+	@Query("select systemConfiguration from SystemConfiguration systemConfiguration")
+	SystemConfiguration systemConfiguration();
 
 }
