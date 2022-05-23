@@ -17,5 +17,6 @@ inventor.patronage.form.label.start-date = Fecha inicio
 inventor.patronage.form.label.end-date = Fecha fin
 inventor.patronage.form.label.more-info = Más información
 inventor.patronage.form.label.patron = Patrocinador
+alert-message.form.spam = Algunas palabras empleadas no son adecuadas
 inventor.patronage.form.button.updateStatus = Actualizar estado
 inventor.patronage.form.button.patronageReport = Informes de patrocinio

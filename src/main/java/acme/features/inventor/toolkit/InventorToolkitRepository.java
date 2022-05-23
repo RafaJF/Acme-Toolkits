@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.entities.item.Item;
 import acme.entities.quantity.Quantity;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Inventor;
@@ -40,4 +41,7 @@ public interface InventorToolkitRepository extends AbstractRepository {
 	
 	@Query("SELECT i FROM Item i")
 	Collection<Item> findAllItem();
+	
+	@Query("select systemConfiguration from SystemConfiguration systemConfiguration")
+	SystemConfiguration systemConfiguration();
 }
