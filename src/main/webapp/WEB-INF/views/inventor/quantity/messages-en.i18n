@@ -16,4 +16,5 @@ inventor.quantity.form.label.item.code = Item's code
 inventor.quantity.form.label.item.technology = Item's technology
 inventor.quantity.form.label.item.description = Item's description
 inventor.quantity.form.label.item.retaiLPrice = Item's retail price
+inventor.quantity.form.label.retail-price-conversion = Item's retail Price (conversion)
 inventor.quantity.form.label.item.itemType = Item's type

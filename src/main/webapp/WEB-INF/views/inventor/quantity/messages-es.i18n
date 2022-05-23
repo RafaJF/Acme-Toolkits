@@ -16,4 +16,5 @@ inventor.quantity.form.label.item.code = Código del Objeto
 inventor.quantity.form.label.item.technology = Tecnologia del objeto
 inventor.quantity.form.label.item.description = Descripción del objeto
 inventor.quantity.form.label.item.retaiLPrice = Precio del objeto
+inventor.quantity.form.label.retail-price-conversion = Precio del objeto (conversión)
 inventor.quantity.form.label.item.itemType = Tipo del objeto

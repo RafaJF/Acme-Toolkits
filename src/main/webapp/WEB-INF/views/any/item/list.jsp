@@ -6,6 +6,6 @@
 <acme:list>
 	<acme:list-column code="any.item.list.label.name" path="name" width="20%"/>
 	<acme:list-column code="any.item.list.label.code" path="code" width="20%"/>
-	<acme:list-column code="any.item.list.label.retailPrice" path="retailPrice" width="20%"/>
+	<acme:list-column code="any.item.list.label.retailPrice" path="newRetailPrice" width="20%"/>
 	
 </acme:list>

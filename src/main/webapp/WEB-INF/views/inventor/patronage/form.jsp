@@ -12,6 +12,13 @@
 	<acme:input-textbox code="inventor.patronage.form.label.code" path="code" readonly="true"/>
 	<acme:input-textarea code="inventor.patronage.form.label.legal-stuff" path="legalStuff" readonly="true"/>
 	<acme:input-money code="inventor.patronage.form.label.budget" path="budget" readonly="true"/>
+	
+	<jstl:choose>
+		<jstl:when test="${command == 'show'&& newBudget.getCurrency()!=budget.getCurrency()}">
+            <acme:input-money code="inventor.patronage.form.label.budget-conversion" path="newBudget" readonly="true"/>
+    	</jstl:when>
+    </jstl:choose>
+	
 	<acme:input-moment code="inventor.patronage.form.label.creation-moment" path="creationMoment" readonly="true"/>
 	<acme:input-moment code="inventor.patronage.form.label.start-date" path="startDate" readonly="true"/>
 	<acme:input-moment code="inventor.patronage.form.label.end-date" path="endDate" readonly="true"/>
