@@ -6,8 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Item;
+import acme.entities.moneyExchange.MoneyExchange;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractListService;
 import acme.roles.Inventor;
 
@@ -18,6 +22,9 @@ public class InventorComponentListService implements AbstractListService<Invento
 
 	@Autowired
 	protected InventorItemRepository repository;
+	
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository systemConfigRepository;
 
 
 	// AbstractCreateService<Authenticated, Consumer> ---------------------------
@@ -40,6 +47,9 @@ public class InventorComponentListService implements AbstractListService<Invento
 		} else if(!entity.isPublished()) {
 			model.setAttribute("published", "\u274C");
 		}
+		
+		final Money newRetailPrice = this.moneyExchangePatronages(entity);
+		model.setAttribute("newRetailPrice", newRetailPrice);
 
 		request.unbind(entity, model, "name", "code", "retailPrice");
 	}
@@ -51,6 +61,30 @@ public class InventorComponentListService implements AbstractListService<Invento
 		final int inventorId = request.getPrincipal().getActiveRoleId();
 		
 		return this.repository.findComponentsByInventor(inventorId);
+	}
+	
+	//Método auxiliar cambio de divisa
+	public Money moneyExchangePatronages(final Item i) {
+		final String itemCurrency = i.getRetailPrice().getCurrency();
+		
+		final AuthenticatedMoneyExchangePerformService moneyExchange = new AuthenticatedMoneyExchangePerformService();
+		final String systemCurrency = this.systemConfigRepository.findSystemConfiguration().getSystemCurrency();
+		final Double conversionAmount;
+			
+		if(!systemCurrency.equals(itemCurrency)) {
+			MoneyExchange conversion;
+			conversion = moneyExchange.computeMoneyExchange(i.getRetailPrice(), systemCurrency);
+			conversionAmount = conversion.getTarget().getAmount();	
+		}
+		else {
+			conversionAmount = i.getRetailPrice().getAmount();
+		}
+			
+		final Money newBudget = new Money();
+		newBudget.setAmount(conversionAmount);
+		newBudget.setCurrency(systemCurrency);
+			
+		return newBudget;
 	}
 	
 }
