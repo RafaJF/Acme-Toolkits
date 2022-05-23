@@ -15,11 +15,14 @@ protected InventorPatronageReportListService listService;
 
 @Autowired
 protected InventorPatronageReportShowService showService;
-
+//muestra los patronage reports asociados a un patronage
+@Autowired
+protected InventorPatronageReportPatronageListService patronageListService;
 
 @PostConstruct
 protected void initialise() {
 	super.addCommand("show", this.showService);
 	super.addCommand("list", this.listService);
+	super.addCommand("list-patronage","list", this.patronageListService);
 }
 }
