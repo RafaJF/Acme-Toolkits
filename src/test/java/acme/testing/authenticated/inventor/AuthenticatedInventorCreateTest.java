@@ -7,13 +7,13 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 import acme.testing.TestHarness;
 
-public class SingUpAndBecomeInventor extends TestHarness {
+public class AuthenticatedInventorCreateTest extends TestHarness {
 	
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/authenticated/inventor/becomeInventor.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positivesSingUpAndBecomeInventor(final String company, final String statement,final String info) {
+	public void positiveAuthenticatedInventor (final String company, final String statement,final String info) {
 		
 		super.signIn("patron1", "patron1");
 		
@@ -35,7 +35,7 @@ public class SingUpAndBecomeInventor extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/authenticated/inventor/negativeBecomeInventor.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)
-	public void negativeSingUpAndBecomeInventor(final String company, final String statement,final String info) {
+	public void negativeAuthenticatedInventor(final String company, final String statement,final String info) {
 		
 		super.signIn("patron2", "patron2");
 		
