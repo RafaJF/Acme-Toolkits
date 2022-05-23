@@ -1,6 +1,6 @@
 recordIndex,name,code,technology,description,retail-price,info
 0,a,BCD-126,limited,it's a item,EUR 265.58,https://regexr.com/
-1,axe,HLS-124,limited,it's a item,USD 845.32,https://regexr.com/
-2,hammer,BCD-124,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,it's a item,USD 10.00,https://regexr.com/
+1,axe,HLS-124,limited,it's a item,EUR 798.73,https://regexr.com/
+2,hammer,BCD-124,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the,it's a item,EUR 9.45,https://regexr.com/
 3,hammerNP1,ABC-565-J,super,"martillo a",EUR 37.00,https://regexr.com/
 4,hammerNP2,ABC-565-K,super,"martillo b",EUR 38.00,https://regexr.com/
