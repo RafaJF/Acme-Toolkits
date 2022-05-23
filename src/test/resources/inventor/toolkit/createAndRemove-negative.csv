@@ -1,3 +1,6 @@
 code,title,description,assambly-notes,url
 AAA-111,titleError,descriptionError,asammblyError,error
+AAA-111,sex,descriptionError,asammblyError,
+AAA-111,titleError,sex,asammblyError,
+AAA-111,titleError,descriptionError,sex,
 

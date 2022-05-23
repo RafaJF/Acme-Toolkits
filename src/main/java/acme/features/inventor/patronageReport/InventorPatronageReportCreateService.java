@@ -10,12 +10,14 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.patronage.Patronage;
 import acme.entities.patronageReport.PatronageReport;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.features.inventor.patronage.InventorPatronageRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractCreateService;
 import acme.roles.Inventor;
+import spamDetector.SpamDetector;
 
 @Service
 public class InventorPatronageReportCreateService implements AbstractCreateService<Inventor, PatronageReport>{
@@ -129,12 +131,22 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 			duplicateCode = this.reportRepository.findOnePatronageReportByCode(entity.getSequenceNumber());
 			errors.state(request, duplicateCode == null , "sequenceNumber", "inventor.patronageReport.form.error.duplicated");
 		}
-//		if(!errors.hasErrors("moreInfo")) {
-//			boolean isUrl;
-//			isUrl = (entity.getMoreInfo().startsWith("http") || entity.getMoreInfo().startsWith("www")) && entity.getMoreInfo().contains(".");
-//			errors.state(request, isUrl, "moreInfo", "inventor.patronageReport.form.error.moreInfo");
-//		}
-		
+			
+		if(!errors.hasErrors("memorandum")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.reportRepository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
+
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+
+			res = SpamDetector.spamDetector(entity.getMemorandum(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+
+			errors.state(request, res, "memorandum", "alert-message.form.spam");
+		}
 		
 	}
 

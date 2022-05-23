@@ -107,22 +107,6 @@ public class AdministratorAnnouncementCreateService implements AbstractCreateSer
 			errors.state(request, res, "body", "alert-message.form.spam");
 		}
 		
-		if(!errors.hasErrors("info")) {
-			final boolean res;
-			final SystemConfiguration systemConfiguration = this.administratorAnnouncementRepository.systemConfiguration();
-			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
-			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
-			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
-			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
-			
-			final double StrongT = systemConfiguration.getStrongThreshold();
-			final double WeakT = systemConfiguration.getWeakThreshold();
-						
-			res = SpamDetector.spamDetector(entity.getInfo(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
-			
-			errors.state(request, res, "info", "alert-message.form.spam");
-		}
-		
 	}
 	
 	@Override

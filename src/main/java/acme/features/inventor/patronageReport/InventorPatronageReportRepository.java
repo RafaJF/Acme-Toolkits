@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.patronageReport.PatronageReport;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Inventor;
 
@@ -30,7 +31,10 @@ public interface InventorPatronageReportRepository extends AbstractRepository{
 	@Query("select count(p) from PatronageReport p where p.patronage.code = :code")
 	Integer  numOfPatronagesReportByPatronage(String code);
   
-  @Query("SELECT p FROM PatronageReport p WHERE p.patronage.id =:patronageId")
+    @Query("SELECT p FROM PatronageReport p WHERE p.patronage.id =:patronageId")
 	Collection<PatronageReport> findPatronageReportsByPatronageId(Integer patronageId);
+    
+    @Query("select systemConfiguration from SystemConfiguration systemConfiguration")
+	SystemConfiguration systemConfiguration();
 
 }

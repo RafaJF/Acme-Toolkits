@@ -3,6 +3,7 @@ package acme.features.authenticated.patron;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.HttpMethod;
@@ -13,6 +14,7 @@ import acme.framework.helpers.PrincipalHelper;
 import acme.framework.roles.Authenticated;
 import acme.framework.services.AbstractUpdateService;
 import acme.roles.Patron;
+import spamDetector.SpamDetector;
 
 @Service
 public class AuthenticatedPatronUpdateService implements AbstractUpdateService<Authenticated, Patron> {
@@ -71,6 +73,38 @@ public class AuthenticatedPatronUpdateService implements AbstractUpdateService<A
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
+		if(!errors.hasErrors("company")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
+			
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+						
+			res = SpamDetector.spamDetector(entity.getCompany(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+			
+			errors.state(request, res, "company", "alert-message.form.spam");
+		}
+		
+		if(!errors.hasErrors("statement")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
+			
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+						
+			res = SpamDetector.spamDetector(entity.getStatement(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+			
+			errors.state(request, res, "statement", "alert-message.form.spam");
+		}
 	}
 
 	@Override

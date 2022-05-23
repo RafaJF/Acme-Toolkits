@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.patronage.Patronage;
 import acme.entities.patronage.Status;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractCreateService;
 import acme.roles.Patron;
+import spamDetector.SpamDetector;
 
 @Service
 public class PatronPatronageCreateService implements AbstractCreateService<Patron,Patronage> {
@@ -113,7 +115,23 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 			errors.state(request, moment.after(periodEndDate) , "endDate", "patron.patronage.form.error.end-date");
 			
 		}
+		
+		if(!errors.hasErrors("legalStuff")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
 
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+
+			res = SpamDetector.spamDetector(entity.getLegalStuff(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+
+			errors.state(request, res, "legalStuff", "alert-message.form.spam");
+		}
+		
 	}	
 	
 	@Override

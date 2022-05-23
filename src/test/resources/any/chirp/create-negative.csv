@@ -4,3 +4,6 @@ recordIndex,title,autor,body,email,confirmation
 0,Title test,Autor of NullBody,, ,true
 0,Title test,Autor test, Body of wrong email , wrongEmail ,true
 0,Title test,Autor test, Body of false confirmation, ,false
+1,sex,Autor,Body,,false
+2,Titlet,sex,Body,,false
+3,Titlet,Autor,sex,,false

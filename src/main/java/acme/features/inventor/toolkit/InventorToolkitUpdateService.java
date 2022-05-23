@@ -78,21 +78,6 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 			
 		}
 		
-		if(!errors.hasErrors("code")) {
-			final boolean res;
-			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
-			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
-			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
-			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
-			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
-			
-			final double StrongT = systemConfiguration.getStrongThreshold();
-			final double WeakT = systemConfiguration.getWeakThreshold();
-						
-			res = SpamDetector.spamDetector(entity.getCode(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
-			
-			errors.state(request, res, "code", "alert-message.form.spam");
-		}
 		
 		if(!errors.hasErrors("title")) {
 			final boolean res;
@@ -140,22 +125,6 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 			res = SpamDetector.spamDetector(entity.getAssamblyNotes(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
 			
 			errors.state(request, res, "assamblyNotes", "alert-message.form.spam");
-		}
-		
-		if(!errors.hasErrors("url")) {
-			final boolean res;
-			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
-			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
-			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
-			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
-			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
-			
-			final double StrongT = systemConfiguration.getStrongThreshold();
-			final double WeakT = systemConfiguration.getWeakThreshold();
-						
-			res = SpamDetector.spamDetector(entity.getUrl(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
-			
-			errors.state(request, res, "url", "alert-message.form.spam");
 		}
 		
 	}
