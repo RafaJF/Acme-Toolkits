@@ -12,3 +12,5 @@ inventor.patronage-report.form.label.patronage.code = Patronage code
 
 inventor.patronage-report.form.button.create = Create
 inventor.patronage-report.form.label.patronages = Patronage
+
+inventor.patronageReport.error.confirmation = Please check the confirmation box 
