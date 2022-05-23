@@ -14,25 +14,32 @@ import acme.framework.services.AbstractShowService;
 import acme.roles.Patron;
 @Service
 public class PatronPatronageShowService implements AbstractShowService<Patron,Patronage> {
+	
 	@Autowired
 	protected PatronPatronageRepository repository;
+	
 	@Autowired
 	protected AuthenticatedSystemConfigurationRepository systemConfigRepository;
 	
 	@Override
 	public boolean authorise(final Request<Patronage> request) {
+		
 		assert request != null;
+		
 		final int id = request.getModel().getInteger("id");
-		final Patronage patronage = this.repository.findOnePatronageById(id);
+		final Patronage patronage = this.repository.findPatronageById(id);
 		final int patronId = request.getPrincipal().getActiveRoleId();
+		
 		return patronage.getPatron().getId() == patronId;
 	}
 
 	@Override
 	public Patronage findOne(final Request<Patronage> request) {
+		
 		assert request != null;
+		
 		final int id = request.getModel().getInteger("id");
-		final Patronage p = this.repository.findOnePatronageById(id);
+		final Patronage p = this.repository.findPatronageById(id);
 		
 		final Money newBudget = this.moneyExchangePatronages(p);
 		p.setBudget(newBudget);
@@ -48,7 +55,7 @@ public class PatronPatronageShowService implements AbstractShowService<Patron,Pa
 		
 		
 		
-		request.unbind(entity, model, "status", "code", "legalStuff", "budget", "creationMoment","startDate","endDate","moreInfo","patron.company");
+		request.unbind(entity, model, "status", "code", "legalStuff", "budget", "creationMoment","startDate","endDate","moreInfo","patron.company","published");
 		model.setAttribute("patronId", entity.getPatron().getId());
 		model.setAttribute("inventorId", entity.getInventor().getId());
 		model.setAttribute("inventorCompany", entity.getInventor().getCompany());

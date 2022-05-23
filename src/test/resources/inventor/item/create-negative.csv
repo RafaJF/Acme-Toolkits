@@ -1,0 +1,14 @@
+recordIndex,name,code,technology,description,retailPrice,info,itemType
+0,,QPN-002-W,t,d,"EUR 0.01",,COMPONENT
+1,annnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn,QPN-003-W,t,d,"EUR 0.01",,COMPONENT
+2,bname1,QPB-001,t,d,"EUR 0.01",,COMPONENT
+3,bname2,,t,d,"EUR 0.01",,COMPONENT
+4,bname3,QPN-0,t,d,"EUR 0.01",,COMPONENT
+5,cname1,QPN-003-W,,d,"EUR 0.01",,COMPONENT
+6,cname2,QPN-004-W,annnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn,d,"EUR 0.01",,COMPONENT
+7,dname1,QPN-005-W,technology,,"EUR 0.01",,COMPONENT
+8,dname2,QPN-006-W,technology,dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd,"EUR 0.01",,COMPONENT
+9,ename1,QPN-007-W,technology,description,,,COMPONENT
+10,ename2,QPN-008-W,technology,description,"SOL 0.01",,COMPONENT
+11,ename3,QPN-009-W,technology,description,"EUR 0.00",,COMPONENT
+12,fname1,QPN-010-W,technology,description,"EUR 0.01",noURL,COMPONENT

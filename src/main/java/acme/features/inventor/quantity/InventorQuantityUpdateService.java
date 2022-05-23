@@ -1,12 +1,8 @@
 package acme.features.inventor.quantity;
 
-import java.util.Collection;
-import java.util.HashSet;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.item.Item;
 import acme.entities.quantity.Quantity;
 import acme.entities.toolkit.Toolkit;
 import acme.framework.components.models.Model;
@@ -35,13 +31,13 @@ public class InventorQuantityUpdateService implements AbstractUpdateService<Inve
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
-		final String itemName;
-		Item item;
-		itemName = request.getModel().getString("item.name");
-		item = this.repository.findItemByName(itemName);
-		entity.setItem(item);
-		request.bind(entity, errors, "amount", "item.name", "toolkit.title");
+//		
+//		final int itemId;
+//		Item item;
+//		itemId = request.getModel().getInteger("item.id");
+//		item = this.repository.findItemById(itemId);
+//		entity.setItem(item);
+		request.bind(entity, errors, "amount");
 		
 	}
 
@@ -51,22 +47,11 @@ public class InventorQuantityUpdateService implements AbstractUpdateService<Inve
 		assert entity != null;
 		assert model != null;
 	
-		request.unbind(entity, model, "amount", "item.name", "toolkit.title");
-		
+		request.unbind(entity, model, "amount", "toolkit.title", "item.name", "item.code", "item.technology", "item.description", "item.retailPrice",
+			"item.itemType", "item.published");
 		model.setAttribute("id", request.getModel().getAttribute("id"));
 		model.setAttribute("published", entity.getToolkit().isPublished());
-		final Collection<Item> items;
-		final Collection<Item> publishedItems = new HashSet<>();
-		items = this.repository.findAllItems();
-		for(final Item i:items) {
-			if(i.isPublished()) {
-				publishedItems.add(i);
-			}
-		}
-		model.setAttribute("publishedItems", publishedItems);
-		
-		
-		
+
 	}
 		
 	

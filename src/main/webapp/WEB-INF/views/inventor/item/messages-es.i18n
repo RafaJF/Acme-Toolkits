@@ -6,12 +6,14 @@ inventor.item.list.label.description = Descripción
 inventor.item.list.label.retail-price = Precio de salida
 inventor.item.list.label.info = Información
 inventor.item.list.label.item-type = Tipo de Item
+inventor.item.list.label.published = Publicado
 
 inventor.item.form.label.name = Nombre
 inventor.item.form.label.code = Código
 inventor.item.form.label.technology = Tecnología
 inventor.item.form.label.description = Descripción
 inventor.item.form.label.retail-price = Precio de salida
+inventor.item.form.label.retail-price-conversion = Precio de salida (conversión)
 inventor.item.form.label.info = Información
 inventor.item.form.label.item-type = Tipo de Item
 inventor.item.form.label.published = Publicada

@@ -34,8 +34,14 @@ public class InventorComponentListService implements AbstractListService<Invento
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		
+		if(entity.isPublished()) {
+			model.setAttribute("published", "\u2714");
+		} else if(!entity.isPublished()) {
+			model.setAttribute("published", "\u274C");
+		}
 
-		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "info");
+		request.unbind(entity, model, "name", "code", "retailPrice");
 	}
 
 	@Override

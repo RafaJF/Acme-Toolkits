@@ -41,6 +41,9 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		
+		final Money newRetailPrice = this.moneyExchangePatronages(entity);
+		model.setAttribute("newRetailPrice", newRetailPrice);
 
 		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "info", "itemType", "published");
 	}
@@ -48,14 +51,22 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 	@Override
 	public Item findOne(final Request<Item> request) {
 		assert request != null;
+		
+		Item result;
+		int id;
 
-		final int id = request.getModel().getInteger("id");
-		final Item i = this.repository.findOneById(id);
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOneById(id);
+
+		return result;
+
+//		final int id = request.getModel().getInteger("id");
+//		final Item i = this.repository.findOneById(id);
+//		
+//		final Money newRetailPrice = this.moneyExchangePatronages(i);
+//		i.setRetailPrice(newRetailPrice);
 		
-		final Money newRetailPrice = this.moneyExchangePatronages(i);
-		i.setRetailPrice(newRetailPrice);
-		
-		return i;
+//		return i;
 	}
 	
 	//Método auxiliar cambio de divisa

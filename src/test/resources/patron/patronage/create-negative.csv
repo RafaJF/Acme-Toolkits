@@ -1,0 +1,10 @@
+recordIndex,code,legal-stuff,budget,start-date,end-date,more-info
+0, codigo mal, Legal Stuff of create test case 1, EUR 11.55, 2022/09/15 14:00, 2022/11/15 14:00,http://example.com
+1, , Legal Stuff of create test case 1, EUR 11.55, 2022/09/15 14:00, 2022/11/15 14:00,http://example.com
+2, AAA-257, , EUR 11.55, 2022/09/15 14:00, 2022/11/15 14:00,http://example.com
+3, AAA-704, Legal Stuff of create test case 1, CCC 11.55, 2022/09/15 14:00, 2022/11/15 14:00,http://example.com
+4, AAA-666, Legal Stuff of create test case 1, EUR -11.55, 2022/09/15 14:00, 2022/11/15 14:00,http://example.com
+5, AAA-444, Legal Stuff of create test case 1, EUR 11.55, 2022/05/15 14:00, 2022/11/15 14:00,http://example.com
+6, AAA-321, Legal Stuff of create test case 1, EUR 11.55, 2022/07/15 14:00, 2022/07/15 14:00,http://example.com
+7, AAA-123, Legal Stuff of create test case 1, EUR 11.55, 2022/09/15 14:00, 2022/11/15 14:00, url mal escrita
+8, ABC-123, Legal Stuff of create test case 1, EUR 11.55, 2022/09/15 14:00, 2022/11/15 14:00,http://example.com

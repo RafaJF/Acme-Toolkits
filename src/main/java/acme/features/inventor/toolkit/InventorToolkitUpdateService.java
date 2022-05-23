@@ -63,9 +63,18 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 		assert errors != null;
 		
 		if(!errors.hasErrors("url")) {
+			if(!entity.getUrl().isEmpty()) {
 			boolean isUrl;
 			isUrl = (entity.getUrl().startsWith("http") || entity.getUrl().startsWith("www")) && entity.getUrl().contains(".");
 			errors.state(request, isUrl, "url", "inventor.toolkit.form.error.url");
+		}
+		}
+		if(!errors.hasErrors("code")) {
+			Toolkit existingToolkit;
+			existingToolkit = this.repository.findToolkitByCode(entity.getCode());
+			
+				errors.state(request, existingToolkit == null || existingToolkit.getId() == entity.getId(), "code", "inventor.toolkit.form.error.duplicated");
+			
 		}
 		
 	}

@@ -44,10 +44,13 @@ public class InventorToolListService implements AbstractListService<Inventor,Ite
 		assert entity != null; 
 		assert model != null; 
 		
+		if(entity.isPublished()) {
+			model.setAttribute("published", "\u2714");
+		} else if(!entity.isPublished()) {
+			model.setAttribute("published", "\u274C");
+		}
 		
- 
 		request.unbind(entity, model, "name","code","retailPrice"); 
-		 
 		 
 	} 
 
