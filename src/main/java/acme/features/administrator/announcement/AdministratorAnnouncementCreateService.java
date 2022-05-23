@@ -75,6 +75,22 @@ public class AdministratorAnnouncementCreateService implements AbstractCreateSer
 		confirmation = request.getModel().getBoolean("confirmation");
 		errors.state(request, confirmation, "confirmation", "administrator.announcement.confirmation.error");
 		
+		if(!errors.hasErrors("title")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.administratorAnnouncementRepository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
+			
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+						
+			res = SpamDetector.spamDetector(entity.getTitle(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+			
+			errors.state(request, res, "title", "alert-message.form.spam");
+		}
+		
 		if(!errors.hasErrors("body")) {
 			final boolean res;
 			final SystemConfiguration systemConfiguration = this.administratorAnnouncementRepository.systemConfiguration();
@@ -88,8 +104,23 @@ public class AdministratorAnnouncementCreateService implements AbstractCreateSer
 						
 			res = SpamDetector.spamDetector(entity.getBody(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
 			
-			errors.state(request, res, "body", "administrator.announcement.form.error.url");
+			errors.state(request, res, "body", "alert-message.form.spam");
+		}
+		
+		if(!errors.hasErrors("info")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.administratorAnnouncementRepository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
 			
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+						
+			res = SpamDetector.spamDetector(entity.getInfo(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+			
+			errors.state(request, res, "info", "alert-message.form.spam");
 		}
 		
 	}

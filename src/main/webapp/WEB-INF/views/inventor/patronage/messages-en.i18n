@@ -16,3 +16,5 @@ inventor.patronage.form.label.start-date = Start date
 inventor.patronage.form.label.end-date = End date
 inventor.patronage.form.label.more-info = More info
 inventor.patronage.form.label.patron = Patron
+
+alert-message.form.spam = Some words used are not appropriate

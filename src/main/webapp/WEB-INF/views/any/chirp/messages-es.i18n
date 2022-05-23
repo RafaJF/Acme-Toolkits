@@ -26,3 +26,5 @@ any.chirp.form.label.confirmation = Confirmar
 any.chirp.form.error.title = Titulo menor que 100 caracteres
 any.chirp.form.error.autor = Autor menor que 100 caracteres
 any.chirp.form.error.body = Body menor que 256 caracteres
+
+alert-message.form.spam = Algunas palabras empleadas no son adecuadas

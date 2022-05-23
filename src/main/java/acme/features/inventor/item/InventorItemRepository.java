@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.item.Item;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Inventor;
 
@@ -29,5 +30,8 @@ public interface InventorItemRepository extends AbstractRepository {
 	
 	@Query("SELECT ac.acceptedCurrencies from SystemConfiguration ac")
 	String findAcceptedCurrencies();
+	
+	@Query("select systemConfiguration from SystemConfiguration systemConfiguration")
+	SystemConfiguration systemConfiguration();
 	
 }

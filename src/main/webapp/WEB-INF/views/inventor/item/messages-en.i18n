@@ -25,3 +25,4 @@ inventor.item.form.error.duplicated-code = Duplicate code
 inventor.item.form.error.retail-price-amount-negative-or-zero = The amount must be positive
 inventor.item.form.error.retail-price-currency-invalid = Currency is invalid
 
+alert-message.form.spam = Some words used are not appropriate

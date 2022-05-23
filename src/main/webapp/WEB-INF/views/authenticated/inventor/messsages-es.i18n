@@ -17,3 +17,5 @@ authenticated.inventor.inventor.form.label.info = Información
 
 authenticated.inventor.inventor.form.button.create = Registrar
 authenticated.inventor.inventor.form.button.update = Actualizar
+
+alert-message.form.spam = Algunas palabras empleadas no son adecuadas

@@ -26,3 +26,5 @@ inventor.toolkit.list.button.create = Create toolkit
 inventor.toolkit.form.button.quantities.create = Add Item
 inventor.toolkit.form.button.quantities = Items
 inventor.toolkit.form.error.duplicated = There is already a Toolkit with that code
+
+alert-message.form.spam = Some words used are not appropriate

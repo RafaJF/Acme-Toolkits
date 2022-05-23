@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.item.Item;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
+import spamDetector.SpamDetector;
 
 @Service
 public class InventorItemUpdateService implements AbstractUpdateService<Inventor, Item>{
@@ -89,6 +91,87 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 			errors.state(request, amount > 0., "retailPrice", "inventor.item.form.error.retail-price-amount-negative-or-zero");
 			errors.state(request, validCurrency, "retailPrice", "inventor.item.form.error.retail-price-currency-invalid");
 		}
+		
+		if(!errors.hasErrors("name")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
+			
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+						
+			res = SpamDetector.spamDetector(entity.getName(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+			
+			errors.state(request, res, "name", "alert-message.form.spam");
+		}
+		
+		if(!errors.hasErrors("code")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
+			
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+						
+			res = SpamDetector.spamDetector(entity.getCode(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+			
+			errors.state(request, res, "code", "alert-message.form.spam");
+		}
+		
+		if(!errors.hasErrors("technology")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
+			
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+						
+			res = SpamDetector.spamDetector(entity.getTechnology(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+			
+			errors.state(request, res, "technology", "alert-message.form.spam");
+		}
+		
+		if(!errors.hasErrors("description")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
+			
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+						
+			res = SpamDetector.spamDetector(entity.getDescription(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+			
+			errors.state(request, res, "description", "alert-message.form.spam");
+		}
+		
+		if(!errors.hasErrors("info")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
+			
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+						
+			res = SpamDetector.spamDetector(entity.getInfo(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+			
+			errors.state(request, res, "info", "alert-message.form.spam");
+		}
+		
 
 	}
 
