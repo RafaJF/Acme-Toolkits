@@ -1,0 +1,11 @@
+recordIndex,title,body,info,critical,confirmation
+0,,,,false,false
+1,Anuncio de prueba,Cuerpo de prueba,url invalida,true,true
+2,,Cuerpo de prueba,https://moreinfo.com/,true,false
+3,Anuncio de prueba,,https://moreinfo.com/,false,false
+4,Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba Anuncio de prueba,Cuerpo de prueba,,false,true
+5,Anuncio de prueba,Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba Cuerpo de prueba,,false,true
+6,Anuncio de prueba,Cuerpo de prueba,moreinfo.com,false,true
+7,,,https://moreinfo.com/,true,true
+8,Anuncio de prueba,Cuerpo de prueba,https://moreinfo.com/,false,false
+9,,,,false,false

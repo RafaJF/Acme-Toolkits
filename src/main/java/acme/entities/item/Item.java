@@ -37,7 +37,6 @@ public class Item extends AbstractEntity{
 	@Column(unique=true)
 	@NotBlank
 	@Pattern(regexp="^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
-	@NotBlank
 	protected String code;
 	
 	@NotBlank
@@ -58,8 +57,6 @@ public class Item extends AbstractEntity{
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	protected ItemType itemType;
-
-
 	
 	protected boolean published;
 	
