@@ -12,3 +12,6 @@ recordIndex,name,code,technology,description,retailPrice,info,itemType
 10,ename2,QPN-008-W,technology,description,"SOL 0.01",,COMPONENT
 11,ename3,QPN-009-W,technology,description,"EUR 0.00",,COMPONENT
 12,fname1,QPN-010-W,technology,description,"EUR 0.01",noURL,COMPONENT
+13,sex,QPN-010-W,technology,description,"EUR 0.01",noURL,COMPONENT
+15,fname1,QPN-010-W,sex,description,"EUR 0.01",noURL,COMPONENT
+16,fname1,QPN-010-W,technology,sex,"EUR 0.01",noURL,COMPONENT

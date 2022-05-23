@@ -9,3 +9,6 @@ recordIndex,title,body,info,critical,confirmation
 7,,,https://moreinfo.com/,true,true
 8,Anuncio de prueba,Cuerpo de prueba,https://moreinfo.com/,false,false
 9,,,,false,false
+10,sex,body,info,false,false
+11,title,sex,info,false,false
+12,title,body,sex,false,false

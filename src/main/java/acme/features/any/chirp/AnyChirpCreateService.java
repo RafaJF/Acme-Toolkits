@@ -129,24 +129,6 @@ public class AnyChirpCreateService implements AbstractCreateService<Any, Chirp> 
 			errors.state(request, res, "body", "alert-message.form.spam");
 		}
 		
-		if(!errors.hasErrors("email")) {
-			final boolean res;
-			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
-			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
-			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
-			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
-			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
-			
-			final double StrongT = systemConfiguration.getStrongThreshold();
-			final double WeakT = systemConfiguration.getWeakThreshold();
-						
-			res = SpamDetector.spamDetector(entity.getEmail(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
-			
-			errors.state(request, res, "email", "alert-message.form.spam");
-		}
-		
-
-		
 		confirmation = request.getModel().getBoolean("confirmation");
 		errors.state(request, confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
 	}

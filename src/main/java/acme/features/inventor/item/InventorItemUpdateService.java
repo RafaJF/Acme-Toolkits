@@ -109,22 +109,6 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 			errors.state(request, res, "name", "alert-message.form.spam");
 		}
 		
-		if(!errors.hasErrors("code")) {
-			final boolean res;
-			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
-			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
-			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
-			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
-			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
-			
-			final double StrongT = systemConfiguration.getStrongThreshold();
-			final double WeakT = systemConfiguration.getWeakThreshold();
-						
-			res = SpamDetector.spamDetector(entity.getCode(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
-			
-			errors.state(request, res, "code", "alert-message.form.spam");
-		}
-		
 		if(!errors.hasErrors("technology")) {
 			final boolean res;
 			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
@@ -157,23 +141,6 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 			errors.state(request, res, "description", "alert-message.form.spam");
 		}
 		
-		if(!errors.hasErrors("info")) {
-			final boolean res;
-			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
-			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
-			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
-			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
-			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
-			
-			final double StrongT = systemConfiguration.getStrongThreshold();
-			final double WeakT = systemConfiguration.getWeakThreshold();
-						
-			res = SpamDetector.spamDetector(entity.getInfo(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
-			
-			errors.state(request, res, "info", "alert-message.form.spam");
-		}
-		
-
 	}
 
 	@Override
