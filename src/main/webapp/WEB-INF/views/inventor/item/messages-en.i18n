@@ -4,6 +4,7 @@ inventor.item.list.label.code = Code
 inventor.item.list.label.technology = Technology
 inventor.item.list.label.description = Description
 inventor.item.list.label.retail-price = Retail Price
+inventor.item.list.label.retail-price-default = Retail Price (conversion)
 inventor.item.list.label.info = Info
 inventor.item.list.label.item-type = Item type
 inventor.item.list.label.published = Published
