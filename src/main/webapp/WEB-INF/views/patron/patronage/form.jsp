@@ -33,6 +33,12 @@
 		<acme:input-textarea code="patron.patronage.form.label.legal-stuff" path="legalStuff"/>
 		<acme:input-money code="patron.patronage.form.label.budget" path="budget"/>
 		
+		<jstl:choose>
+			<jstl:when test="${command == 'show' && newBudget.getCurrency()!=budget.getCurrency()}">
+	            <acme:input-money code="inventor.patronage.form.label.budget-conversion" path="newBudget" readonly="true"/>
+	    	</jstl:when>
+    	</jstl:choose>
+		
 	<jstl:choose>
 		<jstl:when test="${published==true}">
 			<acme:input-moment code="patron.patronage.form.label.creation-moment" path="creationMoment"/>

@@ -17,7 +17,6 @@ public class PatronPatronageShowService implements AbstractShowService<Patron,Pa
 	
 	@Autowired
 	protected PatronPatronageRepository repository;
-	
 	@Autowired
 	protected AuthenticatedSystemConfigurationRepository systemConfigRepository;
 	
@@ -41,8 +40,7 @@ public class PatronPatronageShowService implements AbstractShowService<Patron,Pa
 		final int id = request.getModel().getInteger("id");
 		final Patronage p = this.repository.findPatronageById(id);
 		
-		final Money newBudget = this.moneyExchangePatronages(p);
-		p.setBudget(newBudget);
+		
 		
 		return p;	
 	}
@@ -53,7 +51,8 @@ public class PatronPatronageShowService implements AbstractShowService<Patron,Pa
 		assert entity != null;
 		assert model != null;
 		
-		
+		final Money newBudget = this.moneyExchangePatronages(entity);
+		model.setAttribute("newBudget", newBudget);
 		
 		request.unbind(entity, model, "status", "code", "legalStuff", "budget", "creationMoment","startDate","endDate","moreInfo","patron.company","published");
 		model.setAttribute("patronId", entity.getPatron().getId());

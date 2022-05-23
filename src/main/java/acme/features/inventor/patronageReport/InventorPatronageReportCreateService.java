@@ -129,11 +129,11 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 			duplicateCode = this.reportRepository.findOnePatronageReportByCode(entity.getSequenceNumber());
 			errors.state(request, duplicateCode == null , "sequenceNumber", "inventor.patronageReport.form.error.duplicated");
 		}
-		if(!errors.hasErrors("moreInfo")) {
-			boolean isUrl;
-			isUrl = (entity.getMoreInfo().startsWith("http") || entity.getMoreInfo().startsWith("www")) && entity.getMoreInfo().contains(".");
-			errors.state(request, isUrl, "moreInfo", "inventor.patronageReport.form.error.moreInfo");
-		}
+//		if(!errors.hasErrors("moreInfo")) {
+//			boolean isUrl;
+//			isUrl = (entity.getMoreInfo().startsWith("http") || entity.getMoreInfo().startsWith("www")) && entity.getMoreInfo().contains(".");
+//			errors.state(request, isUrl, "moreInfo", "inventor.patronageReport.form.error.moreInfo");
+//		}
 		
 		
 	}
