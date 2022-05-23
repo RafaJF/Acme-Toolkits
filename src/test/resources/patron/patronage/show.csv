@@ -1,0 +1,7 @@
+recordIndex,status,code,legal-stuff,budget,creation-moment,start-date,end-date,more-info
+0,ACCEPTED,ABC-123,Example,EUR 150.00,2021/10/10 10:00,2021/11/15 10:00,2021/12/21 10:00,https://moreinfo.com
+1,DENIED,DEF-456,texto con 100 caracteres: rellenoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,"EUR 1,000.00",2021/10/15 10:00,2021/11/20 10:00,2021/12/25 10:00,https://moreinfo.com
+2,ACCEPTED,MNO-222,Example,USD 300.00,2021/11/15 10:00,2021/12/20 10:00,2021/01/22 10:00,https://moreinfo.com
+3,ACCEPTED,POU-173,Example,"EUR 4,500.00",2022/01/10 10:00,2022/02/15 10:00,2022/03/21 10:00,https://moreinfo.com
+4,DENIED,PQR-230,texto con 255 caracteres: rellenooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo,EUR 500.00,2021/11/20 10:00,2021/12/22 10:00,2021/01/25 10:00,https://moreinfo.com
+5,PROPOSED,XYZ-192,Example,"EUR 6,500.00",2022/01/15 10:00,2022/02/20 10:00,2022/03/25 10:00,

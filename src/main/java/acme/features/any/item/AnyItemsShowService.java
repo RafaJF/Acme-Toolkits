@@ -38,8 +38,8 @@ public class AnyItemsShowService implements AbstractShowService<Any, Item> {
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOneById(id);
 		
-		final Money newRetailPrice = this.moneyExchangePatronages(result);
-		result.setRetailPrice(newRetailPrice);
+//		final Money newRetailPrice = this.moneyExchangePatronages(result);
+//		result.setRetailPrice(newRetailPrice);
 
 		return result;
 	}
@@ -49,6 +49,9 @@ public class AnyItemsShowService implements AbstractShowService<Any, Item> {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		
+		final Money newRetailPrice = this.moneyExchangePatronages(entity);
+		model.setAttribute("newRetailPrice", newRetailPrice);
 		
 		request.unbind(entity, model, "itemType", "name", "code", "technology","description","retailPrice", "info", "published");
 		model.setAttribute("confirmation", false);

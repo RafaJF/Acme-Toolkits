@@ -5,11 +5,15 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.moneyExchange.MoneyExchange;
 import acme.entities.quantity.Quantity;
 import acme.entities.toolkit.Toolkit;
+import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
+import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
 import acme.features.inventor.toolkit.InventorToolkitRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractListService;
 import acme.roles.Inventor;
 @Service
@@ -18,6 +22,9 @@ public class InventorQuantityListService implements AbstractListService<Inventor
 	protected InventorToolkitRepository toolkitRepository;
 	@Autowired
 	protected InventorQuantityRepository repository;
+	@Autowired
+	protected AuthenticatedSystemConfigurationRepository systemConfigRepository;
+	
 	@Override
 	public boolean authorise(final Request<Quantity> request) {
 		
@@ -45,6 +52,10 @@ public class InventorQuantityListService implements AbstractListService<Inventor
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		
+		final Money newRetailPrice = this.moneyExchangeQuantity(entity);
+		model.setAttribute("newRetailPrice", newRetailPrice);
+		
 		request.unbind(entity, model, "amount", "item.code","item.name", "item.retailPrice", "item.itemType");
 		int toolkitId;
 		toolkitId = request.getModel().getInteger("id");
@@ -64,4 +75,28 @@ public class InventorQuantityListService implements AbstractListService<Inventor
 		model.setAttribute("isPublished", toolkit.isPublished());
 	}
 
+	//Métodos auxiliares
+	
+	public Money moneyExchangeQuantity(final Quantity q) {
+		final String itemCurrency = q.getItem().getRetailPrice().getCurrency();
+			
+		final AuthenticatedMoneyExchangePerformService moneyExchange = new AuthenticatedMoneyExchangePerformService();
+		final String systemCurrency = this.systemConfigRepository.findSystemConfiguration().getSystemCurrency();
+		final Double conversionAmount;
+				
+		if(!systemCurrency.equals(itemCurrency)) {
+			MoneyExchange conversion;
+			conversion = moneyExchange.computeMoneyExchange(q.getItem().getRetailPrice(), systemCurrency);
+			conversionAmount = conversion.getTarget().getAmount();	
+		}
+		else {
+			conversionAmount = q.getItem().getRetailPrice().getAmount();
+		}
+			
+		final Money newBudget = new Money();
+		newBudget.setAmount(conversionAmount);
+		newBudget.setCurrency(systemCurrency);
+			
+		return newBudget;
+	}
 }

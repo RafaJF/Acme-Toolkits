@@ -1,4 +1,12 @@
-recordIndex,creation-moment,title,body,critical-flag,info
-0,"2022/04/19 21:00",Tercer anuncio de prueba,Este es un anuncio de prueba con una longitud ínfima,false,
-1,"2022/04/20 22:00",Cuarto anuncio de prueba,Este es un anuncio de prueba,true,
-2,"2022/04/20 23:00",PruebaPruebaPrueba,Este es un anuncio de prueba igual que el anterior,true,https://moreinfo.com/
+recordIndex,delta-days,title,body,critical-flag,info
+0,-11,PruebaPruebaPrueba,Este es un anuncio de prueba igual que el anterior,true,https://moreinfo.com/
+1,-10,PruebaPrueba,Este es un anuncio de prueba,true,
+2,-9,PruebaPruebaPruebaPruebaPrueba,Este es un anuncio de prueba con una longitud ínfima,false,
+3,-8,Q,Este es un anuncio de prueba con una longitud un poco menos reducida que el anterior,false,
+4,-7,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,Este es un anuncio de prueba con una longitud bastante reducida,true,https://moreinfo.com/
+5,-6,A,Este es un anuncio de prueba igual que el anterior,true,https://moreinfo.com/
+6,-5,Prueba14,Este es un anuncio de prueba,true,
+7,-4,Prueba13,Este es un anuncio de prueba con una longitud ínfima,false,
+8,-3,Duodécimo anuncio de prueba,Este es un anuncio de prueba con una longitud un poco menos reducida que el anterior,false,
+9,-2,Undécimo anuncio de prueba,Este es un anuncio de prueba con una longitud bastante reducida,true,https://moreinfo.com/
+10,-1,Décimo anuncio de prueba,Este es un anuncio de prueba igual que el anterior,true,https://moreinfo.com/

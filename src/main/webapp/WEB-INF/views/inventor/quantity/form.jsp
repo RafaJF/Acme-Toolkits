@@ -7,9 +7,9 @@
 	<acme:input-textbox code="inventor.quantity.form.label.toolkit.title" path="toolkit.title" readonly="true"/>
 	<jstl:choose>
 		<jstl:when test="${command == 'create'}">
-			<acme:input-select path="item.name" code="inventor.quantity.form.label.item.name">
+			<acme:input-select path="item.id" code="inventor.quantity.form.label.item.name">
 				<jstl:forEach var="item" items="${publishedItems}">
-				<acme:input-option  code="${item.name} - ${item.itemType}" value="${item.name}"/>
+				<acme:input-option  code="${item.name} - ${item.itemType}" value="${item.id}"/>
 				</jstl:forEach>
 			</acme:input-select>
 		
@@ -20,7 +20,14 @@
 			<acme:input-textbox code="inventor.quantity.form.label.item.code" path="item.code" readonly="true"/>
 			<acme:input-textbox code="inventor.quantity.form.label.item.technology" path="item.technology" readonly="true"/>
 			<acme:input-textbox code="inventor.quantity.form.label.item.description" path="item.description" readonly="true"/>
-			<acme:input-textbox code="inventor.quantity.form.label.item.retaiLPrice" path="item.retailPrice" readonly="true"/>
+			<acme:input-money code="inventor.quantity.form.label.item.retaiLPrice" path="item.retailPrice" readonly="true"/>
+			
+			<jstl:choose>
+				<jstl:when test="${command == 'show'&& newRetailPrice.getCurrency()!=retailPrice.getCurrency()}">
+            		<acme:input-money code="inventor.quantity.form.label.retail-price-conversion" path="newRetailPrice" readonly="true"/>
+    			</jstl:when>
+    		</jstl:choose>
+			
 			<acme:input-textbox code="inventor.quantity.form.label.item.itemType" path="item.itemType" readonly="true"/>
 			
 		</jstl:otherwise>	

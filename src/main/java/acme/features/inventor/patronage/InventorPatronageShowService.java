@@ -41,9 +41,15 @@ public class InventorPatronageShowService implements AbstractShowService<Invento
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		
+		final Money newBudget = this.moneyExchangePatronages(entity);
+		model.setAttribute("newBudget", newBudget);
 
 		request.unbind(entity, model, "status", "code", "legalStuff", "budget", "creationMoment", "startDate", "endDate", "moreInfo");
 		model.setAttribute("company", entity.getPatron().getCompany());
+		model.setAttribute("patronageId", entity.getId());
+		
+		
 	}
 	
 	@Override
@@ -52,9 +58,6 @@ public class InventorPatronageShowService implements AbstractShowService<Invento
 
 		final int id = request.getModel().getInteger("id");
 		final Patronage p = this.repository.findOnePatronageById(id);
-		
-		final Money newBudget = this.moneyExchangePatronages(p);
-		p.setBudget(newBudget);
 		
 		return p;	
 	}

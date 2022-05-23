@@ -10,12 +10,26 @@
 	<acme:input-textbox code="inventor.item.form.label.technology" path="technology"/>
 	<acme:input-textarea code="inventor.item.form.label.description" path="description"/>
 	<acme:input-money code="inventor.item.form.label.retail-price" path="retailPrice"/>
+	
+	<jstl:choose>
+		<jstl:when test="${command == 'show'&& newRetailPrice.getCurrency()!=retailPrice.getCurrency()}">
+            <acme:input-money code="inventor.item.form.label.retail-price-conversion" path="newRetailPrice"/>
+    	</jstl:when>
+    </jstl:choose>
+	
+	
+	
 	<acme:input-url code="inventor.item.form.label.info" path="info"/>
 	<acme:input-select code="inventor.item.form.label.item-type" path="itemType">
 		<acme:input-option code="COMPONENT" value="COMPONENT" selected="${itemType == 'COMPONENT'}"/>
 		<acme:input-option code="TOOL" value="TOOL" selected="${itemType == 'TOOL'}"/>
 	</acme:input-select>
-	<acme:input-checkbox code="inventor.item.form.label.published" path="published"/>
+	
+	<jstl:choose>
+		<jstl:when test="${command != 'create'}">
+			<acme:input-checkbox readonly="true" code="inventor.item.form.label.published" path="published"/>
+		</jstl:when>
+	</jstl:choose>
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') && published == false}">

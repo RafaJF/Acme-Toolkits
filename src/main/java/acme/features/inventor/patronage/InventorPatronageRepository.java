@@ -21,4 +21,6 @@ public interface InventorPatronageRepository extends AbstractRepository {
 	@Query("select systemConfiguration from SystemConfiguration systemConfiguration")
 	SystemConfiguration systemConfiguration();
 
+	@Query("select p from Patronage p where p.code = :code")
+	Patronage findPatronagesByCode(String code);
 }

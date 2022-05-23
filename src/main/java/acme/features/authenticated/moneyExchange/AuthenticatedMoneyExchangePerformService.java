@@ -19,7 +19,7 @@ import acme.framework.services.AbstractPerformService;
 public class AuthenticatedMoneyExchangePerformService implements AbstractPerformService<Authenticated, MoneyExchange> {
 
 	// AbstractPerformService<Authenticated, ExchangeRecord> interface ---------
-
+	
 	@Override
 	public boolean authorise(final Request<MoneyExchange> request) {
 		assert request != null;
@@ -132,5 +132,4 @@ public class AuthenticatedMoneyExchangePerformService implements AbstractPerform
 
 		return res;
 	}
-
 }

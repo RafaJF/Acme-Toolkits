@@ -59,7 +59,7 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors, "name", "code", "technology", "description", "retailPrice", "info", "itemType", "published");
+		request.bind(entity, errors, "name", "code", "technology", "description", "retailPrice", "info", "itemType");
 		
 	}
 	
@@ -178,7 +178,7 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "info", "itemType", "published");
+		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "info", "itemType");
 		
 	}
 
