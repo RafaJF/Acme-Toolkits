@@ -27,7 +27,7 @@
 	
 	<jstl:choose>
 		<jstl:when test="${command != 'create'}">
-			<acme:input-checkbox code="inventor.item.form.label.published" path="published"/>
+			<acme:input-checkbox readonly="true" code="inventor.item.form.label.published" path="published"/>
 		</jstl:when>
 	</jstl:choose>
 	

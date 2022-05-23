@@ -62,13 +62,15 @@ public class InventorComponentListService implements AbstractListService<Invento
 	}
 	
 	//Método auxiliar cambio de divisa
+
 	public Money moneyExchangeItem(final Item i) {
+
 		final String itemCurrency = i.getRetailPrice().getCurrency();
 		
 		final AuthenticatedMoneyExchangePerformService moneyExchange = new AuthenticatedMoneyExchangePerformService();
 		final String systemCurrency = this.systemConfigRepository.findSystemConfiguration().getSystemCurrency();
 		final Double conversionAmount;
-				
+
 		if(!systemCurrency.equals(itemCurrency)) {
 			MoneyExchange conversion;
 			conversion = moneyExchange.computeMoneyExchange(i.getRetailPrice(), systemCurrency);
@@ -77,11 +79,12 @@ public class InventorComponentListService implements AbstractListService<Invento
 		else {
 			conversionAmount = i.getRetailPrice().getAmount();
 		}
-				
+
 		final Money newBudget = new Money();
 		newBudget.setAmount(conversionAmount);
 		newBudget.setCurrency(systemCurrency);
 				
 		return newBudget;
 	}
+
 }

@@ -10,8 +10,11 @@
 	<acme:input-textbox code="inventor.toolkit.form.label.assambly-notes" path="assamblyNotes"/>
 	<acme:input-url code="inventor.toolkit.form.label.url" path="url"/>
 	<acme:input-money code="inventor.toolkit.form.label.total-price" path="totalPrice" readonly="true"/>
+	<jstl:choose>
+	<jstl:when test="${acme:anyOf(command, 'show,update,delete,publish') }">
 	<acme:input-checkbox code="inventor.toolkit.form.label.published" path="published" readonly="true"/>
-
+	</jstl:when>
+	</jstl:choose>
 	
 	<jstl:choose>	 
 		

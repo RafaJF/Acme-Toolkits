@@ -59,12 +59,16 @@ public class InventorToolListService implements AbstractListService<Inventor,Ite
 			model.setAttribute("published", "\u274C");
 		}
 		
+		final Money newRetailPrice = this.moneyExchangePatronages(entity);
+		model.setAttribute("newRetailPrice", newRetailPrice);
+		
 		request.unbind(entity, model, "name","code","retailPrice"); 
 		 
 	} 
 	
 	//Método auxiliar cambio de divisa
 		public Money moneyExchangeItem(final Item i) {
+
 			final String itemCurrency = i.getRetailPrice().getCurrency();
 			
 			final AuthenticatedMoneyExchangePerformService moneyExchange = new AuthenticatedMoneyExchangePerformService();

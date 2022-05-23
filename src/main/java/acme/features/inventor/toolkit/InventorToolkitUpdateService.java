@@ -62,12 +62,11 @@ public class InventorToolkitUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-		if(!errors.hasErrors("url")) {
-			if(!entity.getUrl().isEmpty()) {
+		if(!errors.hasErrors("url") && (!entity.getUrl().isEmpty())) {
 			boolean isUrl;
 			isUrl = (entity.getUrl().startsWith("http") || entity.getUrl().startsWith("www")) && entity.getUrl().contains(".");
 			errors.state(request, isUrl, "url", "inventor.toolkit.form.error.url");
-		}
+		
 		}
 		if(!errors.hasErrors("code")) {
 			Toolkit existingToolkit;
