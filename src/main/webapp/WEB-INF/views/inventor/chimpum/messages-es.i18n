@@ -1,0 +1,13 @@
+inventor.chimpum.form.label.code = Código
+inventor.chimpum.form.label.title = Titulo
+inventor.chimpum.form.label.creation-moment = Momento de creación
+inventor.chimpum.form.label.description = Descripción
+inventor.chimpum.form.label.start-date = Fecha de inicio
+inventor.chimpum.form.label.end-date = Fecha de final
+inventor.chimpum.form.label.budget = Presupuesto
+inventor.chimpum.form.label.link = Link (Opcional)
+inventor.chimpum.form.label.item.name = Nombre del item
+
+inventor.chimpum.list.label.code = Código
+inventor.chimpum.list.label.title = Titulo
+inventor.chimpum.list.label.budget = Presupuesto
