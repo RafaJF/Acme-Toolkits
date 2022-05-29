@@ -141,7 +141,7 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert model != null;
 
 		request.unbind(entity, model,  "code", "legalStuff", "budget", "startDate", "endDate", "moreInfo", "inventor.id");	
-		model.setAttribute("inventors", this.repository.findInventors());
+
 	}
 	
 	

@@ -47,7 +47,7 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		String patronageCode;
 		Patronage patronage;
 		
-		patronageCode = request.getModel().getString("patronage.code");
+		patronageCode = request.getModel().getString("patronageCode");
 		patronage=this.patronageRepository.findPatronagesByCode(patronageCode);
 		entity.setPatronage(patronage);
 		//
@@ -65,7 +65,8 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 		}
 		entity.setSequenceNumber(sequenceNumber);
 		//
-		request.bind(entity, errors,"creationMoment", "memorandum", "moreInfo","patronage.code");
+		
+		request.bind(entity, errors,"creationMoment", "memorandum", "moreInfo");
 		
 		
 	}
@@ -87,6 +88,7 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 				publishedPatronages.add(p);
 			}
 		}
+		
 		
 		model.setAttribute("publishedPatronages", publishedPatronages);
 		

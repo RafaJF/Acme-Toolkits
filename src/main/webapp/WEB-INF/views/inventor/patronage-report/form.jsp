@@ -20,7 +20,7 @@
 	
 		<jstl:when test="${command == 'create'}">
 		
-		<acme:input-select code="inventor.patronage-report.form.label.patronages" path="patronage.code">
+		<acme:input-select code="inventor.patronage-report.form.label.patronages" path="patronageCode">
 			<jstl:forEach items="${publishedPatronages}" var ="patronage">
 				<acme:input-option code="${patronage.code}" value="${patronage.code}"/>
 			</jstl:forEach>

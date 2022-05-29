@@ -42,10 +42,10 @@ public class InventorQuantityCreateService implements AbstractCreateService<Inve
 		assert errors != null;
 		int itemId;
 		Item item;
-		itemId = request.getModel().getInteger("item.id");
+		itemId = request.getModel().getInteger("itemId");
 		item = this.repository.findItemById(itemId);
 		entity.setItem(item);
-		request.bind(entity, errors, "amount", "item.id", "toolkit.title");
+		request.bind(entity, errors, "amount", "toolkit.title");
 		
 	}
 
