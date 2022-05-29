@@ -7,7 +7,7 @@
 	<acme:input-textbox code="inventor.quantity.form.label.toolkit.title" path="toolkit.title" readonly="true"/>
 	<jstl:choose>
 		<jstl:when test="${command == 'create'}">
-			<acme:input-select path="item.id" code="inventor.quantity.form.label.item.name">
+			<acme:input-select path="itemId" code="inventor.quantity.form.label.item.name">
 				<jstl:forEach var="item" items="${publishedItems}">
 				<acme:input-option  code="${item.name} - ${item.itemType}" value="${item.id}"/>
 				</jstl:forEach>

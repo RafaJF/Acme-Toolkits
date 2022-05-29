@@ -70,7 +70,6 @@
 			<acme:input-textbox code="patron.patronage.label.inventor-email" path="inventorEmail" readonly="true"/>
 			<acme:input-textbox code="patron.patronage.label.inventor-company" path="inventorCompany" readonly="true"/>
 			<acme:input-textbox code="patron.patronage.label.inventor-statement" path="inventorStatement" readonly="true"/>
-			<acme:input-textbox code="patron.patronage.label.inventor-info" path="inventorInfo" readonly="true"/>
 		</jstl:when>
 		
 	</jstl:choose>
