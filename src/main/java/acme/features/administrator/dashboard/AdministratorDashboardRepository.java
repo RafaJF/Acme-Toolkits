@@ -60,4 +60,23 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 
 	@Query("SELECT p.budget.currency, max(p.budget.amount) FROM Patronage p WHERE p.status = :status GROUP BY p.budget.currency")
 	Collection<Tuple> maximumBudgetPatronagesByStatus(Status status);
+	
+	//Control Check-----------------------------------------------------------------
+	
+//	@Query()
+//	Integer ratioArtefactWithChimpum;
+	
+	@Query("SELECT ROUND(AVG(c.budget.amount),2) FROM Chimpum c WHERE c.budget.currency = :currency")
+	Double averageBudgetChimpumByCurrency(String currency);
+	
+	@Query("SELECT ROUND(STDDEV(c.budget.amount),2) FROM Chimpum c WHERE c.budget.currency = :currency")
+	Double deviationBudgetChimpumByCurrency(String currency);
+	
+	@Query("SELECT ROUND(MIN(c.budget.amount),2) FROM Chimpum c WHERE c.budget.currency = :currency")
+	Double minBudgetChimpumByCurrency(String currency);
+	
+	@Query("SELECT ROUND(MAX(c.budget.amount),2) FROM Chimpum c WHERE c.budget.currency = :currency")
+	Double maxBudgetChimpumByCurrency(String currency);
+	
+	
 }

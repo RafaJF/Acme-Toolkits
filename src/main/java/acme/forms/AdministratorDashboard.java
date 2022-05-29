@@ -38,6 +38,16 @@ public class AdministratorDashboard implements Serializable{
     Map<Pair<Status, String>, Double> minimumBudgetPatronagesByStatus;
     Map<Pair<Status, String>, Double> maximumBudgetPatronagesByStatus;
     
+   
+    
+    //-----------CONTROL CHECK------------------------------------------------
+    
+    int ratioArtefactWithChimpum;
+    
+    Map<String,Double>  averageBudgetChimpumByCurrency;
+    Map<String,Double> deviationBudgetChimpumByCurrency;
+    Map<String,Double> minBudgetChimpumByCurrency;
+    Map<String, Double> maxBudgetChimpumByCurrency;
 
 	// Derived attributes -----------------------------------------------------
 

@@ -26,3 +26,6 @@ administrator.dashboard.form.status.PROPOSED = Propuesto
 administrator.dashboard.form.status.USD = USD
 administrator.dashboard.form.status.EUR = EUR
 administrator.dashboard.form.status.GBP = GBP
+
+
+administrator.administrator-dashboard.form.label.average-budget-chimpum-by-currency=Chimpum

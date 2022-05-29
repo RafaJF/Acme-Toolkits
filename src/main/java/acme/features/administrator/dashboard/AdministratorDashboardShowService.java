@@ -60,7 +60,8 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		final Map<Pair<Status, String>, Double> deviationBudgetPatronagesByStatus = new HashMap<Pair<Status, String>, Double>();
 		final Map<Pair<Status, String>, Double> minimumBudgetPatronagesByStatus = new HashMap<Pair<Status, String>, Double>();
 		final Map<Pair<Status, String>, Double> maximumBudgetPatronagesByStatus = new HashMap<Pair<Status, String>, Double>();
-
+		
+		
 		totalNumberOfComponents = this.repository.totalNumberOfComponents();
 		totalNumberOfTools = this.repository.totalNumberOfTools();
 		
@@ -128,6 +129,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 			maximumRetailPriceOfToolsByCurrency.put(currency, maximumRetailPriceOfToolsByX);
 		}
 		
+		
 		//totalNumberOfPatronagesByStatus
 		final Integer numPatronagesProposed = this.repository.totalNumberOfPatronagesByStatus(Status.PROPOSED);
 		final Integer numPatronagesAccepted = this.repository.totalNumberOfPatronagesByStatus(Status.ACCEPTED);
@@ -192,6 +194,37 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 				Pair.of(Status.DENIED, x.get(0).toString()),
 				Double.parseDouble(x.get(1).toString())));
 		
+		//CONTROL CHECK---------------------------------------------------------
+		final Map<String, Double> averageBudgetChimpumByCurrency = new HashMap<String, Double>();
+		final Map<String, Double> deviationBudgetChimpumByCurrency = new HashMap<String, Double>();
+		final Map<String, Double> minBudgetChimpumByCurrency = new HashMap<String, Double>();
+		final Map<String, Double> maxBudgetChimpumByCurrency = new HashMap<String, Double>();
+		
+		//averageBudgetChimpumByCurrency
+		for(final String currency: currencies) {
+			final Double averageBudgetChimpumByX =  this.repository.averageBudgetChimpumByCurrency(currency);
+			averageBudgetChimpumByCurrency.put(currency, averageBudgetChimpumByX);
+		}
+		//deviationBudgetChimpumByCurrency
+		for(final String currency: currencies) {
+			final Double deviationBudgetChimpumByX =  this.repository.deviationBudgetChimpumByCurrency(currency);
+			deviationBudgetChimpumByCurrency.put(currency, deviationBudgetChimpumByX);
+		}
+		//minBudgetChimpumByCurrency
+		for(final String currency: currencies) {
+			final Double minBudgetChimpumByX =  this.repository.minBudgetChimpumByCurrency(currency);
+			minBudgetChimpumByCurrency.put(currency, minBudgetChimpumByX);
+		}
+		//maxBudgetChimpumByCurrency
+		for(final String currency: currencies) {
+			final Double maxBudgetChimpumByX =  this.repository.maxBudgetChimpumByCurrency(currency);
+			maxBudgetChimpumByCurrency.put(currency, maxBudgetChimpumByX);
+		}
+
+				
+				
+		//------------------------------------------------------------------------
+		
 		result = new AdministratorDashboard();
 		
 		result.setTotalNumberOfComponents(totalNumberOfComponents);
@@ -213,6 +246,11 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setMinimumBudgetPatronagesByStatus(minimumBudgetPatronagesByStatus);
 		result.setMaximumBudgetPatronagesByStatus(maximumBudgetPatronagesByStatus);
 		
+		result.setAverageBudgetChimpumByCurrency(averageBudgetChimpumByCurrency);
+		result.setDeviationBudgetChimpumByCurrency(deviationBudgetChimpumByCurrency);
+		result.setMinBudgetChimpumByCurrency(minBudgetChimpumByCurrency);
+		result.setMaxBudgetChimpumByCurrency(maxBudgetChimpumByCurrency);
+		
 		return result;
 	}
 
@@ -227,7 +265,9 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 			"minimumRetailPriceOfComponentsByTechnologyAndCurrency", "maximumRetailPriceOfComponentsByTechnologyAndCurrency",
 			"averageRetailPriceOfToolsByCurrency", "deviationRetailPriceOfToolsByCurrency", "minimumRetailPriceOfToolsByCurrency",
 			"maximumRetailPriceOfToolsByCurrency", "averageBudgetPatronagesByStatus", "deviationBudgetPatronagesByStatus",
-			"minimumBudgetPatronagesByStatus", "maximumBudgetPatronagesByStatus");
+			"minimumBudgetPatronagesByStatus", "maximumBudgetPatronagesByStatus",
+			"averageBudgetChimpumByCurrency","deviationBudgetChimpumByCurrency","minBudgetChimpumByCurrency",
+			"maxBudgetChimpumByCurrency");
 	}
 
 }

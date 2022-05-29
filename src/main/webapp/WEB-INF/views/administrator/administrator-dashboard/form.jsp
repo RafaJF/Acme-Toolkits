@@ -20,6 +20,115 @@
 <acme:form readonly="true">
 
 			<h3>
+				<acme:message
+					code="administrator.administrator-dashboard.form.label.average-budget-chimpum-by-currency" />
+			</h3>
+			<table class="table table-sm">
+			<caption></caption>
+			<div class="column-50">
+				<jstl:forEach items="${ averageBudgetChimpumByCurrency.keySet() }"
+					var="key">
+					<tr>
+						<jstl:set value="${ averageBudgetChimpumByCurrency.get(key) }"
+							var="amount" />
+						<jstl:if test="${ amount>0 }">
+							<th scope="row" style="width: 15%"><acme:message
+									code="administrator.dashboard.form.status.${ key }" /></th>
+							<td><acme:print value="${ amount }" /></td>
+						</jstl:if>
+
+					</tr>
+				</jstl:forEach>
+				</div>
+				<div class="column-50">
+				<canvas id="avg-chimpum-canvas"></canvas>
+				</div>
+			</table>
+			<h3>
+				<acme:message
+					code="administrator.administrator-dashboard.form.label.deviation-budget-chimpum-by-currency" />
+			</h3>
+			<table class="table table-sm">
+			<caption></caption>
+			<div class="column-50">
+				<jstl:forEach items="${ deviationBudgetChimpumByCurrency.keySet() }"
+					var="key">
+					<tr>
+						<jstl:set value="${ deviationBudgetChimpumByCurrency.get(key) }"
+							var="amount" />
+						<jstl:if test="${ amount>0 }">
+							<th scope="row" style="width: 15%"><acme:message
+									code="administrator.dashboard.form.status.${ key }" /></th>
+							<td><acme:print value="${ amount }" /></td>
+						</jstl:if>
+
+					</tr>
+				</jstl:forEach>
+				</div>
+				<div class="column-50">
+				<canvas id="dev-chimpum-canvas"></canvas>
+				</div>
+			</table>
+			<h3>
+				<acme:message
+					code="administrator.administrator-dashboard.form.label.min-budget-chimpum-by-currency" />
+			</h3>
+			<table class="table table-sm">
+			<caption></caption>
+			<div class="column-50">
+				<jstl:forEach items="${ minBudgetChimpumByCurrency.keySet() }"
+					var="key">
+					<tr>
+						<jstl:set value="${ minBudgetChimpumByCurrency.get(key) }"
+							var="amount" />
+						<jstl:if test="${ amount>0 }">
+							<th scope="row" style="width: 15%"><acme:message
+									code="administrator.dashboard.form.status.${ key }" /></th>
+							<td><acme:print value="${ amount }" /></td>
+						</jstl:if>
+
+					</tr>
+				</jstl:forEach>
+				</div>
+				<div class="column-50">
+				<canvas id="min-chimpum-canvas"></canvas>
+				</div>
+			</table>
+			<h3>
+				<acme:message
+					code="administrator.administrator-dashboard.form.label.max-budget-chimpum-by-currency" />
+			</h3>
+			<table class="table table-sm">
+			<caption></caption>
+			<div class="column-50">
+				<jstl:forEach items="${ maxBudgetChimpumByCurrency.keySet() }"
+					var="key">
+					<tr>
+						<jstl:set value="${ maxBudgetChimpumByCurrency.get(key) }"
+							var="amount" />
+						<jstl:if test="${ amount>0 }">
+							<th scope="row" style="width: 15%"><acme:message
+									code="administrator.dashboard.form.status.${ key }" /></th>
+							<td><acme:print value="${ amount }" /></td>
+						</jstl:if>
+
+					</tr>
+				</jstl:forEach>
+				</div>
+				<div class="column-50">
+				<canvas id="max-chimpum-canvas"></canvas>
+				</div>
+			</table>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<h3>
 				<acme:message code="administrator.administrator-dashboard.form.label.total-number-of-components"/>
 			</h3>
 			<table>
@@ -402,6 +511,190 @@
 			<br> <br>
 		</div>
 </acme:form>
+
+
+
+
+<script type="text/javascript">
+   var averageBudgetChimpumByCurrency = {
+   	<jstl:forEach items="${averageBudgetChimpumByCurrency}" var="item" varStatus="loop">
+   	      ${item.key}: '${item.value}' ${not loop.last ? ',' : ''}
+   	</jstl:forEach>
+   };
+   
+   const avg_chimpum_data = {
+     labels: Object.keys(averageBudgetChimpumByCurrency),
+     datasets: [{
+       data: Object.values(averageBudgetChimpumByCurrency),
+       backgroundColor: [
+    	   'rgb(254, 136, 127)',
+     	  'rgb(136, 255, 114)',
+     	  'rgb(71, 130, 255)'
+       ],
+       borderColor: [
+    	   'rgb(193, 136, 127)',
+     	  'rgb(136, 176, 114)',
+     	  'rgb(71, 130, 159)'
+       ],
+       borderWidth: 1
+     }]
+   };
+   
+   var options = {
+   	    legend : { display : false },
+   	    scales: {
+   	        y: {
+   	         suggestedMin: 0,
+   	         display: true
+   	        }
+   	      }
+   	};
+   
+   var canvas = document.getElementById("avg-chimpum-canvas");
+   var context = canvas.getContext("2d");
+   new Chart(context, {
+   	type : "bar",
+   	data : avg_chimpum_data,
+   	options: options
+   });
+</script>
+<script type="text/javascript">
+   var deviationBudgetChimpumByCurrency = {
+   	<jstl:forEach items="${deviationBudgetChimpumByCurrency}" var="item" varStatus="loop">
+   	      ${item.key}: '${item.value}' ${not loop.last ? ',' : ''}
+   	</jstl:forEach>
+   };
+   
+   const dev_chimpum_data = {
+     labels: Object.keys(deviationBudgetChimpumByCurrency),
+     datasets: [{
+       data: Object.values(deviationBudgetChimpumByCurrency),
+       backgroundColor: [
+    	   'rgb(254, 136, 127)',
+     	  'rgb(136, 255, 114)',
+     	  'rgb(71, 130, 255)'
+       ],
+       borderColor: [
+    	   'rgb(193, 136, 127)',
+     	  'rgb(136, 176, 114)',
+     	  'rgb(71, 130, 159)'
+       ],
+       borderWidth: 1
+     }]
+   };
+   
+   var options = {
+   	    legend : { display : false },
+   	    scales: {
+   	        y: {
+   	         suggestedMin: 0,
+   	         display: true
+   	        }
+   	      }
+   	};
+   
+   var canvas = document.getElementById("dev-chimpum-canvas");
+   var context = canvas.getContext("2d");
+   new Chart(context, {
+   	type : "bar",
+   	data : dev_chimpum_data,
+   	options: options
+   });
+</script>
+<script type="text/javascript">
+   var minBudgetChimpumByCurrency = {
+   	<jstl:forEach items="${minBudgetChimpumByCurrency}" var="item" varStatus="loop">
+   	      ${item.key}: '${item.value}' ${not loop.last ? ',' : ''}
+   	</jstl:forEach>
+   };
+   
+   const min_chimpum_data = {
+     labels: Object.keys(minBudgetChimpumByCurrency),
+     datasets: [{
+       data: Object.values(minBudgetChimpumByCurrency),
+       backgroundColor: [
+    	   'rgb(254, 136, 127)',
+     	  'rgb(136, 255, 114)',
+     	  'rgb(71, 130, 255)'
+       ],
+       borderColor: [
+    	   'rgb(193, 136, 127)',
+     	  'rgb(136, 176, 114)',
+     	  'rgb(71, 130, 159)'
+       ],
+       borderWidth: 1
+     }]
+   };
+   
+   var options = {
+   	    legend : { display : false },
+   	    scales: {
+   	        y: {
+   	         suggestedMin: 0,
+   	         display: true
+   	        }
+   	      }
+   	};
+   
+   var canvas = document.getElementById("min-chimpum-canvas");
+   var context = canvas.getContext("2d");
+   new Chart(context, {
+   	type : "bar",
+   	data : min_chimpum_data,
+   	options: options
+   });
+</script>
+<script type="text/javascript">
+   var maxBudgetChimpumByCurrency = {
+   	<jstl:forEach items="${maxBudgetChimpumByCurrency}" var="item" varStatus="loop">
+   	      ${item.key}: '${item.value}' ${not loop.last ? ',' : ''}
+   	</jstl:forEach>
+   };
+   
+   const max_chimpum_data = {
+     labels: Object.keys(maxBudgetChimpumByCurrency),
+     datasets: [{
+       data: Object.values(maxBudgetChimpumByCurrency),
+       backgroundColor: [
+    	   'rgb(254, 136, 127)',
+     	  'rgb(136, 255, 114)',
+     	  'rgb(71, 130, 255)'
+       ],
+       borderColor: [
+    	   'rgb(193, 136, 127)',
+     	  'rgb(136, 176, 114)',
+     	  'rgb(71, 130, 159)'
+       ],
+       borderWidth: 1
+     }]
+   };
+   
+   var options = {
+   	    legend : { display : false },
+   	    scales: {
+   	        y: {
+   	         suggestedMin: 0,
+   	         display: true
+   	        }
+   	      }
+   	};
+   
+   var canvas = document.getElementById("max-chimpum-canvas");
+   var context = canvas.getContext("2d");
+   new Chart(context, {
+   	type : "bar",
+   	data : max_chimpum_data,
+   	options: options
+   });
+</script>
+
+
+
+
+
+
+
+
 
 <script type="text/javascript">
    var totalNumberOfPatronagesByStatus = {
