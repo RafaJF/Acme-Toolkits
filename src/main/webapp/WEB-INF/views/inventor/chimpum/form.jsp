@@ -6,10 +6,8 @@
 <acme:form>
 
 	<jstl:choose>
-		<jstl:when test="${command == 'show'}">
+		<jstl:when test="${acme:anyOf(command, 'show, update')}">
 			<acme:input-textbox code="inventor.chimpum.list.label.code" path="code" readonly="true"/>
-			<acme:input-textbox		code="inventor.chimpum.form.label.item.code"	path="item.code" readonly="true"/>
-		
 		</jstl:when>
 	</jstl:choose>
 	
@@ -29,7 +27,7 @@
 		
 		<jstl:when test="${command == 'create'}">
 		
-			<acme:input-select code="inventor.chimpum.list.label.itemsPublished" path="item.code">
+			<acme:input-select code="inventor.chimpum.list.label.itemsPublished" path="itemCode">
 				<jstl:forEach items="${itemsByInventorPublished}" var ="item">
 					<acme:input-option code="${item.code}" value="${item.code}"/>
 				</jstl:forEach>

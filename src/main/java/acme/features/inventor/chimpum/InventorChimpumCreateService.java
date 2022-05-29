@@ -43,7 +43,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		String itemCode;
 		Item item;
 		
-		itemCode = request.getModel().getString("item.code");
+		itemCode = request.getModel().getString("itemCode");
 		item = this.chimpumRepository.findItemByCode(itemCode);
 		entity.setItem(item);
 		
@@ -67,12 +67,13 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		final Collection<Item> itemsByInventorPublished = new HashSet<Item>();
 		
 		for(final Item i: itemsByInventor) {
-			if(i.isPublished()) {
+			final Item item = this.chimpumRepository.findItemChimpumByItemCode(i.getCode());
+			if(i.isPublished() && item == null) {
 				itemsByInventorPublished.add(i);
 			}
 		}
 		model.setAttribute("itemsByInventorPublished", itemsByInventorPublished);
-		request.unbind(entity, model,"creationMoment","tittle","description","period","budget","link");
+		request.unbind(entity, model,"creationMoment","tittle","description","period","budget","link","item.code");
 		
 		
 		

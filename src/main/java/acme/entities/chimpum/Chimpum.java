@@ -1,9 +1,10 @@
+
 package acme.entities.chimpum;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -23,41 +24,41 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Chimpum extends AbstractEntity{
+public class Chimpum extends AbstractEntity {
 
-	protected static final long serialVersionUID = 1L;
-	
+	protected static final long	serialVersionUID	= 1L;
+
 	@NotNull
-    @Pattern(regexp = "^\\d{2}\\/(0[1-9]|1[012])\\/(0[1-9]|[12][0-9]|3[01])$")
-	protected String code;
-	
+	@Pattern(regexp = "^\\d{2}\\/(0[1-9]|1[012])\\/(0[1-9]|[12][0-9]|3[01])$")
+	protected String			code;
+
 	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	protected Date creationMoment;
-	
+	protected Date				creationMoment;
+
 	@NotBlank
-	@Length(min = 0,max = 100)
-	protected String tittle;
-	
+	@Length(min = 0, max = 100)
+	protected String			tittle;
+
 	@NotBlank
-	@Length(min = 0,max = 255)
-	protected String description;
-	
+	@Length(min = 0, max = 255)
+	protected String			description;
+
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	protected Date period;
-	
+	protected Date				period;
+
 	@NotNull
 	@Valid
-	protected Money budget;
-	
-	protected String link;
-	
+	protected Money				budget;
+
+	protected String			link;
+
 	//Control Check -----------------------------------------------------------
-	
-	@ManyToOne(optional = true)
+
+	@OneToOne(optional = true)
 	@Valid
-	protected Item item;
-	
+	protected Item				item;
+
 }
