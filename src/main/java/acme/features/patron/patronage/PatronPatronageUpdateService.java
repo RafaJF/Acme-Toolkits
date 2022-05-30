@@ -64,14 +64,13 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		assert entity != null;
 		assert errors != null;
 		
-        if(!errors.hasErrors("code")) {
-        	
-        	final Patronage patronageByCode =  this.repository.findPatronageByCode(entity.getCode());
-        	if(patronageByCode != null) {
-        		errors.state(request, patronageByCode.getId() == entity.getId(), "code", "patron.patronage.form.error.code-exists");
-        	}
-        	
-        }
+		if(!errors.hasErrors("code")) {
+			Patronage existingPatronage;
+			existingPatronage = this.repository.findPatronageByCode(entity.getCode());
+			
+				errors.state(request, existingPatronage == null || existingPatronage.getId() == entity.getId(), "code", "patron.patronage.form.error.code-exists");
+			
+		}
         
 		if (!errors.hasErrors("budget")) {
 			
@@ -115,9 +114,18 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model,"code", "legalStuff", "budget", "startDate", "endDate", "moreInfo", "inventorId");
+
+		request.unbind(entity, model,"code", "legalStuff", "budget", "startDate", "endDate", "moreInfo");
+
 		model.setAttribute("inventors", this.repository.findInventors());
 		model.setAttribute("inventorId", entity.getInventor().getId());
+		model.setAttribute("patronId", entity.getPatron().getId());
+		model.setAttribute("inventorId", entity.getInventor().getId());
+		model.setAttribute("inventorCompany", entity.getInventor().getCompany());
+		model.setAttribute("inventorStatement", entity.getInventor().getStatement());
+		model.setAttribute("inventorFullName", entity.getInventor().getIdentity().getFullName());
+		model.setAttribute("inventorEmail", entity.getInventor().getIdentity().getEmail());
+		model.setAttribute("inventorInfo", entity.getInventor().getInfo());
 	}
 
 	@Override
