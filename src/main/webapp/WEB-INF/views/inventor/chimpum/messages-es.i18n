@@ -1,0 +1,26 @@
+inventor.chimpum.list.label.code = Código
+inventor.chimpum.list.label.title = Título
+inventor.chimpum.list.label.budget = Presupuesto
+inventor.chimpum.list.label.startDate = Fecha de inicio
+inventor.chimpum.list.label.endDate = Fecha de fin
+
+inventor.chimpum.form.label.code = Código
+inventor.chimpum.form.label.title = Título
+inventor.chimpum.form.label.description = Descripción
+inventor.chimpum.form.label.budget = Presupuesto
+inventor.chimpum.form.label.creationMoment = Fecha de creación
+inventor.chimpum.form.label.startDate = Fecha de inicio
+inventor.chimpum.form.label.endDate = Fecha de fin
+inventor.chimpum.form.label.moreInfo = Más información
+inventor.chimpum.form.label.budget-conversion = Presupuesto (conversión)
+inventor.chimpum.form.label.item = Ítem asociado
+
+inventor.chimpum.form.button.create = Crear
+inventor.chimpum.form.button.update = Actualizar
+inventor.chimpum.form.button.delete = Borrar
+inventor.chimpum.form.button.item = Mostrar ítem
+
+inventor.chimpum.form.error.currency = La divisa no es una divisa válida
+inventor.chimpum.form.error.amount-negative = La cantidad debe ser positiva
+inventor.chimpum.form.error.startDate = El periodo de tiempo debe de ser de al menos un mes después de la creación del chimpum
+inventor.chimpum.form.error.endDate = El periodo de tiempo debe de ser de al menos una semana después del comienzo del chimpum

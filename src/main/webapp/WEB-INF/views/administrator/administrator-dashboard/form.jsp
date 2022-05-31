@@ -19,6 +19,108 @@
 </style>
 <acme:form readonly="true">
 
+<h3>
+	<acme:message code="administrator.administrator-dashboard.form.label.ratio-items-with-chimpum"/>
+</h3>
+<table>
+	<caption></caption>
+	<tr>
+		<th>
+			<acme:print value="${ratioOfItemsWithChimpum}"/>
+		</th>
+	</tr>
+</table>
+
+<h3>
+	<acme:message
+		code="administrator.administrator-dashboard.form.label.average-budget-chimpums-by-currency" />
+</h3>
+<table class="table table-sm">
+	<caption></caption>
+	<div class="column">
+		<jstl:forEach items="${ averageBudgetOfChimpumsByCurrency.keySet() }" var="key">
+			<tr>
+				<jstl:set value="${ averageBudgetOfChimpumsByCurrency.get(key) }" var="amount" />
+					<jstl:if test="${ amount>0 }">
+						<th scope="row" style="width: 15%"><acme:message
+							code="administrator.dashboard.form.status.${ key }" /></th>
+						<td><acme:print value="${ amount }" /></td>
+					</jstl:if>
+			</tr>
+		</jstl:forEach>
+	</div>
+</table>
+
+<h3>
+	<acme:message
+		code="administrator.administrator-dashboard.form.label.deviation-budget-chimpums-by-currency" />
+</h3>
+<table class="table table-sm">
+	<caption></caption>
+	<div class="column">
+		<jstl:forEach items="${ deviationBudgetOfChimpumsByCurrency.keySet() }" var="key">
+			<tr>
+				<jstl:set value="${ deviationBudgetOfChimpumsByCurrency.get(key) }" var="amount" />
+					<jstl:if test="${ amount>0 }">
+						<th scope="row" style="width: 15%"><acme:message
+							code="administrator.dashboard.form.status.${ key }" /></th>
+						<td><acme:print value="${ amount }" /></td>
+					</jstl:if>
+			</tr>
+		</jstl:forEach>
+	</div>
+</table>
+
+<h3>
+	<acme:message
+		code="administrator.administrator-dashboard.form.label.minimum-budget-chimpums-by-currency" />
+</h3>
+<table class="table table-sm">
+	<caption></caption>
+	<div class="column">
+		<jstl:forEach items="${ minimumBudgetOfChimpumsByCurrency.keySet() }" var="key">
+			<tr>
+				<jstl:set value="${ minimumBudgetOfChimpumsByCurrency.get(key) }" var="amount" />
+					<jstl:if test="${ amount>0 }">
+						<th scope="row" style="width: 15%"><acme:message
+							code="administrator.dashboard.form.status.${ key }" /></th>
+						<td><acme:print value="${ amount }" /></td>
+					</jstl:if>
+			</tr>
+		</jstl:forEach>
+	</div>
+</table>
+
+<h3>
+	<acme:message
+		code="administrator.administrator-dashboard.form.label.maximum-budget-chimpums-by-currency" />
+</h3>
+<table class="table table-sm">
+	<caption></caption>
+	<div class="column">
+		<jstl:forEach items="${ maximumBudgetOfChimpumsByCurrency.keySet() }" var="key">
+			<tr>
+				<jstl:set value="${ maximumBudgetOfChimpumsByCurrency.get(key) }" var="amount" />
+					<jstl:if test="${ amount>0 }">
+						<th scope="row" style="width: 15%"><acme:message
+							code="administrator.dashboard.form.status.${ key }" /></th>
+						<td><acme:print value="${ amount }" /></td>
+					</jstl:if>
+			</tr>
+		</jstl:forEach>
+	</div>
+</table>
+
+
+
+
+
+
+
+
+
+
+
 			<h3>
 				<acme:message code="administrator.administrator-dashboard.form.label.total-number-of-components"/>
 			</h3>

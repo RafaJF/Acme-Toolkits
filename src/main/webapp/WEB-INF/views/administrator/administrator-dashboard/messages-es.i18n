@@ -17,7 +17,11 @@ administrator.administrator-dashboard.form.label.deviation-budget-patronages-by-
 administrator.administrator-dashboard.form.label.minimum-budget-patronages-by-status = Presupuesto mínimo de patrocinios según su estado (y divisa)
 administrator.administrator-dashboard.form.label.maximum-budget-patronages-by-status = Presupuesto máximo de patrocinios según su estado (y divisa)
 
-
+administrator.administrator-dashboard.form.label.ratio-items-with-chimpum = Ratio de ítems que tienen chimpums
+administrator.administrator-dashboard.form.label.average-budget-chimpums-by-currency = Presupuesto medio de chimpums según su divisa
+administrator.administrator-dashboard.form.label.deviation-budget-chimpums-by-currency = Desviación del presupuesto de chimpums según su divisa
+administrator.administrator-dashboard.form.label.minimum-budget-chimpums-by-currency = Presupuesto mínimo de chimpums según su divisa
+administrator.administrator-dashboard.form.label.maximum-budget-chimpums-by-currency = Presupuesto máximo de chimpums según su divisa
 
 administrator.dashboard.form.status.ACCEPTED = Aceptado
 administrator.dashboard.form.status.DENIED = Denegado

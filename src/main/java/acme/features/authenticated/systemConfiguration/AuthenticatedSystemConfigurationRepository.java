@@ -12,4 +12,6 @@ public interface AuthenticatedSystemConfigurationRepository extends AbstractRepo
     @Query("SELECT s FROM SystemConfiguration s")
     SystemConfiguration findSystemConfiguration();
 
+    @Query("SELECT s.acceptedCurrencies FROM SystemConfiguration s")
+	String acceptedCurrencies();
 }

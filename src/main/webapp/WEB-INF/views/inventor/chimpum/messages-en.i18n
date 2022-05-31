@@ -1,0 +1,26 @@
+inventor.chimpum.list.label.code = Code
+inventor.chimpum.list.label.title = Title
+inventor.chimpum.list.label.budget = Budget
+inventor.chimpum.list.label.startDate = Start date
+inventor.chimpum.list.label.endDate = End date
+
+inventor.chimpum.form.label.code = Code
+inventor.chimpum.form.label.title = Title
+inventor.chimpum.form.label.description = Description
+inventor.chimpum.form.label.budget = Budget
+inventor.chimpum.form.label.creationMoment = Creation moment
+inventor.chimpum.form.label.startDate = Start date
+inventor.chimpum.form.label.endDate = End date
+inventor.chimpum.form.label.moreInfo = More info
+inventor.chimpum.form.label.budget-conversion = Budget (conversion)
+inventor.chimpum.form.label.item = Associated item
+
+inventor.chimpum.form.button.create = Create
+inventor.chimpum.form.button.update = Update
+inventor.chimpum.form.button.delete = Delete
+inventor.chimpum.form.button.item = Show item
+
+inventor.chimpum.form.error.currency = The currency is not an accepted currency
+inventor.chimpum.form.error.amount-negative = The amount must be positive
+inventor.chimpum.form.error.startDate = The period of time must be at least one month after the chimpum is created
+inventor.chimpum.form.error.endDate = The period of time must be at least one week after the chimpum is started

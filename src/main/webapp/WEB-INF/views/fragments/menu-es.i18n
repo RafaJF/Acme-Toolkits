@@ -39,6 +39,7 @@ master.menu.authenticated.system-configuration = Configuración del sistema
 master.menu.authenticated.list-chirp = Listado de chirridos
 master.menu.authenticated.announcement = Listado de anuncios
 master.menu.authenticated.toolkit.list = Listado de kits de herramientas
+master.menu.inventor.chimpum.list = Listado de mis chimpums
 
 
 # master.menu.administrator ###################################################

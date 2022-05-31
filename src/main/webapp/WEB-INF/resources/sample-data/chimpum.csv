@@ -1,0 +1,5 @@
+key,code,creationMoment,title,description,startDate,endDate,budget,moreInfo,key:item
+chimpum-01,22-05-24,2022/05/24 21:00,This is a test,This is a test,2022/06/01 15:00,2022/06/08 15:00,EUR 600.0,https://moreinfo.com/,item-01
+chimpum-02,22-05-25,2022/05/25 18:00,Esto es una prueba,Esto es una prueba,2022/06/10 11:30,2022/06/17 12:00,USD 200.0,null,item-02
+chimpum-03,22-05-26,2022/05/26 20:00,This is another test,This is another test,2022/06/01 16:00,2022/06/08 16:00,EUR 300.0,null,item-03
+chimpum-04,22-05-26,2022/05/26 20:05,This is another test,This is another test,2022/06/12 19:00,2022/06/20 19:00,USD 10.0,null,item-11

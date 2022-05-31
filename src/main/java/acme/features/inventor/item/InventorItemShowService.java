@@ -3,10 +3,12 @@ package acme.features.inventor.item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.chimpum.Chimpum;
 import acme.entities.item.Item;
 import acme.entities.moneyExchange.MoneyExchange;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
+import acme.features.inventor.chimpum.InventorChimpumRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.datatypes.Money;
@@ -22,6 +24,8 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 	protected InventorItemRepository repository;
 	@Autowired
 	protected AuthenticatedSystemConfigurationRepository systemConfigRepository;
+	@Autowired
+	protected InventorChimpumRepository chimpumRepository;
 
 	// AbstractUpdateService<Authenticated, Consumer> interface -----------------
 
@@ -44,7 +48,13 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 		
 		final Money newRetailPrice = this.moneyExchangePatronages(entity);
 		model.setAttribute("newRetailPrice", newRetailPrice);
-
+		
+		model.setAttribute("itemId", entity.getId());
+		final Chimpum c = this.chimpumRepository.findOneChimpumByItemId(entity.getId());
+		if(c!=null) {
+			model.setAttribute("chimpum", c.getId());
+		}
+		
 		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "info", "itemType", "published");
 	}
 	
