@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.chimpum.Chimpum;
+import acme.entities.item.Item;
 import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
 import acme.features.inventor.item.InventorItemRepository;
@@ -35,11 +36,11 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 		boolean result;
 		
 		int chimpumId;
-		Chimpum chimpum;
+		Item item;
 
 		chimpumId = request.getModel().getInteger("id");
-		chimpum = this.repository.findOneChimpumById(chimpumId);
-		result = chimpum.getItem().getInventor().getId() == request.getPrincipal().getActiveRoleId();
+		item = this.repository.findOneItemByChimpumId(chimpumId);
+		result = item.getInventor().getId() == request.getPrincipal().getActiveRoleId();
 		
 		return result;
 	}
@@ -50,7 +51,7 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity, errors, "title", "description","creationMoment", "budget", "startDate", "endDate", "moreInfo");
+		request.bind(entity, errors, "code", "title", "description","creationMoment", "budget", "startDate", "endDate", "moreInfo");
 	}
 
 	@Override
@@ -59,7 +60,7 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "title", "description","creationMoment", "budget", "startDate", "endDate", "moreInfo");	
+		request.unbind(entity, model, "code", "title", "description","creationMoment", "budget", "startDate", "endDate", "moreInfo");	
 	}
 
 	@Override
@@ -89,6 +90,12 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
         final double StrongThreshold = systemConfig.getStrongThreshold();
         final double WeakThreshold = systemConfig.getWeakThreshold();
 		
+        if(!errors.hasErrors("code")) {
+        	final String inmutable = entity.getCode().substring(4,12);
+        	final String originalCode = this.codeGenerator(entity.getCreationMoment());
+        	errors.state(request, inmutable.equals(originalCode), "code", "alert-message.estas-fuera");
+        }
+        
         if(!errors.hasErrors("title")) {
             final boolean res;
             res = SpamDetector.spamDetector(entity.getTitle(),StrongEN,StrongES,WeakEN,WeakES,StrongThreshold,WeakThreshold);
@@ -155,4 +162,36 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 
 		this.repository.save(entity);
 	}
+	
+	//Método auxiliar que genera automáticamente el código
+	
+		public String codeGenerator(final Date creationMoment) {
+			String result = "";
+			final Integer day = creationMoment.getDate();
+			Integer month = creationMoment.getMonth();
+			if(month<=11) {
+				month=month+1; //Por la cara jajaja
+			}
+			final Integer year = creationMoment.getYear();
+
+			final String yearCode = year.toString().substring(1, 3);
+			String monthCode= "";
+			String dayCode= "";
+			
+			if(month.toString().length()==1) {
+				monthCode = "0" + month.toString();
+			}else{
+				monthCode = month.toString();
+			}
+			
+			if(day.toString().length()==1) {
+				dayCode = "0" + day.toString();
+			}else {
+				dayCode = day.toString();
+			}
+			
+			result = yearCode + "-" + monthCode + "-" + dayCode;
+			
+			return result;
+		}
 }

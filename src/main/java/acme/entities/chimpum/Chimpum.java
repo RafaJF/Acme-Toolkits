@@ -2,9 +2,8 @@ package acme.entities.chimpum;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -16,7 +15,6 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
-import acme.entities.item.Item;
 import acme.framework.datatypes.Money;
 import acme.framework.entities.AbstractEntity;
 import lombok.Getter;
@@ -29,8 +27,9 @@ public class Chimpum extends AbstractEntity{
 	
 	protected static final long serialVersionUID = 1L;
 	
+	@Column(unique=true)
 	@NotNull
-	@Pattern(regexp = "^[0-9]{2}-[0-9]{2}-[0-9]{2}", message = "It does not match the established pattern")
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{2}-[0-9]{2}-[0-9]{2}", message = "It does not match the established pattern")
 	protected String code;
 
 	@NotNull
@@ -62,9 +61,9 @@ public class Chimpum extends AbstractEntity{
 	protected String moreInfo;
 	
 	//Relationships
-	@NotNull
-	@Valid
-	@OneToOne(optional = false)
-	@JoinColumn(unique = true)
-	protected Item	item;
+//	@NotNull
+//	@Valid
+//	@OneToOne(optional = false)
+//	@JoinColumn(unique = true)
+//	protected Item	item;
 }

@@ -37,7 +37,7 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 		final int itemId = request.getModel().getInteger("id");
 		final int itemInventorId = this.repository.findOneById(itemId).getInventor().getId();
 
-		return  inventorId == itemInventorId; 
+		return  inventorId == itemInventorId;
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class InventorItemShowService implements AbstractShowService<Inventor, It
 		model.setAttribute("newRetailPrice", newRetailPrice);
 		
 		model.setAttribute("itemId", entity.getId());
-		final Chimpum c = this.chimpumRepository.findOneChimpumByItemId(entity.getId());
+		final Chimpum c = entity.getChimpum();
 		if(c!=null) {
 			model.setAttribute("chimpum", c.getId());
 		}

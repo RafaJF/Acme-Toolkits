@@ -1,2 +1,2 @@
-recordIndex,title,description,budget,startDate,endDate,moreInfo
-0,This is a update test,This is a update test,USD 3.50,2022/08/15 10:00,2022/08/25 10:00,
+recordIndex,code, title,description,budget,startDate,endDate,moreInfo
+0,ABC-22-05-24,This is a update test,This is a update test,USD 3.50,2022/08/15 10:00,2022/08/25 10:00,

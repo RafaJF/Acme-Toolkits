@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.chimpum.Chimpum;
+import acme.entities.item.Item;
+import acme.features.inventor.item.InventorItemRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -15,6 +17,8 @@ public class InventorChimpumDeleteService  implements AbstractDeleteService<Inve
 
 	@Autowired
 	protected InventorChimpumRepository repository;
+	@Autowired
+	protected InventorItemRepository itemRepository;
 	
 	@Override
 	public boolean authorise(final Request<Chimpum> request) {
@@ -56,7 +60,12 @@ public class InventorChimpumDeleteService  implements AbstractDeleteService<Inve
 	public void delete(final Request<Chimpum> request, final Chimpum entity) {
 		assert request != null;
 		assert entity != null;
-
+		Item item;
+		
+		item = this.repository.findOneItemByChimpumId(entity.getId());
+		item.setChimpum(null);
+		this.itemRepository.save(item);
+		
 		this.repository.delete(entity);
 	}
 }

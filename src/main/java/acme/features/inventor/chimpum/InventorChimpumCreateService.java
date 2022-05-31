@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.chimpum.Chimpum;
+import acme.entities.item.Item;
 import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
 import acme.features.inventor.item.InventorItemRepository;
@@ -32,18 +33,24 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	@Override
 	public boolean authorise(final Request<Chimpum> request) {
 		assert request != null;
-		
-		return true;
+		Item item;
+		final int inventorId = request.getPrincipal().getActiveRoleId();
+		final int itemId = request.getModel().getInteger("itemId");
+		item = this.itemRepository.findOneById(itemId);
+		final int itemInventorId = this.itemRepository.findOneById(itemId).getInventor().getId();
+
+		return  inventorId == itemInventorId && item.isPublished(); 
 	}
 
 	@Override
 	public void bind(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
-		request.bind(entity, errors, "code", "title", "description", "budget", "creationMoment", "startDate", "endDate", "moreInfo");
+		request.bind(entity, errors, "code","title", "description", "budget", "creationMoment", "startDate", "endDate", "moreInfo");
+		entity.setCode(entity.getCode()+"-"+this.codeGenerator(entity.getCreationMoment()));
 	}
 
 	@Override
 	public void unbind(final Request<Chimpum> request, final Chimpum entity, final Model model) {
-		request.unbind(entity, model, "code", "title", "description", "budget", "creationMoment", "startDate", "endDate", "moreInfo");	
+		request.unbind(entity, model, "code","title", "description", "budget", "creationMoment", "startDate", "endDate", "moreInfo");	
 		model.setAttribute("itemId", request.getModel().getInteger("itemId"));
 	}
 
@@ -56,9 +63,8 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		moment = new Date(System.currentTimeMillis() - 1);
 	
 		result = new Chimpum();
-		result.setItem(this.itemRepository.findOneById(request.getModel().getInteger("itemId")));
 		result.setCreationMoment(moment);
-		result.setCode(this.codeGenerator(moment));
+//		result.setCode(this.codeGenerator(moment));
 		return result;
 	}
 
@@ -141,8 +147,13 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	public void create(final Request<Chimpum> request, final Chimpum entity) {
 		assert request != null;
 		assert entity != null;
+		Item item;
 		
-		this.repository.save(entity);	
+		this.repository.save(entity);
+		final int itemId = request.getModel().getInteger("itemId");
+		item = this.itemRepository.findOneById(itemId);
+		item.setChimpum(entity);
+		this.itemRepository.save(item);
 	}
 	
 	//Método auxiliar que genera automáticamente el código

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.chimpum.Chimpum;
+import acme.entities.item.Item;
 import acme.entities.moneyExchange.MoneyExchange;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.features.authenticated.systemConfiguration.AuthenticatedSystemConfigurationRepository;
@@ -26,12 +27,12 @@ public class InventorChimpumShowService implements AbstractShowService<Inventor,
 		assert request != null;
 
 		boolean result;
-		Chimpum chimpum;
+		Item item;
 		int chimpumId;
 
 		chimpumId = request.getModel().getInteger("id");
-		chimpum = this.repository.findOneChimpumById(chimpumId);
-		result = chimpum.getItem().getInventor().getId() == request.getPrincipal().getActiveRoleId();
+		item = this.repository.findOneItemByChimpumId(chimpumId);
+		result = item.getInventor().getId() == request.getPrincipal().getActiveRoleId();
 
 		return result;
 	}
@@ -57,7 +58,7 @@ public class InventorChimpumShowService implements AbstractShowService<Inventor,
 		final Money newBudget = this.moneyExchangeChimpum(entity);
 		model.setAttribute("newBudget", newBudget);
 		
-		model.setAttribute("item", entity.getItem().getName());
+		model.setAttribute("itemId", this.repository.findOneItemByChimpumId(entity.getId()).getId());
 
 		request.unbind(entity, model, "code", "title", "description", "budget", "creationMoment", "startDate", "endDate", "moreInfo");
 	}
