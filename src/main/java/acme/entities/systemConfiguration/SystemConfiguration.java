@@ -2,7 +2,7 @@
 package acme.entities.systemConfiguration;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Range;
 
@@ -17,26 +17,26 @@ public class SystemConfiguration extends AbstractEntity {
 
 	protected static final long	serialVersionUID	= 1L;
 
-	@NotNull
+	@NotBlank
 	protected String			systemCurrency;
 
-	@NotNull
+	@NotBlank
 	protected String			acceptedCurrencies;
 
-	@NotNull
+	@NotBlank
 	protected String			strongSpamTermsEn;
 
-	@NotNull
+	@NotBlank
 	protected String			strongSpamTermsEs;
 
 	
 	@Range(min = 0, max = 100)
 	protected double			strongThreshold;
 
-	@NotNull
+	@NotBlank
 	protected String			weakSpamTermsEn;
 
-	@NotNull
+	@NotBlank
 	protected String			weakSpamTermsEs;
 
 	
