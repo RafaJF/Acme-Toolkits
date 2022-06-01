@@ -32,7 +32,7 @@ public class FavouriteLinkTest extends TestHarness {
 		super.checkCurrentUrl("https://www.twitch.tv");
 		super.navigateHome();
 		super.clickOnMenu("Anonymous", "53771290G: Rivero Gallardo, Jesús Antonio");		
-		super.checkCurrentUrl("https://pokemonshowdown.com");
+		super.checkCurrentUrl("https://play.pokemonshowdown.com");
 		super.navigateHome();
 		super.clickOnMenu("Anonymous", "76650547B: Salazar Caballero, Alberto");		
 		super.checkCurrentUrl("https://play.hbomax.com");
