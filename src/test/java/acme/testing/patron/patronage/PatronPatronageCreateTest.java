@@ -9,7 +9,6 @@ import acme.testing.TestHarness;
 
 public class PatronPatronageCreateTest extends TestHarness {
 	
-	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/patron/patronage/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
@@ -29,7 +28,6 @@ public class PatronPatronageCreateTest extends TestHarness {
 		super.fillInputBoxIn("startDate",startDate );
 		super.fillInputBoxIn("endDate", endDate);
 		super.fillInputBoxIn("moreInfo", moreInfo);
-		//super.fillInputBoxIn("inventor", inventor);
 	
 		super.clickOnSubmit("Create");
 		
