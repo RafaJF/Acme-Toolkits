@@ -1,6 +1,7 @@
 package acme.testing.inventor.chimpum;
 
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -73,6 +74,44 @@ public class InventorChimpumCreateDeleteTest extends TestHarness {
 		super.checkErrorsExist();
 
 		super.signOut();
+	}
+	
+	@Test
+	@Order(30)
+	public void hackingCreateTest() {
+		super.checkNotLinkExists("Account");
+		super.navigate("/inventor/chimpum/create");
+		super.checkPanicExists();
+		
+		super.signIn("administrator", "administrator");
+		super.navigate("/inventor/chimpum/create");
+		super.checkPanicExists();
+		super.signOut();
+		
+		super.signIn("patron1", "patron1");
+		super.navigate("/inventor/chimpum/create");
+		super.checkPanicExists();
+		super.signOut();
+		
+	}
+	
+	@Test
+	@Order(30)
+	public void hackingDeleteTest() {
+		super.checkNotLinkExists("Account");
+		super.navigate("/inventor/chimpum/delete");
+		super.checkPanicExists();
+
+		super.signIn("administrator", "administrator");
+		super.navigate("/inventor/chimpum/delete");
+		super.checkPanicExists();
+		super.signOut();
+
+		super.signIn("patron1", "patron1");
+		super.navigate("/inventor/chimpum/delete");
+		super.checkPanicExists();
+		super.signOut();
+
 	}
 
 }

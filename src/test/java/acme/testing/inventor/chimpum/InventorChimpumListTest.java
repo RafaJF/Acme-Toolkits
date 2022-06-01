@@ -1,5 +1,7 @@
 package acme.testing.inventor.chimpum;
 
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -22,6 +24,26 @@ public class InventorChimpumListTest  extends TestHarness{
 		super.checkColumnHasValue(recordIndex, 2, budget);
 		super.checkColumnHasValue(recordIndex, 3, startDate);
 		super.checkColumnHasValue(recordIndex, 4, endDate);
+	}
+	
+	@Test
+	@Order(30)
+	public void hackingTest() {
+		super.checkNotLinkExists("Account");
+		super.navigate("/inventor/chimpum/list");
+		super.checkPanicExists();
+		
+		super.signIn("administrator", "administrator");
+		super.navigate("/inventor/chimpum/list");
+		super.checkPanicExists();
+		super.signOut();
+		
+		super.signIn("patron1", "patron1");
+		super.navigate("/inventor/chimpum/list");
+		super.checkPanicExists();
+		super.signOut();
+		
+		
 	}
 
 }
