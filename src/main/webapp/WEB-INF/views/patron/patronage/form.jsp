@@ -7,7 +7,7 @@
 
 	
 
-		<acme:input-textbox code="patron.patronage.form.label.code" path="code" readonly="true"/>
+		<acme:input-textbox code="patron.patronage.form.label.code" path="code"/>
 
 	<jstl:choose>
     	<jstl:when test="${command != 'create'}">
