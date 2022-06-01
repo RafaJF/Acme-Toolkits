@@ -109,7 +109,7 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 			errors.state(request, entity.getStartDate().after(startDateMin), "startDate", "patron.patronage.form.error.start-date");			
 		}
 		
-		if(!errors.hasErrors("endDate")) {
+		if(!errors.hasErrors("endDate")&& entity.getStartDate() !=null) {
 			
 			final Date periodEndDate = DateUtils.addMonths(entity.getStartDate(), 1);
 			final Date moment = entity.getEndDate();
