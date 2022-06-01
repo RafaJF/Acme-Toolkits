@@ -29,7 +29,7 @@ public class Chimpum extends AbstractEntity{
 	
 	@Column(unique=true)
 	@NotNull
-	@Pattern(regexp = "^[A-Z]{3}-[0-9]{2}-[0-9]{2}-[0-9]{2}", message = "It does not match the established pattern")
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{2}-[0-9]{2}-[0-9]{2}")
 	protected String code;
 
 	@NotNull

@@ -1,5 +1,7 @@
 package acme.features.inventor.chimpum;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -92,9 +94,17 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 		
         if(!errors.hasErrors("code")) {
         	final String inmutable = entity.getCode().substring(4,12);
-        	final String originalCode = this.codeGenerator(entity.getCreationMoment());
-        	errors.state(request, inmutable.equals(originalCode), "code", "alert-message.estas-fuera");
-        }
+        	final LocalDate cm =  entity.getCreationMoment().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        	final String originalCode = this.codeGenerator(cm);
+    		Chimpum existing;
+
+    		existing = this.repository.findOneChimpumByCode(entity.getCode());
+    		
+        	errors.state(request, inmutable.equals(originalCode), "code", "inventor.chimpum.form.error.inmutable-date-code");
+    		if(existing!=null) {
+    			errors.state(request, existing.getId()==entity.getId(), "code", "inventor.chimpum.form.error.duplicated-code");
+    		}
+    	}
         
         if(!errors.hasErrors("title")) {
             final boolean res;
@@ -141,16 +151,16 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 		        
 		        errors.state(request, diffrence>=30 , "startDate","inventor.chimpum.form.error.startDate");
 			}
-		
+			
 			if(!errors.hasErrors("endDate")) {
 				Date endDate;
 				endDate = entity.getEndDate();
 				
 				final long diff = endDate.getTime() - entity.getStartDate().getTime();
-		        final TimeUnit time = TimeUnit.DAYS; 
-		        final long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
-		        
-		        errors.state(request, diffrence>=7 , "endDate","inventor.chimpum.form.error.endDate");
+			    final TimeUnit time = TimeUnit.DAYS; 
+			    final long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
+			        
+			    errors.state(request, diffrence>=7 , "endDate","inventor.chimpum.form.error.endDate");
 			}
 		}
 	}
@@ -163,35 +173,76 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 		this.repository.save(entity);
 	}
 	
+//	//Método auxiliar que genera automáticamente el código
+//	
+//	public String codeGenerator(final Date creationMoment) {
+//		String result = "";
+//		final Map<String,Integer> months = this.monthsMapGenerator();
+//		
+//		final String monthName = creationMoment.toString().substring(4, 7).toUpperCase();
+//		final Integer month = months.get(monthName);
+//		final String day = creationMoment.toString().substring(8, 10);
+//		final String year = creationMoment.toString().substring(25, 29);
+//
+//		final String yearCode = year.substring(2, 4);
+//		String monthCode= "";
+//		String dayCode= "";
+//			
+//		if(month.toString().length()==1) {
+//			monthCode = "0" + month.toString();
+//		}else{
+//			monthCode = month.toString();
+//		}
+//			
+//		if(day.length()==1) {
+//			dayCode = "0" + day;
+//		}else {
+//			dayCode = day;
+//		}
+//			
+//		result = yearCode + "-" + monthCode + "-" + dayCode;
+//			
+//		return result;
+//	}
+//		
+//	// Método para crear un diccionario con los meses
+//	public Map<String,Integer> monthsMapGenerator(){
+//		final Map<String,Integer> months = new HashMap<String,Integer>();
+//
+//		for (int i=1 ; i<13 ; i++) {
+//			months.put(Month.of(i).toString(), i);
+//		}
+//			
+//		return months;
+//	}
+	
 	//Método auxiliar que genera automáticamente el código
 	
-		public String codeGenerator(final Date creationMoment) {
-			String result = "";
-			final Integer day = creationMoment.getDate();
-			Integer month = creationMoment.getMonth();
-			if(month<=11) {
-				month=month+1; //Por la cara jajaja
-			}
-			final Integer year = creationMoment.getYear();
+	public String codeGenerator(final LocalDate creationMoment) {
+		String result = "";
+			
+		final Integer day = creationMoment.getDayOfMonth();
+		final Integer month = creationMoment.getMonthValue();
+		final Integer year = creationMoment.getYear();
 
-			final String yearCode = year.toString().substring(1, 3);
-			String monthCode= "";
-			String dayCode= "";
+		final String yearCode = year.toString().substring(2, 4);
+		String monthCode= "";
+		String dayCode= "";
 			
-			if(month.toString().length()==1) {
-				monthCode = "0" + month.toString();
-			}else{
-				monthCode = month.toString();
-			}
-			
-			if(day.toString().length()==1) {
-				dayCode = "0" + day.toString();
-			}else {
-				dayCode = day.toString();
-			}
-			
-			result = yearCode + "-" + monthCode + "-" + dayCode;
-			
-			return result;
+		if(month.toString().length()==1) {
+			monthCode = "0" + month.toString();
+		}else{
+			monthCode = month.toString();
 		}
+				
+		if(day.toString().length()==1) {
+			dayCode = "0" + day.toString();
+		}else {
+			dayCode = day.toString();
+		}
+					
+		result = yearCode + "-" + monthCode + "-" + dayCode;
+				
+		return result;
+	}
 }

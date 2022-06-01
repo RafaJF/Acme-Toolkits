@@ -1,5 +1,7 @@
 package acme.features.inventor.chimpum;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -44,13 +46,14 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 
 	@Override
 	public void bind(final Request<Chimpum> request, final Chimpum entity, final Errors errors) {
-		request.bind(entity, errors, "code","title", "description", "budget", "creationMoment", "startDate", "endDate", "moreInfo");
-		entity.setCode(entity.getCode()+"-"+this.codeGenerator(entity.getCreationMoment()));
+		request.bind(entity, errors, "code", "title", "description", "budget", "creationMoment", "startDate", "endDate", "moreInfo");
+		final LocalDate cm =  entity.getCreationMoment().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		entity.setCode(entity.getCode()+"-"+this.codeGenerator(cm));
 	}
 
 	@Override
 	public void unbind(final Request<Chimpum> request, final Chimpum entity, final Model model) {
-		request.unbind(entity, model, "code","title", "description", "budget", "creationMoment", "startDate", "endDate", "moreInfo");	
+		request.unbind(entity, model, "title", "description", "budget", "creationMoment", "startDate", "endDate", "moreInfo");	
 		model.setAttribute("itemId", request.getModel().getInteger("itemId"));
 	}
 
@@ -82,6 +85,16 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 
         final double StrongThreshold = systemConfig.getStrongThreshold();
         final double WeakThreshold = systemConfig.getWeakThreshold();
+        
+        if(!errors.hasErrors("code")) {
+        	
+    		Chimpum existing;
+    		existing = this.repository.findOneChimpumByCode(entity.getCode());
+    		
+    		if(existing!=null) {
+    			errors.state(request, existing.getId()==entity.getId(), "code", "inventor.chimpum.form.error.duplicated-code");
+    		}
+    	}
 		
         if(!errors.hasErrors("title")) {
             final boolean res;
@@ -129,16 +142,16 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		        
 		        errors.state(request, diffrence>=30 , "startDate","inventor.chimpum.form.error.startDate");
 			}
-		
+			
 			if(!errors.hasErrors("endDate")) {
 				Date endDate;
 				endDate = entity.getEndDate();
 				
 				final long diff = endDate.getTime() - entity.getStartDate().getTime();
-		        final TimeUnit time = TimeUnit.DAYS; 
-		        final long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
-		        
-		        errors.state(request, diffrence>=7 , "endDate","inventor.chimpum.form.error.endDate");
+			    final TimeUnit time = TimeUnit.DAYS; 
+			    final long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
+			        
+			    errors.state(request, diffrence>=7 , "endDate","inventor.chimpum.form.error.endDate");
 			}
 		}
 	}
@@ -158,13 +171,14 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	
 	//Método auxiliar que genera automáticamente el código
 	
-	public String codeGenerator(final Date creationMoment) {
+	public String codeGenerator(final LocalDate creationMoment) {
 		String result = "";
-		final Integer day = creationMoment.getDate();
-		final Integer month = creationMoment.getMonth();
+		
+		final Integer day = creationMoment.getDayOfMonth();
+		final Integer month = creationMoment.getMonthValue();
 		final Integer year = creationMoment.getYear();
 
-		final String yearCode = year.toString().substring(1, 3);
+		final String yearCode = year.toString().substring(2, 4);
 		String monthCode= "";
 		String dayCode= "";
 		
@@ -173,15 +187,15 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		}else{
 			monthCode = month.toString();
 		}
-		
+			
 		if(day.toString().length()==1) {
 			dayCode = "0" + day.toString();
 		}else {
 			dayCode = day.toString();
 		}
-		
+				
 		result = yearCode + "-" + monthCode + "-" + dayCode;
-		
+			
 		return result;
 	}
 }

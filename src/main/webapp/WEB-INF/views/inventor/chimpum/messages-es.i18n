@@ -20,6 +20,8 @@ inventor.chimpum.form.button.update = Actualizar
 inventor.chimpum.form.button.delete = Borrar
 inventor.chimpum.form.button.item = Mostrar ítem
 
+inventor.chimpum.form.error.duplicated-code = Código duplicado
+inventor.chimpum.form.error.inmutable-date-code = La parte del código correspondiente a la fecha de creación no puede ser modificada
 inventor.chimpum.form.error.currency = La divisa no es una divisa válida
 inventor.chimpum.form.error.amount-negative = La cantidad debe ser positiva
 inventor.chimpum.form.error.startDate = El periodo de tiempo debe de ser de al menos un mes después de la creación del chimpum
