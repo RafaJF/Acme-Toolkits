@@ -26,11 +26,9 @@ public class InventorPatronageReportListTest extends TestHarness {
 		super.checkInputBoxHasValue("memorandum", memorandum);
 		super.checkInputBoxHasValue("moreInfo", moreInfo);
 		
-		
-		super.signOut();
-		
+		super.signOut();		
 	}
-	}
+}
 
 
 
