@@ -29,10 +29,14 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		assert request != null;
 
 		boolean result;
-		final int patronageId = request.getModel().getInteger("id");
-		final Patronage patronage = this.repository.findPatronageById(patronageId);
+		int patronageId;
+		Patronage patronage;
+		
+		patronageId = request.getModel().getInteger("id");
+		patronage = this.repository.findPatronageById(patronageId);
 
 		result = request.isPrincipal(patronage.getPatron()) && !patronage.isPublished();
+		System.out.println("*****************************************PRUEBA1");
 
 		return result;
 	}
@@ -42,10 +46,12 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		assert request != null;
 
 		Patronage result;
-		final int patronageId = request.getModel().getInteger("id");
+		int patronageId;
+		patronageId = request.getModel().getInteger("id");
 
 		result = this.repository.findPatronageById(patronageId);
 
+		System.out.println("*****************************************PRUEBA2");
 		return result;
 	}
 
@@ -54,8 +60,8 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-
-		request.bind(entity, errors, "code", "legalStuff", "budget", "startDate", "endDate", "moreInfo");
+		System.out.println("*****************************************PRUEBA3");
+		request.bind(entity, errors, "code","status","creationMoment", "legalStuff", "budget", "startDate", "endDate", "moreInfo");
 	}
 
 	@Override
@@ -63,6 +69,8 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
+		System.out.println("*****************************************PRUEBA4");
 		
 		if(!errors.hasErrors("code")) {
 			Patronage existingPatronage;
@@ -90,18 +98,20 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 
 
 		if(!errors.hasErrors("startDate")) {
-				
 			final Date startDateMin = DateUtils.addMonths(entity.getCreationMoment(), 1);
-			
+	
 			errors.state(request, entity.getStartDate().after(startDateMin), "startDate", "patron.patronage.form.error.start-date");			
 		}
+					
+		
 		
 		if(!errors.hasErrors("endDate")) {
+			if(entity.getStartDate() !=null) {
+				final Date periodEndDate = DateUtils.addMonths(entity.getStartDate(), 1);
+				final Date moment = entity.getEndDate();
+				errors.state(request, moment.after(periodEndDate) , "endDate", "patron.patronage.form.error.end-date");
+			}
 			
-			final Date periodEndDate = DateUtils.addMonths(entity.getStartDate(), 1);
-			final Date moment = entity.getEndDate();
-			
-			errors.state(request, moment.after(periodEndDate) , "endDate", "patron.patronage.form.error.end-date");
 			
 		}
 		
@@ -113,9 +123,9 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		System.out.println("*****************************************PRUEBA5");
 
-
-		request.unbind(entity, model,"code", "legalStuff", "budget", "startDate", "endDate", "moreInfo");
+		request.unbind(entity, model,"code","status","creationMoment", "legalStuff", "budget", "startDate", "endDate", "moreInfo","published");
 
 		model.setAttribute("inventors", this.repository.findInventors());
 		model.setAttribute("inventorId", entity.getInventor().getId());
@@ -133,6 +143,7 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		assert request != null;
 		assert entity != null;
 
+		System.out.println("*****************************************PRUEBA6");
 		this.repository.save(entity);
 
 	}
