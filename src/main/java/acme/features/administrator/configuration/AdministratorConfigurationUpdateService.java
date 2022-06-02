@@ -1,5 +1,8 @@
 package acme.features.administrator.configuration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,14 +67,20 @@ public class AdministratorConfigurationUpdateService implements AbstractUpdateSe
 			errors.state(request, entity.getAcceptedCurrencies().contains(entity.getSystemCurrency()) , "systemCurrency", "administrator.configuration.form.error.systemCurrency");
 		}
 		
-		if(!errors.hasErrors("strongSpamTreshold")) {
-			errors.state(request, entity.getStrongThreshold()>0 && entity.getStrongThreshold()<=100, "strongTreshold", "administrator.configuration.form.error.strongTreshold");
+		if(!errors.hasErrors("acceptedCurrencies")) {
+			final List<String> acceptedCurrencies = new ArrayList<>();
+			final List<String> worldCurrenciesCodes = this.adminSystemConfigurationRepository.findWorldCurrencies();
+			
+			for(final String s: entity.getAcceptedCurrencies().split(",")) {
+				acceptedCurrencies.add(s);
+			}
+			
+			for(final String ac: acceptedCurrencies) {
+				if(!worldCurrenciesCodes.contains(ac)) {
+					errors.state(request, worldCurrenciesCodes.contains(ac) , "acceptedCurrencies", "administrator.configuration.invalid-currency.error");
+				}
+			}
 		}
-
-		if(!errors.hasErrors("weakSpamTreshold")) {
-			errors.state(request, entity.getWeakThreshold()>0 && entity.getWeakThreshold()<=100, "weakTreshold", "administrator.configuration.form.error.weakTreshold");
-		}
-
 	}
 	
 	@Override

@@ -22,7 +22,6 @@ public class InventorPatronageListTest extends TestHarness {
 		super.checkColumnHasValue(key, 0, status);
 		super.checkColumnHasValue(key, 1, code);
 		super.checkColumnHasValue(key, 2, legalStuff);
-		super.checkColumnHasValue(key, 3, budget);
 		super.checkColumnHasValue(key, 4, creationMoment);
 		
 		super.clickOnListingRecord(key);

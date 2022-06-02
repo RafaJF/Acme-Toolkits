@@ -15,7 +15,6 @@ public class AdministratorAnnouncementCreateTest extends TestHarness{
 	public void positiveTest(final int recordIndex, final String title, final String body, 
 		final String info, final String criticalFlag, final String confirmation) {
 
-
 		super.signIn("administrator", "administrator");
 
 		super.clickOnMenu("Administrator", "Publish a announcement");
@@ -37,8 +36,6 @@ public class AdministratorAnnouncementCreateTest extends TestHarness{
 		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("body", body);
 		super.checkInputBoxHasValue("info", info);
-		super.checkInputBoxHasValue("criticalFlag", criticalFlag);
-
 
 		super.signOut();
 	}
@@ -49,7 +46,6 @@ public class AdministratorAnnouncementCreateTest extends TestHarness{
 	@Order(10)
 	public void negativeTest(final int recordIndex, final String title, final String body, 
 		final String info, final String criticalFlag, final String confirmation) {
-
 
 		super.signIn("administrator", "administrator");
 
@@ -83,6 +79,4 @@ public class AdministratorAnnouncementCreateTest extends TestHarness{
 		super.checkPanicExists();
 		super.signOut();
 	}
-
-
 }
