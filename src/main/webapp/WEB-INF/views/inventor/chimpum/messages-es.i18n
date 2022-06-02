@@ -6,8 +6,22 @@ inventor.chimpum.form.label.start-date = Fecha de inicio
 inventor.chimpum.form.label.end-date = Fecha de final
 inventor.chimpum.form.label.budget = Presupuesto
 inventor.chimpum.form.label.link = Link (Opcional)
-inventor.chimpum.form.label.item.name = Nombre del item
+inventor.chimpum.form.label.item.name = Nombre del Objeto
+inventor.chimpum.form.label.item.select = Selecciona el objeto asociado (Opcional)
+inventor.chimpum.form.create = Crear
+inventor.chimpum.form.delete = Eliminar
+inventor.chimpum.form.update = Actualizar
 
 inventor.chimpum.list.label.code = Código
 inventor.chimpum.list.label.title = Titulo
 inventor.chimpum.list.label.budget = Presupuesto
+inventor.chimpum.list.button.create = Crear
+
+inventor.chimpum.form.error.end-date = La fecha final debe ser después de la fecha inicial y no mas de 1 semana
+inventor.chimpum.form.error.start-date = La fecha inicial debe ser despues de un mes
+inventor.chimpum.form.error.budget-amount = Presupuesto debe ser un valor positivo
+patron.patronage.form.error.budget-currency = Moneda desconocida
+inventor.chimpum.form.error.date-changed = No esta permitido cambiar el fragmento de la fecha del código
+inventor.chimpum.form.error.duplicated = Ya existe un chimpum con ese código
+inventor.chimpum.form.error.format = Error de formato
+

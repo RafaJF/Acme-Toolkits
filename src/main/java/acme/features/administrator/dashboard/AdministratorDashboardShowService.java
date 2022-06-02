@@ -64,6 +64,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		totalNumberOfComponents = this.repository.totalNumberOfComponents();
 		totalNumberOfTools = this.repository.totalNumberOfTools();
 		
+		
 		final List<String> currencies = new ArrayList<>();
 		final String acceptedCurrencies = this.systemConfigRepository.findSystemConfiguration().getAcceptedCurrencies();
 		final String[] field = acceptedCurrencies.split(",");
@@ -192,7 +193,35 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 				Pair.of(Status.DENIED, x.get(0).toString()),
 				Double.parseDouble(x.get(1).toString())));
 		
+		//Chimpums
+		//Chimpum
+				final Double ratioOfItemsWithChimpum;
+				final Map<String,Double> averageBudgetOfChimpumsByCurrency = new HashMap<String,Double>();
+				final Map<String,Double> deviationBudgetOfChimpumByCurrency = new HashMap<String,Double>();
+				final Map<String,Double> minimumBudgetOfChimpumByCurrency = new HashMap<String,Double>();
+				final Map<String,Double> maximumBudgetOfChimpumByCurrency = new HashMap<String,Double>();
+		//ratio of items with Chimpum
+		ratioOfItemsWithChimpum = this.repository.ratioOfItemsWithChimpum();
+		
+		//average budget of chimpum by currency
+		for(final String currency:currencies) {
+			//average budget of chimpum by currency
+			final Double averageBudgetOfChimpum = this.repository.averageBudgetOfChimpumByCurrency(currency);
+			averageBudgetOfChimpumsByCurrency.put(currency,averageBudgetOfChimpum);
+			//deviation budget
+			final Double deviationBudgetOfChimpum = this.repository.deviationBudgetOfChimpumByCurrency(currency);
+			deviationBudgetOfChimpumByCurrency.put(currency,deviationBudgetOfChimpum);
+			//minimum budget
+			final Double minimumBudgetOfChimpum = this.repository.minimumBudgetOfChimpumByCurrency(currency);
+			minimumBudgetOfChimpumByCurrency.put(currency, minimumBudgetOfChimpum);
+			//maximum budget
+			final Double maximumBudgetOfChimpum = this.repository.maximumBudgetOfChimpumByCurrency(currency);
+			maximumBudgetOfChimpumByCurrency.put(currency, maximumBudgetOfChimpum);
+			
+		}
 		result = new AdministratorDashboard();
+		
+		
 		
 		result.setTotalNumberOfComponents(totalNumberOfComponents);
 		result.setTotalNumberOfTools(totalNumberOfTools);
@@ -213,6 +242,13 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setMinimumBudgetPatronagesByStatus(minimumBudgetPatronagesByStatus);
 		result.setMaximumBudgetPatronagesByStatus(maximumBudgetPatronagesByStatus);
 		
+		//cHIMPUM
+		result.setRatioOfItemsWithChimpum(ratioOfItemsWithChimpum);
+		result.setAverageBudgetOfChimpumsByCurrency(averageBudgetOfChimpumsByCurrency);
+		result.setDeviationBudgetOfChimpumsByCurrency(deviationBudgetOfChimpumByCurrency);
+		result.setMinimumBudgetOfChimpumsByCurrency(minimumBudgetOfChimpumByCurrency);
+		result.setMaximumBudgetOfChimpumsByCurrency(maximumBudgetOfChimpumByCurrency);
+		
 		return result;
 	}
 
@@ -227,7 +263,12 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 			"minimumRetailPriceOfComponentsByTechnologyAndCurrency", "maximumRetailPriceOfComponentsByTechnologyAndCurrency",
 			"averageRetailPriceOfToolsByCurrency", "deviationRetailPriceOfToolsByCurrency", "minimumRetailPriceOfToolsByCurrency",
 			"maximumRetailPriceOfToolsByCurrency", "averageBudgetPatronagesByStatus", "deviationBudgetPatronagesByStatus",
-			"minimumBudgetPatronagesByStatus", "maximumBudgetPatronagesByStatus");
+			"minimumBudgetPatronagesByStatus", "maximumBudgetPatronagesByStatus",
+			"ratioOfItemsWithChimpum",
+			"averageBudgetOfChimpumsByCurrency",
+			"deviationBudgetOfChimpumsByCurrency",
+			"minimumBudgetOfChimpumsByCurrency",
+			"maximumBudgetOfChimpumsByCurrency");
 	}
 
 }

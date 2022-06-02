@@ -61,8 +61,8 @@ public class Chimpum extends AbstractEntity{
 	@URL
 	protected String link;
 	
-	
-	@OneToOne(optional=true)
+	@NotNull
+	@OneToOne(optional=false)
 	@Valid
 	protected Item item;
 

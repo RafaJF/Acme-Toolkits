@@ -1,0 +1,2 @@
+timestamp,test-class,test-method,time,description,result
+"2022-06-01 23:27:28.929","acme.testing.inventor.chimpum.InventorChimpumListTest","positiveTest",8633,""[1] recordIndex=0, code=20-05-05:0001, title=title20, creationMoment=2020/05/05 10:00, budget=EUR 100.00, description=description1, startDate=2022/06/15 10:00, endDate=2022/06/18 10:00, link=http://moreinfo.com"","Expected value '20-05-05:0001' in attribute 0 of record 0, but found '20-05-05:0000'"

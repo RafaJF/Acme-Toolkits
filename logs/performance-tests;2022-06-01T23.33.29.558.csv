@@ -1,0 +1,2 @@
+timestamp,test-class,test-method,time,description,result
+"2022-06-01 23:31:44.345","acme.testing.inventor.chimpum.InventorChimpumListTest","positiveTest",13394,""[1] recordIndex=0, code=20-05-05:0000, title=title1, creationMoment=2020/05/05 10:00, budget=EUR 100.00, description=description1, startDate=2022/05/15 10:00, endDate=2022/05/18 10:00, link=http://moreinfo.com"","Cannot find 'By.name: creation-moment'"

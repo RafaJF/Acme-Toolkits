@@ -1,8 +1,10 @@
 package acme.features.inventor.chimpum;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +35,12 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert errors != null;
 		int itemId;
-		itemId = request.getModel().getInteger("itemName");
-		final Item item = this.repository.findItemById(itemId);
+		final Item item;
+		itemId = request.getModel().getInteger("item");
+		item = this.repository.findItemById(itemId);
 		entity.setItem(item);
+			
+		
 		
 		request.bind(entity, errors, "code","title","startDate","endDate","link","description","budget");
 		
@@ -49,8 +54,16 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		int inventorId;
 		inventorId = request.getPrincipal().getActiveRoleId();
 		final Collection<Item> items;
+		final Collection<Item> myPublishedItems= new HashSet<>();
+		final Collection<Item> assignedItems = this.repository.findAllAsignedItems();
 		items = this.repository.findAllItemsOfInventor(inventorId);
-		model.setAttribute("items", items);
+		for(final Item i:items) {
+			if(i.isPublished() && !assignedItems.contains(i)) {
+				myPublishedItems.add(i);
+			}
+		}
+		model.setAttribute("items", myPublishedItems);
+		
 		
 		request.unbind(entity, model, "code","title","creationMoment","startDate","endDate","link","description","budget");
 		
@@ -79,12 +92,12 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		existingChimpum = this.repository.findChimpumByCode(entity.getCode());
 		
 	
-		
+		final Date now = Calendar.getInstance().getTime();
 		final String codeTrim =entity.getCode().substring(0,8);
-		System.out.println(codeTrim);
-		final String creationMoment = request.getModel().getAttribute("creationMoment").toString();
-		final String creationMomentTrim = creationMoment.substring(2, 10).replace("/", "-");
-		codeIsOk = creationMomentTrim.equals(codeTrim);
+		final SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd");
+		final String creationMoment = format.format(now);
+		
+		codeIsOk = creationMoment.equals(codeTrim);
 		codeIsNotDuplicated = existingChimpum == null;
 		errors.state(request, codeIsOk, "code", "inventor.chimpum.form.error.format");
 		errors.state(request, codeIsNotDuplicated, "code", "inventor.chimpum.form.error.duplicated");
@@ -113,7 +126,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			errors.state(request, entity.getStartDate().after(startDateBorder), "startDate", "inventor.chimpum.form.error.start-date");			
 		}
 		
-		if(!errors.hasErrors("endDate")) {
+		if(!errors.hasErrors("endDate") && entity.getStartDate()!=null) {
 			
 			final Date endDateBorder = DateUtils.addWeeks(entity.getStartDate(), 1);
 			final Date endDate = entity.getEndDate();

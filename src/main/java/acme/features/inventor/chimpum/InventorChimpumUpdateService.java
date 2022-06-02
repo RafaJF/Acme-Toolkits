@@ -2,6 +2,7 @@ package acme.features.inventor.chimpum;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +36,11 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 		assert entity != null;
 		assert errors != null;
 		int itemId;
-		itemId = request.getModel().getInteger("itemName");
-		final Item item = this.repository.findItemById(itemId);
+		Item item;
+		itemId = request.getModel().getInteger("item");
+		item = this.repository.findItemById(itemId);
 		entity.setItem(item);
+	
 		
 		request.bind(entity, errors, "code","title","startDate","endDate","link","description","budget");
 		
@@ -51,10 +54,16 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 		int inventorId;
 		inventorId = request.getPrincipal().getActiveRoleId();
 		final Collection<Item> items;
+		final Collection<Item> myPublishedItems= new HashSet<>();
+		final Collection<Item> assignedItems = this.repository.findAllAsignedItems();
 		items = this.repository.findAllItemsOfInventor(inventorId);
-		model.setAttribute("items", items);
-		model.setAttribute("selected", entity.getItem());
-		
+		for(final Item i:items) {
+			if(i.isPublished() && !assignedItems.contains(i)) {
+				myPublishedItems.add(i);
+			}
+		}
+		model.setAttribute("items", myPublishedItems);
+		model.setAttribute("itemSelected", entity.getItem());
 		request.unbind(entity, model, "code","title","creationMoment","startDate","endDate","link","description","budget");
 		
 	}
@@ -74,8 +83,21 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		if(!errors.hasErrors("code")) {
 		
+		boolean dateIsNotChanged;
+		Chimpum existingChimpum;
+		existingChimpum = this.repository.findChimpumByCode(entity.getCode());
 		
+		final String creationMoment = request.getModel().getAttribute("creationMoment").toString();
+		final String creationMomentTrim = creationMoment.substring(2, 10).replace("/", "-");
+		final String[] splittedCode = entity.getCode().split(":");
+		dateIsNotChanged = creationMomentTrim.equals(splittedCode[0]);
+		errors.state(request, dateIsNotChanged,"code", "inventor.chimpum.form.error.date-changed");
+		errors.state(request, existingChimpum == null || existingChimpum.getId() == entity.getId(), "code","inventor.chimpum.form.error.duplicated");
+		
+	}
+
 		if (!errors.hasErrors("budget")) {
 			
 			final String[] acceptedCurrencies = this.repository.findSystemConfiguration().getAcceptedCurrencies().split(",");
@@ -98,7 +120,7 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 			errors.state(request, entity.getStartDate().after(startDateBorder), "startDate", "inventor.chimpum.form.error.start-date");			
 		}
 		
-		if(!errors.hasErrors("endDate")) {
+		if(!errors.hasErrors("endDate") && entity.getStartDate()!=null) {
 			
 			final Date endDateBorder = DateUtils.addWeeks(entity.getStartDate(), 1);
 			final Date endDate = entity.getEndDate();
@@ -112,6 +134,7 @@ public class InventorChimpumUpdateService implements AbstractUpdateService<Inven
 	@Override
 	public void update(final Request<Chimpum> request, final Chimpum entity) {
 		assert request != null;
+		assert entity != null;
 		this.repository.save(entity);
 	}
 

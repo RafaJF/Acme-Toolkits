@@ -7,7 +7,24 @@ inventor.chimpum.form.label.end-date = End date
 inventor.chimpum.form.label.budget = Budget
 inventor.chimpum.form.label.link = Link (Optional)
 inventor.chimpum.form.label.item.name = Item's name
+inventor.chimpum.form.create = Create
+inventor.chimpum.form.delete = Delete
+inventor.chimpum.form.update = Update
+inventor.chimpum.form.label.item.select = Select the associated item (Optional)
+
 
 inventor.chimpum.list.label.code = Code
 inventor.chimpum.list.label.title = Title
 inventor.chimpum.list.label.budget = Budget
+inventor.chimpum.list.button.create = Create
+
+inventor.chimpum.form.error.end-date = The end date must be before the start date and no more longer than one week
+inventor.chimpum.form.error.start-date = The start date must be within a month
+inventor.chimpum.form.error.budget-amount = Budget must be a positive value
+patron.patronage.form.error.budget-currency = Unknown currency
+inventor.chimpum.form.error.date-changed = You are not allowed to change the creation moment fragment of the code
+inventor.chimpum.form.error.duplicated = Already exists a chimpum with that code
+inventor.chimpum.form.error.format = Format error
+
+
+
