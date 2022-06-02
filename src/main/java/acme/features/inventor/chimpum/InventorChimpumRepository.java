@@ -33,6 +33,11 @@ public interface InventorChimpumRepository extends AbstractRepository {
 	
 	@Query("SELECT c.item FROM Chimpum c")
 	Collection<Item> findAllAsignedItems();
+
+	@Query("SELECT c.code FROM Chimpum c")
+	Collection<String> findAllChimpumsCode();
 	
+	@Query("select systemConfiguration from SystemConfiguration systemConfiguration")
+	SystemConfiguration systemConfiguration();
 
 }

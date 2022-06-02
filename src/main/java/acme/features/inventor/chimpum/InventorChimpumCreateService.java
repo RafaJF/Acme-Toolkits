@@ -12,11 +12,13 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.chimpum.Chimpum;
 import acme.entities.item.Item;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractCreateService;
 import acme.roles.Inventor;
+import spamDetector.SpamDetector;
 
 @Service
 public class InventorChimpumCreateService implements AbstractCreateService<Inventor,Chimpum> {
@@ -39,10 +41,13 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		itemId = request.getModel().getInteger("item");
 		item = this.repository.findItemById(itemId);
 		entity.setItem(item);
-			
+		final Date now = Calendar.getInstance().getTime();
+		final SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd");
+		final String creationMoment = format.format(now);
+		entity.setCode(creationMoment);
+
 		
-		
-		request.bind(entity, errors, "code","title","startDate","endDate","link","description","budget");
+		request.bind(entity, errors,"title","startDate","endDate","link","description","budget");
 		
 	}
 
@@ -65,7 +70,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		model.setAttribute("items", myPublishedItems);
 		
 		
-		request.unbind(entity, model, "code","title","creationMoment","startDate","endDate","link","description","budget");
+		request.unbind(entity, model,"title","creationMoment","startDate","endDate","link","description","budget");
 		
 	}
 
@@ -85,24 +90,24 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		if(!errors.hasErrors("code")) {
-		final boolean codeIsOk;
-		boolean codeIsNotDuplicated;
-		Chimpum existingChimpum;
-		existingChimpum = this.repository.findChimpumByCode(entity.getCode());
-		
-	
-		final Date now = Calendar.getInstance().getTime();
-		final String codeTrim =entity.getCode().substring(0,8);
-		final SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd");
-		final String creationMoment = format.format(now);
-		
-		codeIsOk = creationMoment.equals(codeTrim);
-		codeIsNotDuplicated = existingChimpum == null;
-		errors.state(request, codeIsOk, "code", "inventor.chimpum.form.error.format");
-		errors.state(request, codeIsNotDuplicated, "code", "inventor.chimpum.form.error.duplicated");
-		
-		}
+//		if(!errors.hasErrors("code")) {
+//		final boolean codeIsOk;
+//		boolean codeIsNotDuplicated;
+//		Chimpum existingChimpum;
+//		existingChimpum = this.repository.findChimpumByCode(entity.getCode());
+//		
+//	
+//		final Date now = Calendar.getInstance().getTime();
+//		final String codeTrim =entity.getCode().substring(0,8);
+//		final SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd");
+//		final String creationMoment = format.format(now);
+//		
+//		codeIsOk = creationMoment.equals(codeTrim);
+//		codeIsNotDuplicated = existingChimpum == null;
+//		errors.state(request, codeIsOk, "code", "inventor.chimpum.form.error.format");
+//		errors.state(request, codeIsNotDuplicated, "code", "inventor.chimpum.form.error.duplicated");
+//		
+//		}
 		
 		if (!errors.hasErrors("budget")) {
 			
@@ -134,7 +139,36 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			errors.state(request, endDate.before(endDateBorder) , "endDate", "inventor.chimpum.form.error.end-date");
 			
 		}
-		
+		if(!errors.hasErrors("description")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
+			
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+						
+			res = SpamDetector.spamDetector(entity.getTitle(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+			
+			errors.state(request, res, "title", "alert-message.form.spam");
+		}
+		if(!errors.hasErrors("title")) {
+			final boolean res;
+			final SystemConfiguration systemConfiguration = this.repository.systemConfiguration();
+			final String StrongES = systemConfiguration.getStrongSpamTermsEn();
+			final String StrongEN = systemConfiguration.getStrongSpamTermsEn();
+			final String WeakES = systemConfiguration.getWeakSpamTermsEs();
+			final String WeakEN = systemConfiguration.getWeakSpamTermsEn();
+			
+			final double StrongT = systemConfiguration.getStrongThreshold();
+			final double WeakT = systemConfiguration.getWeakThreshold();
+						
+			res = SpamDetector.spamDetector(entity.getTitle(),StrongES,StrongEN,WeakES,WeakEN,StrongT,WeakT);
+			
+			errors.state(request, res, "title", "alert-message.form.spam");
+		}
 
 		
 	}

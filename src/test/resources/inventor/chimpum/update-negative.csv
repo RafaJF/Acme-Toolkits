@@ -1,0 +1,5 @@
+recordIndex,title,budget,description,start-date,end-date,link
+0,titleUpdated,EUR -200.00,descriptionUpdate,2022/08/01 10:00,2022/08/02 10:00,http://moreinfo.com
+0,titleUpdated,EUR 400.00,descriptionUpdate,2022/08/03 10:00,2022/10/04 10:00,http://moreinfo.com
+0,titleUpdated,EUR 300.00,descriptionUpdate,2020/06/03 10:00,2022/06/04 10:00,http://moreinfo.com
+0,titleUpdated,XXX 300.00,descriptionUpdate,2022/06/03 10:00,2022/06/04 10:00,http://moreinfo.com

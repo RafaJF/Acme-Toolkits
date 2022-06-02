@@ -1,6 +1,7 @@
 package acme.testing.inventor.chimpum;
 
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -10,14 +11,14 @@ public class InventorChimpumUpdateTest extends TestHarness {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/chimpum/update-positive.csv", encoding ="utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void positiveTest(final int recordIndex, final String code, final String title ,final String budget, final String description, final String startDate, final String endDate, final String link) {
+	public void positiveTest(final int recordIndex,final String code, final String title ,final String budget, final String description, final String startDate, final String endDate, final String link) {
 		
 		super.signIn("inventor1", "inventor1");
 		super.clickOnMenu("Inventor", "List my chimpums");
 		super.checkListingExists();
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
-		super.fillInputBoxIn("code", code);
+		
 		super.fillInputBoxIn("title", title);
 		super.fillInputBoxIn("description", description);
 		super.fillInputBoxIn("startDate", startDate);
@@ -30,7 +31,7 @@ public class InventorChimpumUpdateTest extends TestHarness {
 		
 		super.clickOnMenu("Inventor","List my chimpums");
 		super.checkListingExists();
-		super.checkColumnHasValue(recordIndex, 0, code);
+	
 		super.checkColumnHasValue(recordIndex, 1, title);
 		super.checkColumnHasValue(recordIndex, 2, budget);
 		super.clickOnListingRecord(recordIndex);
@@ -47,17 +48,24 @@ public class InventorChimpumUpdateTest extends TestHarness {
 		
 	}
 	@ParameterizedTest
-	@CsvFileSource(resources = "/inventor/chimpum/update-negative-end-date.csv", encoding ="utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/inventor/chimpum/update-negative.csv", encoding ="utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void shouldNotUpdateBeacauseInvalidEndDate(final int recordIndex,final String endDate) {
+	public void negativeTest(final int recordIndex,final String title, final String budget, final String description, final String startDate, final String endDate, final String link) {
 		//Not valid endDate
+		//Not valid startDATE
+		//Negative budget
+		//Invalid currency
 		super.signIn("inventor1", "inventor1");
 		super.clickOnMenu("Inventor", "List my chimpums");
 		super.checkListingExists();
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
-		
+		super.fillInputBoxIn("title", title);
+		super.fillInputBoxIn("budget", budget);
+		super.fillInputBoxIn("description", description);
+		super.fillInputBoxIn("startDate", startDate);
 		super.fillInputBoxIn("endDate", endDate);
+		super.fillInputBoxIn("link", link);
 		
 		super.clickOnSubmit("Update");
 		super.checkErrorsExist();
@@ -66,25 +74,18 @@ public class InventorChimpumUpdateTest extends TestHarness {
 		
 		
 	}
-	@ParameterizedTest
-	@CsvFileSource(resources = "/inventor/chimpum/update-negative-code.csv", encoding ="utf-8", numLinesToSkip = 1)
-	@Order(10)
-	public void shouldNotUpdateBecauseInvalidCode(final int recordIndex,final String code) {
-		//Not valid code
-		super.signIn("inventor1", "inventor1");
-		super.clickOnMenu("Inventor", "List my chimpums");
-		super.checkListingExists();
-		super.clickOnListingRecord(recordIndex);
-		super.checkFormExists();
+	@Test
+	@Order(30)
+	public void hackingUpdateTest() {
+		super.checkNotLinkExists("Account");
+		super.navigate("/inventor/chimpum/update");
+		super.checkPanicExists();
 		
-		super.fillInputBoxIn("code", code);
-		
-		super.clickOnSubmit("Update");
-		super.checkErrorsExist();
-	
+		super.signIn("administrator", "administrator");
+		super.navigate("/inventor/chimpum/update");
+		super.checkPanicExists();
 		super.signOut();
-		
-		
 	}
+	
 
 }

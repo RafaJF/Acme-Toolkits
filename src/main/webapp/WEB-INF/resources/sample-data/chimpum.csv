@@ -1,5 +1,5 @@
 key,code,creation-moment,title,description,start-date,end-date,budget,link,key:item
-chimpum-01,20-05-05:0000,2020/05/05 10:00,title1,description1,2022/05/15 10:00,2022/05/18 10:00,EUR 100.00,http://moreinfo.com,item-01
-chimpum-02,20-05-06:0000,2020/05/06 10:00,title2,description2,2022/05/15 10:00,2022/05/18 10:00,EUR 100.00,http://moreinfo1.com,item-02
-chimpum-03,20-05-07:0000,2020/05/07 10:00,title3,description3,2022/05/15 10:00,2022/05/18 10:00,USD 100.00,http://moreinfo2.com,item-11
-chimpum-04,20-05-08:0000,2020/05/08 10:00,title4,description4,2022/05/15 10:00,2022/05/18 10:00,USD 100.00,http://moreinfo3.com,item-12
+chimpum-01,20-05-05,2020/05/05 10:00,title1,description1,2022/05/15 10:00,2022/05/18 10:00,EUR 100.00,http://moreinfo.com,item-01
+chimpum-02,20-05-06,2020/05/06 10:00,title2,description2,2022/05/15 10:00,2022/05/18 10:00,EUR 100.00,http://moreinfo1.com,item-02
+chimpum-03,20-05-07,2020/05/07 10:00,title3,description3,2022/05/15 10:00,2022/05/18 10:00,USD 100.00,http://moreinfo2.com,item-11
+chimpum-04,20-05-08,2020/05/08 10:00,title4,description4,2022/05/15 10:00,2022/05/18 10:00,USD 100.00,http://moreinfo3.com,item-12
