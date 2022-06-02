@@ -1,5 +1,6 @@
 package acme.features.patron.patronage;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.apache.commons.lang3.time.DateUtils;
@@ -13,6 +14,7 @@ import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractCreateService;
+import acme.roles.Inventor;
 import acme.roles.Patron;
 import spamDetector.SpamDetector;
 
@@ -107,7 +109,7 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 			errors.state(request, entity.getStartDate().after(startDateMin), "startDate", "patron.patronage.form.error.start-date");			
 		}
 		
-		if(!errors.hasErrors("endDate")) {
+		if(!errors.hasErrors("endDate")&& entity.getStartDate() !=null) {
 			
 			final Date periodEndDate = DateUtils.addMonths(entity.getStartDate(), 1);
 			final Date moment = entity.getEndDate();
@@ -141,6 +143,8 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert model != null;
 
 		request.unbind(entity, model,  "code", "legalStuff", "budget", "startDate", "endDate", "moreInfo", "inventor.id");	
+		final Collection<Inventor> inventores = this.repository.findInventors();
+		model.setAttribute("inventors", inventores);
 
 	}
 	
