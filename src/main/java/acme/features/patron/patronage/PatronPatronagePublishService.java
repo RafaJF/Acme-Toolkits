@@ -29,8 +29,11 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 		assert request != null;
 
 		boolean result;
-		final int patronageId = request.getModel().getInteger("id");
-		final Patronage patronage = this.repository.findPatronageById(patronageId);
+		int patronageId;
+		Patronage patronage;
+		
+		patronageId = request.getModel().getInteger("id");
+		patronage = this.repository.findPatronageById(patronageId);
 
 		result = request.isPrincipal(patronage.getPatron()) && !patronage.isPublished();
 
@@ -42,7 +45,8 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 		assert request != null;
 
 		Patronage result;
-		final int patronageId = request.getModel().getInteger("id");
+		int patronageId;
+		patronageId = request.getModel().getInteger("id");
 
 		result = this.repository.findPatronageById(patronageId);
 
@@ -55,7 +59,7 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 		assert entity != null;
 		assert errors != null;
 	
-		request.bind(entity, errors, "code", "legalStuff", "budget", "startDate", "endDate", "moreInfo");
+		request.bind(entity, errors, "code","status","creationMoment", "legalStuff", "budget", "startDate", "endDate", "moreInfo");
 	}
 
 	@Override
@@ -97,7 +101,7 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 			errors.state(request, entity.getStartDate().after(startDateMin), "startDate", "patron.patronage.form.error.start-date");			
 		}
 		
-		if(!errors.hasErrors("endDate")) {
+		if(!errors.hasErrors("endDate")&& entity.getStartDate() !=null) {
 			
 			final Date periodEndDate = DateUtils.addMonths(entity.getStartDate(), 1);
 			final Date moment = entity.getEndDate();
@@ -114,9 +118,19 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "legalStuff", "budget", "startDate", "endDate", "moreInfo", "inventorId");
+		request.unbind(entity, model, "code","status","creationMoment", "legalStuff", "budget", "startDate", "endDate", "moreInfo","published");
+
 		model.setAttribute("inventors", this.repository.findInventors());
 		model.setAttribute("inventorId", entity.getInventor().getId());
+		model.setAttribute("patronId", entity.getPatron().getId());
+		model.setAttribute("inventorId", entity.getInventor().getId());
+		model.setAttribute("inventorCompany", entity.getInventor().getCompany());
+		model.setAttribute("inventorStatement", entity.getInventor().getStatement());
+		model.setAttribute("inventorFullName", entity.getInventor().getIdentity().getFullName());
+		model.setAttribute("inventorEmail", entity.getInventor().getIdentity().getEmail());
+		model.setAttribute("inventorInfo", entity.getInventor().getInfo());
+		
+
 	}
 
 	@Override
