@@ -121,7 +121,7 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>280</x>
+      <x>413</x>
       <y>609</y>
       <w>287</w>
       <h>91</h>
@@ -183,8 +183,8 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1190</x>
-      <y>672</y>
+      <x>1218</x>
+      <y>588</y>
       <w>77</w>
       <h>70</h>
     </coordinates>
@@ -218,7 +218,7 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>280</x>
+      <x>413</x>
       <y>490</y>
       <w>287</w>
       <h>91</h>
@@ -432,7 +432,7 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1288</x>
+      <x>1218</x>
       <y>672</y>
       <w>77</w>
       <h>70</h>
@@ -623,22 +623,22 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>819</x>
+      <x>875</x>
       <y>973</y>
-      <w>175</w>
+      <w>252</w>
       <h>126</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Configuration
+SystemConfiguration
 --
-+systemCurrency: String
-+acceptedCurrencies: String
-+strongSpamTerms_en: String
-+strongSpamTerms_es: String
-+strongSpamThreshold: double
-+weakSpamTerms_en: String
-+weakSpamTerms_es: String
-+weakSpamThreshold: double
++systemCurrency: String{NotBlank}
++acceptedCurrencies: String{NotBlank}
++strongSpamTerms_en: String{NotBlank}
++strongSpamTerms_es: String{NotBlank}
++strongSpamThreshold: double{Range(0,100)}
++weakSpamTerms_en: String{NotBlank}
++weakSpamTerms_es: String{NotBlank}
++weakSpamThreshold: double{Range(0,100)}
 bg=green
 
 </panel_attributes>
@@ -647,7 +647,7 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1092</x>
+      <x>1176</x>
       <y>973</y>
       <w>308</w>
       <h>126</h>
@@ -670,13 +670,13 @@ bg=orange
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>987</x>
+      <x>1120</x>
       <y>1022</y>
-      <w>119</w>
+      <w>70</w>
       <h>21</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
@@ -801,5 +801,70 @@ bg=orange</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>490</y>
+      <w>119</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Currencies
+--
++code: String{NotBlank}
++name: String
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1008</x>
+      <y>1148</y>
+      <w>154</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>The currency entered in 
+acceptedCurrencies must exist.
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1022</x>
+      <y>1092</y>
+      <w>21</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>987</x>
+      <y>1218</y>
+      <w>154</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>The currency entered in 
+systemCurrency must be in 
+acceptedCurrencies.
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>987</x>
+      <y>1092</y>
+      <w>21</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
   </element>
 </diagram>
