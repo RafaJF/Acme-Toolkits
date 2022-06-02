@@ -1,6 +1,7 @@
 package acme.components;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
 
 import acme.framework.entities.AbstractEntity;
 import lombok.Getter;
@@ -17,7 +18,9 @@ public class Currencies extends AbstractEntity{
 	
 	// Attributes -------------------------------------------------------------
 
+	@NotBlank
 	public String				code;
+	
 	public String				name;
 
 }
